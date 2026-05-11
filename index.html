@@ -281,9 +281,10 @@
   /* ============ VIDEO GRID ============ */
   .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:120px}
   .vid-item{position:relative;overflow:hidden;background:var(--ink);cursor:pointer}
-  .vid-item video{width:100%;display:block;object-fit:cover}
-  .vid-item.vid-v video{aspect-ratio:9/16}
-  .vid-item.vid-h video{aspect-ratio:16/9}
+  .vid-item img{width:100%;display:block;object-fit:cover}
+  .vid-item.vid-v img{aspect-ratio:9/16}
+  .vid-item.vid-h img{aspect-ratio:16/9}
+  .vid-item iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .vid-item.vid-full{grid-column:span 3}
   .vid-item.vid-wide{grid-column:span 2}
   .vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,19,15,.5);transition:opacity .4s}
@@ -996,72 +997,52 @@ Etapa II · Sistema digital</div>
       <div class="vid-grid reveal-stagger">
 
         <!-- Row 1: 3 verticales -->
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Final viaje.jpg">
-            <source src="images/videos/Final viaje.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="IsKu2n3RfCk">
+          <img src="images/thumbs/Final viaje.jpg" alt="Final viaje">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Presentación.jpg">
-            <source src="images/videos/Presentación.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="86LyZDVtPp4">
+          <img src="images/thumbs/Presentación.jpg" alt="Presentación">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Dron.jpg">
-            <source src="images/videos/Dron.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="luL2D0qT5V8">
+          <img src="images/thumbs/Dron.jpg" alt="Dron">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 2: horizontal full width -->
-        <div class="vid-item vid-h vid-full">
-          <video preload="none" playsinline poster="images/thumbs/Paris 07-06-25.jpg">
-            <source src="images/videos/Paris 07-06-25.mp4" type="video/mp4">
-          </video>
+        <div class="vid-item vid-h vid-full" data-yt="1DN1yYAsK58">
+          <img src="images/thumbs/Paris 07-06-25.jpg" alt="París">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 3: 3 verticales -->
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Video Sticker.jpg">
-            <source src="images/videos/Video Sticker.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="eCIrhpUecMc">
+          <img src="images/thumbs/Video Sticker.jpg" alt="Video Sticker">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Video Educación.jpg">
-            <source src="images/videos/Video Educación.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="uvo-r1jjeOA">
+          <img src="images/thumbs/Video Educación.jpg" alt="Video Educación">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/Creativo 1.jpg">
-            <source src="images/videos/Creativo 1.mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="BGdmz1yDk4A">
+          <img src="images/thumbs/Creativo 1.jpg" alt="Creativo 1">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 4: horizontal full width -->
-        <div class="vid-item vid-h vid-full">
-          <video preload="none" playsinline poster="images/thumbs/Santander.jpg">
-            <source src="images/videos/Santander.mp4" type="video/mp4">
-          </video>
+        <div class="vid-item vid-h vid-full" data-yt="76RkJh05_hc">
+          <img src="images/thumbs/Santander.jpg" alt="Santander">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 5: horizontal (span 2) + vertical -->
-        <div class="vid-item vid-h vid-wide">
-          <video preload="none" playsinline poster="images/thumbs/06 (1)(1).jpg">
-            <source src="images/videos/06 (1)(1).mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-h vid-wide" data-yt="JiU2iiO8-S0">
+          <img src="images/thumbs/06 (1)(1).jpg" alt="Video 06">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
-        <div class="vid-item vid-v">
-          <video preload="none" playsinline poster="images/thumbs/01 (2)(1).jpg">
-            <source src="images/videos/01 (2)(1).mov" type="video/mp4">
-          </video>
+        <div class="vid-item vid-v" data-yt="PWRLZMo0IeA">
+          <img src="images/thumbs/01 (2)(1).jpg" alt="Video 01">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
@@ -1173,20 +1154,19 @@ Etapa II · Sistema digital</div>
     });
   });
 
-  // VIDEO CLICK TO PLAY
+  // VIDEO CLICK TO PLAY (YouTube embed)
   document.querySelectorAll('.vid-item').forEach(item => {
-    const video = item.querySelector('video');
     const overlay = item.querySelector('.vid-overlay');
     item.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        overlay.classList.add('hidden');
-      } else {
-        video.pause();
-        overlay.classList.remove('hidden');
-      }
+      if (item.querySelector('iframe')) return;
+      const id = item.dataset.yt;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.allow = 'autoplay; encrypted-media; fullscreen';
+      iframe.allowFullscreen = true;
+      item.appendChild(iframe);
+      overlay.classList.add('hidden');
     });
-    video.addEventListener('ended', () => overlay.classList.remove('hidden'));
   });
 
   // NAV SCROLL
