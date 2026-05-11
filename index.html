@@ -1286,5 +1286,214 @@ Etapa II · Sistema digital</div>
   document.querySelectorAll('.tool-item img').forEach(setupToolFallback);
 </script>
 
+<script>
+// ============ i18n: AUTO ENGLISH ============
+(function(){
+  const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (!lang.startsWith('en')) return;
+
+  document.documentElement.lang = 'en';
+  document.title = 'Álvaro Quintanar Salinas · Marketing, Creative Direction & Content Strategy';
+
+  const t = [
+    // NAV
+    ['.nav .links a[href="#about"]','About'],
+    ['.nav .links a[href="#education"]','Education'],
+    ['.nav .links a[href="#work"]','Projects'],
+    ['.nav .links a[href="#experience"]','Experience'],
+    ['.nav .links a[href="#contact"]','Contact'],
+    ['.mobile-menu .m-link[href="#about"]','About'],
+    ['.mobile-menu .m-link[href="#education"]','Education'],
+    ['.mobile-menu .m-link[href="#work"]','Projects'],
+    ['.mobile-menu .m-link[href="#experience"]','Experience'],
+    ['.mobile-menu .m-link[href="#skills"]','Skills'],
+    ['.mobile-menu .m-link[href="#contact"]','Contact'],
+    ['.m-foot','Álvaro Quintanar Salinas · Spain · 2026'],
+
+    // HERO
+    ['.hero-meta-top > div:nth-child(1)','<span class="label">Marketing · Systems · Creative Direction</span>'],
+    ['.hero-meta-top > div:nth-child(2)','<span class="label">Location</span>Spain'],
+    ['.hero-meta-top > div:nth-child(3)','<span class="label">Availability</span>Projects &amp; collaborations, now 2026'],
+    ['.hero-headline h1','Marketing,<br/>systems <span class="amp">&amp;</span><br/><span class="it">creative direction</span><br/>for brands that<br/>want to feel<br/><em class="serif" style="font-style:italic;color:var(--olive)">alive.</em>'],
+    ['.hero-sub','I build campaigns, content systems and creative narratives that transform <em style="color:var(--burgundy);font-style:italic">attention</em> into <em style="color:var(--burgundy);font-style:italic">perception</em>. I work at the intersection of strategy, aesthetics and human behavior.'],
+    ['.hero-cta .btn.dark','View projects <span class="arrow">→</span>'],
+    ['.hero-cta .btn:not(.dark)','Contact <span class="arrow">↗</span>'],
+    ['.pcaption','Álvaro Q.S. · Spain \'26'],
+
+    // MARQUEE
+    ['.marquee-track > span:first-child','Creative Direction\n✶\nPerformance Marketing\n✶\nContent Strategy\n✶\nSystems\n✶\nStorytelling\n✶\nEmotional Branding\n✶'],
+    ['.marquee-track > span:last-child','Creative Direction <span class="star serif">✶</span> Performance Marketing <span class="star serif">✶</span> Content Strategy <span class="star serif">✶</span> Systems <span class="star serif">✶</span> Cinematic Storytelling <span class="star serif">✶</span> Emotional Branding <span class="star serif">✶</span> '],
+
+    // ABOUT
+    ['#about .sec-title','About <em>me</em>'],
+    ['#about .sec-meta','NATIONALITY\nMEXICO ⇢ SPAIN'],
+    ['.about-text p:nth-child(1)','<span class="drop">I</span> grew up between two homes: <em>Mexico</em>, where I learned to observe, and <em>Spain</em>, where I learned to edit what I observed. That distance between seeing and translating is where my work lives.'],
+    ['.about-text p:nth-child(2)','I started as a digital marketer (campaigns, funnels, ROAS) and gradually understood that the most interesting numbers are <em>consequences</em> of something deeper: an idea with tension, an image with memory, a tone that doesn\'t sound like a brand.'],
+    ['.about-text p:nth-child(3)','Today I define myself as a creative who thinks in systems. I\'m obsessed with <em>storytelling</em>, the philosophy of aesthetics, creation, human attention and how brands build (or demolish) their own meaning.'],
+    ['.about-text p:nth-child(4)','I am evolving toward <em>the creative</em>. Not because it\'s a title, but because it\'s the discipline that most resembles how I think: strategic, emotional, intentional.'],
+    ['.about-bio-meta > div:nth-child(2) .k','Character'],
+    ['.about-bio-meta > div:nth-child(2) .v','Curious · Analytical · Introspective · Aesthetically sensitive'],
+
+    // EDUCATION
+    ['#education .sec-title','<em>Education</em>'],
+    ['#education .sec-meta','Three intellectual stages<br/>2019 · Ongoing'],
+    ['.edu-list .edu-row:nth-child(1) .yr','2019 · 2023\nStage I · Foundations'],
+    ['.edu-list .edu-row:nth-child(1) .title','Bachelor\'s in <em>Marketing</em>'],
+    ['.edu-list .edu-row:nth-child(1) .inst','EBC Business School · Aguascalientes, Mexico'],
+    ['.edu-list .edu-row:nth-child(1) .focus','<span>Consumer behavior</span><span>Communication</span><span>Brand</span><span>Perception</span>'],
+    ['.edu-list .edu-row:nth-child(1) .narr','The first conscious encounter with the question that still haunts me: why do we <em>choose</em> what we choose? This is where the craft began.'],
+    ['.edu-list .edu-row:nth-child(2) .yr','2023 · 2024\nStage II · Digital system'],
+    ['.edu-list .edu-row:nth-child(2) .title','Master\'s in <em>Digital Marketing</em>'],
+    ['.edu-list .edu-row:nth-child(2) .inst','ESIC Business &amp; Marketing School · Valencia, Spain'],
+    ['.edu-list .edu-row:nth-child(2) .focus','<span>Digital strategy</span><span>Performance</span><span>Systems</span><span>Content</span><span>Ecosystem</span>'],
+    ['.edu-list .edu-row:nth-child(2) .narr','The leap from concept to <em>system</em>: I learned to think of the digital ecosystem as infrastructure (funnels, data, content, platforms) and to execute with discipline.'],
+    ['.edu-list .edu-row:nth-child(3) .yr','2026 · Ongoing<span class="stage">Stage III · Depth</span>'],
+    ['.edu-list .edu-row:nth-child(3) .title','PhD in <em>Consumer Behavior</em>'],
+    ['.edu-list .edu-row:nth-child(3) .inst','University of Granada · Granada, Spain'],
+    ['.edu-list .edu-row:nth-child(3) .focus','<span>Human perception</span><span>Attention</span><span>Consumer psychology</span><span>Decision</span><span>Digital stimulus</span><span>Aesthetics</span>'],
+    ['.edu-list .edu-row:nth-child(3) .narr','A deep exploration of how people <em>perceive, feel and decide</em> in response to visual and digital stimuli. I research what marketing intuits and psychology explains.'],
+    ['.edu-foot span:nth-child(1)','Thesis in development · 2026'],
+    ['.edu-foot span:nth-child(2)','Active research'],
+    ['.edu-foot span:nth-child(3)','Granada · Remote'],
+
+    // PROJECTS
+    ['#work .sec-title','Featured <em>Projects</em>'],
+    ['#work .sec-meta','Selection 2021 · 2026<br/>Five cases'],
+    // P1
+    ['.project:nth-child(1) .p-cat','Content Strategy / Creative Direction / Systems'],
+    ['.project:nth-child(1) .p-overview','Comprehensive communication, systems and strategic direction work for an educational institution that needed to modernize both its perception and its digital infrastructure.'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(1) h5','Problem'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(1) p','Communication was inconsistent and the commercial process was fragmented. Leads arrived from multiple channels without a clear follow-up structure, generating friction and lost opportunities.'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(2) h5','Insight'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(2) p','Institutional perception depends not only on image, but also on experience. A modern school needs to communicate coherence in both narrative and systems.'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(3) h5','Strategy'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(3) p','Building a connected ecosystem between content, website, CRM and commercial process. A more efficient, automated digital funnel aligned with the institutional narrative <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(4) h5','Execution'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(4) p','Social media management, campaign direction, strategic website redesign, CRM implementation and integration, process automation, lead funnel structuring and commercial follow-up optimization.'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(5) h5','Result'],
+    ['.project:nth-child(1) .p-blocks .blk:nth-child(5) p','A more efficient, centralized and scalable system. Improved lead organization, reduced friction in the commercial process and a much more modern, coherent institutional communication ready to grow.'],
+    ['.project:nth-child(1) .p-foot span','Role · Strategy + Systems + Creative Direction'],
+    // P2
+    ['.project:nth-child(2) .p-cat','Performance Marketing / Creative Direction / Creative Testing'],
+    ['.project:nth-child(2) .p-overview','Urban mobility and design brand. The challenge wasn\'t selling a helmet: it was making a technical product feel like a cultural choice.'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(1) h5','Problem'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(1) p','ROAS under constant pressure. Conventional creatives explained the product but didn\'t make people desire it. Conversion depended on who understood it, not who felt it.'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(2) h5','Insight'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(2) p','Creativity without a testing system is noise. With one, it becomes data. The product already had the right brief; what was missing was <em style="color:var(--burgundy)">learning velocity</em>.'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(3) h5','Strategy'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(3) p','Structured creative testing program in weekly cycles: declared hypotheses, isolated variables, qualitative reading on real data. Every piece was a question with a measurable answer.'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(4) h5','Execution'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(4) p','Content production and direction for TikTok Ads and Meta Ads. Statics, carousels, video concepts and hooks centered on visual tension. Continuous iteration on what the data validated.'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(5) h5','Result'],
+    ['.project:nth-child(2) .p-blocks .blk:nth-child(5) p','Testing system with real learning velocity. Improved CTR, reduced CPA, increased sales and opening of a new distribution channel toward the United States.'],
+    ['.project:nth-child(2) .p-foot span','Role · Performance + Creative Direction'],
+    // P3
+    ['.project:nth-child(3) .p-cat','E-commerce / Amazon / Digital Operations'],
+    ['.project:nth-child(3) .p-overview','Complete digital operation within the Amazon ecosystem. Work where creativity is subordinated to infrastructure, and infrastructure is, in itself, the product.'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(1) h5','Problem'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(1) p','Scattered operation with no centralized vision of the sales cycle. Advertising worked in isolation, with no real connection to catalog performance or customer experience.'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(2) h5','Insight'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(2) p','In e-commerce, aesthetics without operations doesn\'t sell. Real performance lives in the alignment between catalog, advertising and data. When those <em style="color:var(--burgundy)">systems talk to each other</em>, the result changes.'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(3) h5','Strategy'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(3) p','Integration of Amazon Seller Central flows with an end-to-end optimization vision. Amazon Ads as a decision engine, not managed spending.'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(4) h5','Execution'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(4) p','Seller Central management, order control, Amazon Ads campaign analysis and optimization, communication segmentation and continuous data reading to iterate catalog and offer.'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(5) h5','Result'],
+    ['.project:nth-child(3) .p-blocks .blk:nth-child(5) p','Cleaner processes, shorter iteration cycles and less friction between operation and conversion. A structure better prepared to scale without losing control.'],
+    ['.project:nth-child(3) .p-foot span','Role · E-commerce + Systems + Digital Operations'],
+    // P4
+    ['.project:nth-child(4) .p-cat','Visual Production / Web Development / Communication'],
+    ['.project:nth-child(4) .p-overview','A stage of multidisciplinary exploration where creativity stopped feeling abstract and began to become real execution.'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(1) h5','Problem'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(1) p','Small and medium businesses needed to better communicate their identity, professionalize their presence and build visual pieces capable of generating trust and perception.'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(2) h5','Insight'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(2) p','Creativity doesn\'t live only in ideas. It lives in the ability to adapt, solve and build real solutions from different languages: <em style="color:var(--burgundy)">video, design, communication and technology</em>.'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(3) h5','Strategy'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(3) p','Flexible visual and digital solutions for different types of clients: restaurants, wineries, political campaigns, events and local brands. Each project required quickly understanding the context and translating it into effective visual communication.'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(4) h5','Execution'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(4) p','Institutional and television audiovisual production, drone filming, video editing, web development, visual design and client management. Audiovisual campaigns in southern Mexico and e-commerce development for a winery.'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(5) h5','Result'],
+    ['.project:nth-child(4) .p-blocks .blk:nth-child(5) p','A stage that transformed the perception of the work and one\'s own capabilities. Versatility as a creative advantage, relationships as part of the craft and courage as a necessary condition for moving forward.'],
+    ['.project:nth-child(4) .p-foot span','Role · Visual Production + Web Development + Communication'],
+    // P5
+    ['.project:nth-child(5) .p-cat','Creative Direction / Personal Brand / Narrative'],
+    ['.project:nth-child(5) .p-title','Personal creative <em>development</em>'],
+    ['.project:nth-child(5) .p-overview','Not a project. It\'s the laboratory where creative systems are developed before applying them to clients. The space where intuition becomes method.'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(1) h5','Laboratory'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(1) p','Own content production on YouTube, TikTok and written formats. Each piece has intentional direction: narrative arc, aesthetic decision, hypothesis about attention.'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(2) h5','Methodology'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(2) p','Personal content works as <em style="color:var(--burgundy)">creative R&amp;D</em>. What is tested here in narrative, tone or visual device is what is later applied with more confidence in a brand context.'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(3) h5','System'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(3) p','Each platform has its own language and pace. YouTube for depth and idea-building; TikTok for tension, synthesis and short attention culture; writing to think out loud.'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(4) h5','Result'],
+    ['.project:nth-child(5) .p-blocks .blk:nth-child(4) p','A library of tested creative resources, a recognizable personal voice and an iteration process that no longer depends on inspiration, but on systematic practice.'],
+    ['.project:nth-child(5) .p-foot span','Role · Author + Creative Director'],
+
+    // EXPERIENCE
+    ['#experience .sec-title','<em>Experience</em>'],
+    ['#experience .sec-meta','Four stages<br/>One evolution'],
+    ['.timeline .tl-row:nth-child(1) .tl-narr','The ground where creativity faces the numbers. I learned creative <em>discipline</em>: clear hypotheses, isolated variables, honest reading. Aesthetics without strategy is decoration, and strategy without aesthetics doesn\'t convert.'],
+    ['.timeline .tl-row:nth-child(2) .tl-narr','I leaped from <em>executing</em> to <em>directing</em>. I built an emotionally coherent content system and a visual language the institution still uses. Directing is, above all, listening to what a brand hasn\'t yet dared to say.'],
+    ['.timeline .tl-row:nth-child(3) .tl-narr','My school of <em>infrastructure</em>. The invisible side of marketing, which teaches that every great idea needs an operating system behind it. Without operations, aesthetics collapses.'],
+    ['.timeline .tl-row:nth-child(4) .tl-narr','The first school of reality. I learned that creativity without <em>craft</em> is only intention; here I practiced the craft. Drone, video, web, design: a visual vocabulary built from execution and error.'],
+
+    // SKILLS
+    ['#skills .sec-title','Skills <em>&amp; systems</em>'],
+    ['.skills-grid .skill:nth-child(1) .s-head span:last-child','Direction'],
+    ['.skills-grid .skill:nth-child(1) .s-name','Creative Direction'],
+    ['.skills-grid .skill:nth-child(2) .s-head span:last-child','Narrative'],
+    ['.skills-grid .skill:nth-child(3) .s-head span:last-child','Verbal'],
+    ['.skills-grid .skill:nth-child(4) .s-head span:last-child','Identity'],
+    ['.skills-grid .skill:nth-child(5) .s-head span:last-child','Strategy'],
+    ['.skills-grid .skill:nth-child(5) .s-name','Content Strategy'],
+    ['.skills-grid .skill:nth-child(6) .s-head span:last-child','Performance'],
+    ['.skills-grid .skill:nth-child(7) .s-head span:last-child','Video'],
+    ['.skills-grid .skill:nth-child(7) .s-name','Video recording & editing'],
+    ['.skills-grid .skill:nth-child(8) .s-head span:last-child','Structure'],
+    ['.skills-grid .skill:nth-child(9) .s-head span:last-child','Relationship'],
+    ['.skills-grid .skill:nth-child(10) .s-head span:last-child','Web'],
+    ['.skills-grid .skill:nth-child(10) .s-name','Web creation & optimization'],
+    ['.skills-grid .skill:nth-child(11) .s-head span:last-child','Social'],
+    ['.skills-grid .skill:nth-child(11) .s-name','Social strategy'],
+    ['.skills-grid .skill:nth-child(12) .s-head span:last-child','Commerce'],
+    ['.skills-grid .skill:nth-child(13) .s-head span:last-child','Visual'],
+    ['.skills-grid .skill:nth-child(13) .s-name','Visual Communication'],
+    ['.skills-grid .skill:nth-child(14) .s-head span:last-child','Operations'],
+    ['.skills-grid .skill:nth-child(14) .s-name','Campaign strategy'],
+
+    // TOOLS
+    ['.tools-label','Tools &amp; platforms'],
+
+    // DIRECTION
+    ['#direction .sec-title','Content <em>&amp; direction</em>'],
+    ['#direction .sec-meta','In development<br/>Personal studio'],
+    ['.dir-statement','A <em>multidisciplinary</em> creative practice in construction: vlogs, visual essays, personal brand and philosophical storytelling.'],
+    ['.dir-aside','It\'s not content for content\'s sake. It\'s the way I test ideas, tones and narrative devices before applying them in brand work. The study before the study.'],
+    ['.direction > p','Some examples'],
+
+    // CONTACT
+    ['.contact-meta span:nth-child(1)','§ 08 · Contact'],
+    ['.contact-meta span:nth-child(3)','Availability · Now 2026'],
+    ['.contact-headline','Ideas deserve <em>execution.</em>'],
+    ['.contact-grid .col:nth-child(1) h4','Write to me directly'],
+    ['.contact-grid .col:nth-child(1) p','I respond within 48h. For collaborations, creative direction, systems consulting or long conversations about why the Internet has become so visually boring.'],
+    ['.contact-grid .col:nth-child(2) h4','Social'],
+    ['.contact-grid .col:nth-child(3) h4','Work &amp; location'],
+    ['.contact-grid .col:nth-child(3) p:nth-child(2)','Spain, available remotely. I travel when it\'s worth it.'],
+    ['.contact-grid .col:nth-child(3) p:nth-child(3)','Languages · Spanish · English'],
+    ['.contact-foot span:nth-child(1)','© 2026 Álvaro Quintanar Salinas'],
+    ['.contact-foot .center','Designed &amp; directed by Álvaro Quintanar · hire me'],
+    ['.contact-foot .right','v.01 · Spain Edition'],
+  ];
+
+  t.forEach(([sel, html]) => {
+    document.querySelectorAll(sel).forEach(el => { el.innerHTML = html; });
+  });
+
+  const hbg = document.getElementById('hamburger');
+  if (hbg) hbg.setAttribute('aria-label', 'Menu');
+})();
+</script>
+
 </body>
 </html>
