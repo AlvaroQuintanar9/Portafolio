@@ -998,51 +998,51 @@ Etapa II · Sistema digital</div>
 
         <!-- Row 1: 3 verticales -->
         <div class="vid-item vid-v" data-yt="IsKu2n3RfCk">
-          <img src="images/thumbs/Final viaje.jpg" alt="Final viaje">
+          <img src="https://img.youtube.com/vi/IsKu2n3RfCk/maxresdefault.jpg" alt="Final viaje">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
         <div class="vid-item vid-v" data-yt="86LyZDVtPp4">
-          <img src="images/thumbs/Presentación.jpg" alt="Presentación">
+          <img src="https://img.youtube.com/vi/86LyZDVtPp4/maxresdefault.jpg" alt="Presentación">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
         <div class="vid-item vid-v" data-yt="luL2D0qT5V8">
-          <img src="images/thumbs/Dron.jpg" alt="Dron">
+          <img src="https://img.youtube.com/vi/luL2D0qT5V8/maxresdefault.jpg" alt="Dron">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 2: horizontal full width -->
         <div class="vid-item vid-h vid-full" data-yt="1DN1yYAsK58">
-          <img src="images/thumbs/Paris 07-06-25.jpg" alt="París">
+          <img src="https://img.youtube.com/vi/1DN1yYAsK58/maxresdefault.jpg" alt="París">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 3: 3 verticales -->
         <div class="vid-item vid-v" data-yt="eCIrhpUecMc">
-          <img src="images/thumbs/Video Sticker.jpg" alt="Video Sticker">
+          <img src="https://img.youtube.com/vi/eCIrhpUecMc/maxresdefault.jpg" alt="Video Sticker">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
         <div class="vid-item vid-v" data-yt="uvo-r1jjeOA">
-          <img src="images/thumbs/Video Educación.jpg" alt="Video Educación">
+          <img src="https://img.youtube.com/vi/uvo-r1jjeOA/maxresdefault.jpg" alt="Video Educación">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
         <div class="vid-item vid-v" data-yt="BGdmz1yDk4A">
-          <img src="images/thumbs/Creativo 1.jpg" alt="Creativo 1">
+          <img src="https://img.youtube.com/vi/BGdmz1yDk4A/maxresdefault.jpg" alt="Creativo 1">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 4: horizontal full width -->
         <div class="vid-item vid-h vid-full" data-yt="76RkJh05_hc">
-          <img src="images/thumbs/Santander.jpg" alt="Santander">
+          <img src="https://img.youtube.com/vi/76RkJh05_hc/maxresdefault.jpg" alt="Santander">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
         <!-- Row 5: horizontal (span 2) + vertical -->
         <div class="vid-item vid-h vid-wide" data-yt="JiU2iiO8-S0">
-          <img src="images/thumbs/06 (1)(1).jpg" alt="Video 06">
+          <img src="https://img.youtube.com/vi/JiU2iiO8-S0/maxresdefault.jpg" alt="Video 06">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
         <div class="vid-item vid-v" data-yt="PWRLZMo0IeA">
-          <img src="images/thumbs/01 (2)(1).jpg" alt="Video 01">
+          <img src="https://img.youtube.com/vi/PWRLZMo0IeA/maxresdefault.jpg" alt="Video 01">
           <div class="vid-overlay"><span class="vid-play">▶</span></div>
         </div>
 
@@ -1152,6 +1152,14 @@ Etapa II · Sistema digital</div>
         if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
       }
     });
+  });
+
+  // Fallback thumbnail si maxresdefault no existe
+  document.querySelectorAll('.vid-item img').forEach(img => {
+    img.addEventListener('error', () => {
+      const id = img.closest('.vid-item').dataset.yt;
+      img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    }, { once: true });
   });
 
   // VIDEO CLICK TO PLAY (YouTube embed)
