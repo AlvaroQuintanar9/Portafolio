@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Álvaro Quintanar Salinas · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f1ede4;
+    --bg-2: #ebe6da;
+    --ink: #14130f;
+    --ink-soft: #2a2823;
+    --muted: #6b665b;
+    --rule: #d9d3c4;
+    --burgundy: #6b1f24;
+    --olive: #4a4a25;
+    --beige: #c9b896;
+    --rose: #c8a39a;
+    --gold: #a98a3e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:"Inter",-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:var(--burgundy);color:var(--bg)}
+
+  /* GRAIN */
+  body::before{
+    content:"";position:fixed;inset:-50%;pointer-events:none;z-index:9999;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNDAnIGhlaWdodD0nMjQwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjE2IDAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbiknLz48L3N2Zz4=");
+    opacity:.45;mix-blend-mode:multiply;
+  }
+
+  .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.005em}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* NAV */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 32px;color:var(--ink);background:transparent;transition:background .7s ease,padding .7s ease,color .7s ease}
+  .nav.scrolled{background:var(--ink);color:#f1ede4;padding:14px 32px}
+  .nav .brand i{color:#c8a39a}
+  .nav.scrolled .clock::before{background:#c8a39a}
+  .nav .brand{font-family:"Instrument Serif",serif;font-size:20px;letter-spacing:-.01em}
+  .nav .brand i{font-style:italic;color:#c8a39a}
+  .nav .links{display:flex;gap:28px;justify-self:center}
+  .nav .links a{color:inherit;text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;opacity:.85;transition:opacity .3s}
+  .nav .links a:hover{opacity:1}
+  .nav .meta{justify-self:end;display:flex;gap:18px;align-items:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-family:"JetBrains Mono",monospace}
+  .clock{display:inline-flex;gap:6px;align-items:center}
+  .clock::before{content:"";width:6px;height:6px;border-radius:50%;background:#c8a39a;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* PAGE PADDING */
+  section{padding:0 32px;position:relative}
+  .rule{height:1px;background:var(--rule)}
+  .max{max-width:1440px;margin:0 auto}
+
+  /* ============ HERO ============ */
+  .hero{min-height:100vh;padding-top:120px;padding-bottom:60px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+  .hero-meta-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:80px}
+  .hero-meta-top .label{color:var(--ink);display:block;margin-bottom:6px;font-weight:500}
+  .hero-headline{margin-top:auto}
+  .hero-headline h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(56px,9.2vw,168px);line-height:.92;letter-spacing:-.02em;color:var(--ink)}
+  .hero-headline h1 .it{font-style:italic;color:var(--burgundy)}
+  .hero-headline h1 .amp{font-style:italic;color:var(--olive)}
+  .hero-bottom{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;align-items:end;margin-top:64px;padding-top:32px;border-top:1px solid var(--rule)}
+  .hero-sub{font-size:18px;line-height:1.45;max-width:46ch;color:var(--ink-soft)}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;align-self:start}
+  .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--ink);border-radius:999px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-family:"JetBrains Mono",monospace;background:transparent;transition:all .3s}
+  .tag:hover{background:var(--ink);color:var(--bg)}
+  .tag.solid{background:var(--ink);color:var(--bg)}
+  .tag.burg{border-color:var(--burgundy);color:var(--burgundy)}
+  .tag.burg:hover{background:var(--burgundy);color:var(--bg)}
+  .hero-cta{display:flex;gap:12px;justify-self:end;align-self:end;grid-column:3}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;cursor:pointer;text-decoration:none;transition:all .35s ease;font-family:inherit}
+  .btn:hover{background:var(--ink);color:var(--bg)}
+  .btn.dark{background:var(--ink);color:var(--bg)}
+  .btn.dark:hover{background:var(--burgundy);border-color:var(--burgundy)}
+  .btn .arrow{display:inline-block;transition:transform .35s}
+  .btn:hover .arrow{transform:translateX(4px)}
+
+  /* HERO portrait floating */
+  .hero-portrait{position:absolute;right:140px;top:260px;width:310px;height:400px;background:var(--bg-2);overflow:hidden}
+  .hero-portrait .ph{width:100%;height:100%}
+  .hero-portrait .pcaption{position:absolute;left:12px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:rgba(20,19,15,.7);padding:4px 8px}
+
+  /* placeholder pattern */
+  .ph{
+    background:
+      repeating-linear-gradient(135deg, rgba(20,19,15,.05) 0 1px, transparent 1px 8px),
+      linear-gradient(180deg, var(--bg-2), #ddd5c1);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  }
+  .ph .ph-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 10px;border:1px solid var(--rule);background:var(--bg)}
+  .ph.dark{background:repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 8px),linear-gradient(180deg, #2a2823, #14130f);color:#9d978a}
+  .ph.dark .ph-label{color:#c9b896;background:#1a1916;border-color:#3a382f}
+  .ph.burg{background:repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 1px, transparent 1px 8px),linear-gradient(180deg, #7a262c, #4d161a);color:#e7c9b6}
+  .ph.burg .ph-label{color:#e7c9b6;background:#5a1d22;border-color:#7a262c}
+  .ph.olive{background:repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 8px),linear-gradient(180deg, #5a5a2d, #3a3a1d);color:#c9b896}
+  .ph.olive .ph-label{color:#dcd4ad;background:#454522;border-color:#5a5a2d}
+
+  /* MARQUEE */
+  .marquee{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 0;background:var(--bg-2)}
+  .marquee-track{display:flex;gap:48px;white-space:nowrap;animation:scroll 36s linear infinite;font-family:"Instrument Serif",serif;font-size:38px;line-height:1}
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee-track .star{display:inline-block;color:var(--burgundy);font-style:italic}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ SECTION HEADER ============ */
+  .sec-head{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:32px;padding:88px 0 40px;border-bottom:1px solid var(--rule);margin-bottom:64px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--muted)}
+  .sec-title{font-family:"Instrument Serif",serif;font-size:clamp(36px,5vw,72px);font-weight:400;letter-spacing:-.015em;line-height:1}
+  .sec-title em{font-style:italic;color:var(--burgundy)}
+  .sec-meta{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right}
+
+  /* ============ ABOUT ============ */
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;padding-bottom:120px}
+  .about-portrait{position:sticky;top:100px;height:fit-content}
+  .about-portrait .ph{aspect-ratio:3/4;width:100%}
+  .about-portrait .cap{margin-top:12px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .about-text{font-family:"Instrument Serif",serif;font-size:clamp(22px,2.4vw,34px);line-height:1.32;color:var(--ink);max-width:42ch}
+  .about-text p{margin-bottom:32px}
+  .about-text em{color:var(--burgundy);font-style:italic}
+  .about-text .drop{font-size:1.4em;line-height:.9;float:left;margin:.04em .12em -.08em 0;color:var(--burgundy);font-style:italic}
+  .about-bio-meta{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:32px;border-top:1px solid var(--rule);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .about-bio-meta .k{color:var(--muted);margin-bottom:8px;display:block}
+  .about-bio-meta .v{color:var(--ink);text-transform:none;font-family:"Inter",sans-serif;font-size:14px;letter-spacing:0}
+
+  /* ============ EDUCATION ============ */
+  .education{padding-bottom:120px}
+  .edu-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:64px;align-items:end}
+  .edu-intro .lede{font-family:"Instrument Serif",serif;font-size:clamp(28px,3vw,44px);line-height:1.18;letter-spacing:-.01em;max-width:24ch}
+  .edu-intro .lede em{font-style:italic;color:var(--burgundy)}
+  .edu-intro .aside{font-size:15px;line-height:1.55;color:var(--ink-soft);max-width:42ch;justify-self:end}
+  .edu-list{border-top:1px solid var(--ink);position:relative}
+  .edu-row{display:grid;grid-template-columns:120px 80px 1.1fr 1fr;gap:48px;align-items:start;padding:48px 0;border-bottom:1px solid var(--rule);position:relative;transition:background .5s ease}
+  .edu-row:hover{background:var(--bg-2)}
+  .edu-row .yr{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.06em;color:var(--ink);padding-top:6px}
+  .edu-row .yr .stage{display:block;color:var(--muted);margin-top:6px;font-size:10px}
+  .edu-row .roman{font-family:"Instrument Serif",serif;font-style:italic;font-size:64px;line-height:.9;color:var(--ink);letter-spacing:-.02em;padding-top:0}
+  .edu-row .body .title{font-family:"Instrument Serif",serif;font-size:clamp(28px,3.2vw,44px);line-height:1.05;letter-spacing:-.01em;margin-bottom:14px}
+  .edu-row .body .title em{font-style:italic;color:var(--burgundy)}
+  .edu-row .body .inst{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:block}
+  .edu-row .body .focus{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .edu-row .body .focus span{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding:5px 10px;border:1px solid var(--rule);border-radius:999px}
+  .edu-row .narr{font-size:16px;line-height:1.55;color:var(--ink-soft);max-width:40ch}
+  .edu-row .narr em{font-style:italic;color:var(--burgundy)}
+  .edu-row.featured{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .edu-row.featured:hover{background:var(--ink)}
+  .edu-row.featured .yr,.edu-row.featured .roman{color:var(--bg)}
+  .edu-row.featured .yr .stage{color:rgba(241,237,228,.55)}
+  .edu-row.featured .body .title em{color:var(--rose)}
+  .edu-row.featured .body .inst{color:rgba(241,237,228,.65)}
+  .edu-row.featured .body .focus span{border-color:rgba(241,237,228,.25);color:rgba(241,237,228,.85)}
+  .edu-row.featured .narr{color:rgba(241,237,228,.78)}
+  .edu-row.featured .narr em{color:var(--rose)}
+  .edu-row .pin{position:absolute;left:50%;top:48px;width:8px;height:8px;border-radius:50%;background:var(--burgundy);transform:translateX(-50%);display:none}
+  .edu-foot{display:flex;justify-content:space-between;align-items:center;margin-top:32px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .edu-foot .pulse{display:inline-flex;align-items:center;gap:8px;color:var(--burgundy)}
+  .edu-foot .pulse::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--burgundy);animation:pulse 2s infinite}
+
+  /* ============ PROJECTS ============ */
+  .projects-wrap{padding-bottom:120px}
+  .project{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 0;border-bottom:1px solid var(--rule);position:relative}
+  .project:nth-child(even){grid-template-columns:1fr 1fr}
+  .project:nth-child(even) .p-visual{order:2}
+  .project:nth-child(even) .p-content{order:1}
+  .project .p-visual{position:relative}
+  .project .p-visual .ph{aspect-ratio:4/5;width:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .project:hover .p-visual .ph{transform:scale(.98)}
+  .p-num{position:absolute;top:-60px;left:-8px;font-family:"Instrument Serif",serif;font-style:italic;font-size:140px;line-height:.8;color:var(--ink);opacity:.6;pointer-events:none;z-index:2}
+  .p-content{display:flex;flex-direction:column;justify-content:center;gap:24px}
+  .p-cat{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .p-title{font-family:"Instrument Serif",serif;font-size:clamp(40px,5vw,76px);line-height:.95;letter-spacing:-.015em}
+  .p-title em{font-style:italic;color:var(--burgundy)}
+  .p-overview{font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:48ch}
+  .p-blocks{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+  .p-blocks .blk{padding:18px 0;border-top:1px solid var(--ink)}
+  .p-blocks .blk h5{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
+  .p-blocks .blk p{font-size:14px;line-height:1.45;color:var(--ink-soft)}
+  .p-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:16px;border-top:1px solid var(--rule);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .p-foot a{color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .p-foot a .arrow{transition:transform .35s}
+  .p-foot a:hover .arrow{transform:translate(4px,-4px)}
+
+  /* ============ THINKING ============ */
+  .thinking{padding-bottom:120px}
+  .think-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;grid-auto-rows:minmax(220px,auto)}
+  .note{grid-column:span 4;padding:32px;border:1px solid var(--ink);background:var(--bg);display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:all .4s ease;cursor:default;position:relative}
+  .note:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px)}
+  .note:hover .n-num,.note:hover .n-meta{color:rgba(241,237,228,.6)}
+  .note .n-num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);transition:color .4s}
+  .note .n-body{font-family:"Instrument Serif",serif;font-size:clamp(22px,2.1vw,30px);line-height:1.2;letter-spacing:-.005em}
+  .note .n-body em{font-style:italic;color:var(--burgundy);transition:color .4s}
+  .note:hover .n-body em{color:var(--rose)}
+  .note .n-meta{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;transition:color .4s}
+  .note.wide{grid-column:span 8;background:var(--ink);color:var(--bg)}
+  .note.wide .n-num,.note.wide .n-meta{color:rgba(241,237,228,.6)}
+  .note.wide .n-body{font-size:clamp(28px,3vw,46px)}
+  .note.wide .n-body em{color:var(--rose)}
+  .note.tall{grid-column:span 4;grid-row:span 2}
+  .note.olive{background:var(--olive);color:var(--bg);border-color:var(--olive)}
+  .note.olive .n-num,.note.olive .n-meta{color:rgba(241,237,228,.6)}
+  .note.olive .n-body em{color:var(--beige)}
+  .note.burg{background:var(--burgundy);color:var(--bg);border-color:var(--burgundy)}
+  .note.burg .n-num,.note.burg .n-meta{color:rgba(241,237,228,.7)}
+  .note.burg .n-body em{color:var(--rose)}
+
+  /* ============ EXPERIENCE ============ */
+  .experience{padding-bottom:120px}
+  .timeline{border-top:1px solid var(--ink)}
+  .tl-row{display:grid;grid-template-columns:100px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule);padding:56px 0;transition:padding .5s}
+  .tl-row:hover{padding:64px 0}
+  .tl-year{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--muted);padding-top:8px;transition:color .4s}
+  .tl-row:hover .tl-year{color:var(--burgundy)}
+  .tl-role{padding:0 48px 0 0}
+  .tl-role .role{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(32px,3.6vw,54px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .tl-role .company{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .tl-narr{font-family:"Instrument Serif",serif;font-size:clamp(16px,1.4vw,20px);line-height:1.5;color:var(--ink-soft);max-width:38ch;padding-top:6px}
+  .tl-narr em{font-style:italic;color:var(--burgundy)}
+
+  /* ============ SKILLS ============ */
+  .skills{padding-bottom:120px}
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
+  .skill{background:var(--bg);padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;min-height:130px;transition:all .5s ease;cursor:default;position:relative;overflow:hidden}
+  .skill:hover{background:var(--ink);color:var(--bg)}
+  .skill .s-head{display:flex;justify-content:space-between;align-items:flex-start;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .5s}
+  .skill:hover .s-head{color:rgba(241,237,228,.6)}
+  .skill .s-name{font-family:"Instrument Serif",serif;font-size:19px;line-height:1.05;letter-spacing:-.005em;margin-top:auto}
+  .skill.sk2{grid-column:span 2}
+  .skill.x2,.skill.x3,.skill.x{grid-column:span 1}
+  .skill.dark{background:var(--ink);color:var(--bg)}
+  .skill.dark .s-head{color:rgba(241,237,228,.5)}
+  .skill.dark:hover{background:var(--burgundy)}
+  .skill.burg{background:var(--burgundy);color:var(--bg)}
+  .skill.burg .s-head{color:rgba(241,237,228,.65)}
+  .skill.olive{background:var(--olive);color:var(--bg)}
+  .skill.olive .s-head{color:rgba(241,237,228,.65)}
+  .skill.beige{background:var(--beige);color:var(--ink)}
+  .skill .glyph{position:absolute;right:-20px;bottom:-30px;font-family:"Instrument Serif",serif;font-style:italic;font-size:140px;line-height:1;color:rgba(20,19,15,.07);transition:color .5s}
+  .skill:hover .glyph{color:rgba(241,237,228,.1)}
+
+  /* ============ TOOLS CAROUSEL ============ */
+  .tools-strip{position:relative;background:var(--bg);padding:52px 0;overflow:hidden;border-top:1px solid rgba(20,19,15,.08)}
+  .tools-strip::before,.tools-strip::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+  .tools-strip::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+  .tools-strip::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+  .tools-stars{display:none}
+  .tools-label{text-align:center;font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(28px,3.5vw,48px);color:var(--ink);margin-bottom:36px;letter-spacing:-.01em}
+  .tools-track-wrap{display:flex;overflow:hidden}
+  .tools-track{display:flex;gap:40px;align-items:center;animation:toolsScroll 38s linear infinite;will-change:transform}
+  .tools-track-wrap:hover .tools-track{animation-play-state:paused}
+  @keyframes toolsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .tool-item{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:default;flex-shrink:0;padding:4px 12px;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .tool-item:hover{transform:scale(1.25) translateY(-4px)}
+  .tool-item img,.tool-icon-svg{width:36px;height:36px;object-fit:contain}
+  .tool-item span{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(20,19,15,.5);white-space:nowrap}
+  .tool-initial{display:flex;align-items:center;justify-content:center;width:36px;height:36px;font-family:"Instrument Serif",serif;font-style:italic;font-size:30px;line-height:1;color:var(--ink);flex-shrink:0}
+  .tool-sep{width:1px;height:32px;background:rgba(20,19,15,.1);flex-shrink:0}
+
+  /* ============ DIRECTION ============ */
+  .direction{padding-bottom:120px}
+  .dir-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;align-items:end}
+  .dir-statement{font-family:"Instrument Serif",serif;font-size:clamp(28px,3vw,44px);line-height:1.2;letter-spacing:-.01em;max-width:24ch}
+  .dir-statement em{font-style:italic;color:var(--burgundy)}
+  .dir-aside{font-size:15px;line-height:1.55;color:var(--ink-soft);max-width:42ch;justify-self:end}
+  .dir-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .dir-card{position:relative;overflow:hidden;cursor:pointer;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .dir-card:hover{transform:translateY(-4px)}
+  .dir-card .ph{aspect-ratio:3/4;width:100%}
+  .dir-card .cap{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--bg);mix-blend-mode:difference;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .dir-card .cap .t{font-family:"Instrument Serif",serif;font-size:22px;letter-spacing:-.005em;text-transform:none;font-style:italic;line-height:1}
+  .dir-card.tall{grid-column:span 2;grid-row:span 2}
+  .dir-card.tall .ph{aspect-ratio:3/5}
+  .dir-card.wide{grid-column:span 3}
+  .dir-card.wide .ph{aspect-ratio:5/3}
+  .dir-card.sml{grid-column:span 2}
+
+  /* ============ VIDEO GRID ============ */
+  .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:120px}
+  .vid-item{position:relative;overflow:hidden;background:var(--ink);cursor:pointer}
+  .vid-item video{width:100%;display:block;object-fit:cover}
+  .vid-item.vid-v video{aspect-ratio:9/16}
+  .vid-item.vid-h video{aspect-ratio:16/9}
+  .vid-item.vid-full{grid-column:span 3}
+  .vid-item.vid-wide{grid-column:span 2}
+  .vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,19,15,.5);transition:opacity .4s}
+  .vid-overlay.hidden{opacity:0;pointer-events:none}
+  .vid-play{width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(241,237,228,.85);display:flex;align-items:center;justify-content:center;color:rgba(241,237,228,.95);font-size:20px;padding-left:5px;transition:transform .3s,background .3s}
+  .vid-item:hover .vid-play{transform:scale(1.12);background:rgba(241,237,228,.15)}
+  @media(max-width:960px){
+    .vid-grid{grid-template-columns:1fr 1fr}
+    .vid-item.vid-full{grid-column:span 2}
+    .vid-item.vid-wide{grid-column:span 2}
+  }
+  @media(max-width:600px){
+    .vid-grid{grid-template-columns:1fr}
+    .vid-item.vid-full,.vid-item.vid-wide{grid-column:span 1}
+  }
+
+  /* ============ CONTACT ============ */
+  .contact{background:var(--ink);color:var(--bg);margin-top:0;padding-top:120px;padding-bottom:48px;position:relative;overflow:hidden}
+  .contact::before{
+    content:"";position:absolute;inset:0;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNDAnIGhlaWdodD0nMjQwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAwLjA4IDAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbiknLz48L3N2Zz4=");
+    pointer-events:none;
+  }
+  .contact .max{position:relative;z-index:1}
+  .contact-meta{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,237,228,.55);padding-bottom:32px;border-bottom:1px solid rgba(241,237,228,.15)}
+  .contact-headline{font-family:"Instrument Serif",serif;font-size:clamp(72px,11vw,200px);line-height:.92;letter-spacing:-.025em;padding:64px 0;max-width:14ch}
+  .contact-headline em{font-style:italic;color:var(--rose)}
+  .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;padding:48px 0;border-top:1px solid rgba(241,237,228,.15);border-bottom:1px solid rgba(241,237,228,.15)}
+  .contact-grid .col h4{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,237,228,.55);margin-bottom:16px;font-weight:500}
+  .contact-grid .col a{color:var(--bg);text-decoration:none;font-family:"Instrument Serif",serif;font-size:32px;letter-spacing:-.01em;display:block;line-height:1.2;transition:color .3s}
+  .contact-grid .col a:hover{color:var(--rose)}
+  .contact-grid .col p{font-size:15px;line-height:1.5;color:rgba(241,237,228,.75)}
+  .contact-foot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;padding-top:32px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(241,237,228,.55)}
+  .contact-foot .center{text-align:center}
+  .contact-foot .right{text-align:right}
+
+  /* CONTACT FORM */
+  .contact-form{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .contact-form .full{grid-column:1/-1}
+  .field{position:relative;border-bottom:1px solid rgba(241,237,228,.25)}
+  .field input,.field textarea{width:100%;background:transparent;border:none;color:var(--bg);font-family:inherit;font-size:18px;padding:24px 0 12px;outline:none;resize:none}
+  .field label{position:absolute;top:24px;left:0;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,237,228,.5);transition:all .3s;pointer-events:none}
+  .field input:focus + label,.field input:not(:placeholder-shown) + label,
+  .field textarea:focus + label,.field textarea:not(:placeholder-shown) + label{top:0;font-size:9px;color:var(--rose)}
+  .field:focus-within{border-bottom-color:var(--rose)}
+  .form-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+  .btn-light{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+  .btn-light:hover{background:var(--rose);border-color:var(--rose);color:var(--ink)}
+
+  /* SCROLL PROGRESS BAR */
+  .scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--burgundy);z-index:9999;width:0%;transition:width .08s linear;pointer-events:none}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .reveal-left{opacity:0;transform:translateX(-48px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal-left.in{opacity:1;transform:none}
+
+  .reveal-right{opacity:0;transform:translateX(48px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal-right.in{opacity:1;transform:none}
+
+  .reveal-scale{opacity:0;transform:scale(.94);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+  .reveal-scale.in{opacity:1;transform:none}
+
+  .reveal-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal-stagger.in > *{opacity:1;transform:none}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.04s}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:.12s}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.20s}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:.28s}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.36s}
+  .reveal-stagger.in > *:nth-child(6){transition-delay:.44s}
+  .reveal-stagger.in > *:nth-child(7){transition-delay:.52s}
+  .reveal-stagger.in > *:nth-child(8){transition-delay:.60s}
+  .reveal-stagger.in > *:nth-child(n+9){transition-delay:.68s}
+
+  /* PARALLAX */
+  .parallax{will-change:transform}
+
+  /* CURSOR */
+  .cursor{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--burgundy);pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s;mix-blend-mode:multiply}
+  .cursor.lg{width:48px;height:48px;opacity:.4}
+
+  /* RESPONSIVE */
+  @media (max-width:960px){
+    .edu-intro{grid-template-columns:1fr;gap:24px}
+    .edu-intro .aside{justify-self:start}
+    .edu-row{grid-template-columns:1fr;gap:16px;padding:32px 0}
+    .edu-row .roman{font-size:48px}
+    
+    .hero-portrait{display:none}
+    .hero-meta-top{grid-template-columns:1fr 1fr}
+    .hero-meta-top > *:nth-child(3){display:none}
+    .hero-bottom{grid-template-columns:1fr;gap:24px}
+    .hero-cta{justify-self:start}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .about-portrait{position:static}
+    .about-portrait .ph{max-width:320px}
+    .project,.project:nth-child(even){grid-template-columns:1fr}
+    .project .p-visual,.project .p-content{order:initial!important}
+    .think-grid{grid-template-columns:1fr}
+    .note,.note.wide,.note.tall{grid-column:span 1;grid-row:auto}
+    .tl-row{grid-template-columns:1fr;gap:16px;padding:40px 0}
+    .tl-row:hover{padding:44px 0}
+    .tl-role{padding:0}
+    .tl-narr{max-width:none}
+    .skills-grid{grid-template-columns:repeat(2,1fr)}
+    .skill,.skill.x,.skill.x2,.skill.x3,.skill.sk2{grid-column:span 1}
+    .dir-hero{grid-template-columns:1fr}
+    .dir-grid{grid-template-columns:repeat(2,1fr)}
+    .dir-card,.dir-card.tall,.dir-card.wide,.dir-card.sml{grid-column:span 1;grid-row:auto}
+    .contact-headline{font-size:64px}
+    .contact-grid{grid-template-columns:1fr;gap:32px}
+    .contact-form{grid-template-columns:1fr}
+    .contact-foot{grid-template-columns:1fr}
+    .contact-foot .center,.contact-foot .right{text-align:left}
+    .nav .links{display:none}
+    .sec-head{grid-template-columns:auto 1fr;gap:16px}
+    .sec-meta{display:none}
+    .nav-hamburger{display:flex}
+  }
+
+  /* HAMBURGER BUTTON */
+  .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:4px;background:none;border:none;color:inherit;z-index:200}
+  .nav-hamburger span{display:block;width:22px;height:1.5px;background:currentColor;transition:transform .35s,opacity .35s}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-hamburger.open span:nth-child(2){opacity:0}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-menu{position:fixed;inset:0;z-index:150;background:var(--ink);color:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:48px 32px;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+  .mobile-menu.open{transform:translateX(0);pointer-events:all}
+  .mobile-menu .m-links{display:flex;flex-direction:column;gap:8px;list-style:none}
+  .mobile-menu .m-links li a{font-family:"Instrument Serif",serif;font-size:clamp(36px,9vw,64px);line-height:1.1;letter-spacing:-.01em;color:var(--bg);text-decoration:none;display:inline-block;transition:color .3s}
+  .mobile-menu .m-links li a:hover{color:var(--rose)}
+  .mobile-menu .m-foot{margin-top:48px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,237,228,.45)}
+</style>
+</head>
+<body>
+
+<div class="scroll-bar" id="scrollBar"></div>
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">Álvaro <i>Quintanar</i></div>
+  <div class="links">
+    <a href="#about">Sobre</a>
+    <a href="#education">Formación</a>
+    <a href="#work">Proyectos</a>
+    <a href="#experience">Experiencia</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <div class="meta">
+    <span class="clock">ESP <span id="time">—</span></span>
+    <span>2026 / EST.</span>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="m-links">
+    <li><a href="#about" class="m-link">Sobre</a></li>
+    <li><a href="#education" class="m-link">Formación</a></li>
+    <li><a href="#work" class="m-link">Proyectos</a></li>
+    <li><a href="#experience" class="m-link">Experiencia</a></li>
+    <li><a href="#skills" class="m-link">Habilidades</a></li>
+    <li><a href="#contact" class="m-link">Contacto</a></li>
+  </ul>
+  <div class="m-foot">Álvaro Quintanar Salinas · España · 2026</div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="max" style="width:100%">
+    <div class="hero-meta-top reveal-stagger">
+      <div><span class="label">Marketing · Sistemas · Dirección creativa</span></div>
+      <div><span class="label">Localización</span>España</div>
+      <div><span class="label">Disponibilidad</span>Proyectos &amp; colaboraciones, ahora 2026</div>
+    </div>
+
+    <div class="hero-headline reveal">
+      <h1>Marketing,<br/>sistemas <span class="amp">&amp;</span><br/><span class="it">dirección creativa</span><br/>para marcas que<br/>quieren sentirse<br/><em class="serif" style="font-style:italic;color:var(--olive)">vivas.</em></h1>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="hero-sub reveal">Construyo campañas, sistemas de contenido y narrativas creativas que transforman <em style="color:var(--burgundy);font-style:italic">atención</em> en <em style="color:var(--burgundy);font-style:italic">percepción</em>. Trabajo en la intersección entre estrategia, estética y comportamiento humano.</p>
+      <div class="hero-cta reveal">
+        <a href="#work" class="btn dark">Ver proyectos <span class="arrow">→</span></a>
+        <a href="#contact" class="btn">Contacto <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-portrait reveal">
+    <img src="images/Foto principal.png" alt="Álvaro Quintanar" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <span class="pcaption">Álvaro Q.S. · España '26</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Dirección creativa
+✶
+Performance marketing
+✶
+Estrategia de contenido
+✶
+Sistemas
+✶
+Storytelling
+✶
+Branding emocional
+✶</span>
+    <span>Dirección creativa <span class="star serif">✶</span> Performance marketing <span class="star serif">✶</span> Estrategia de contenido <span class="star serif">✶</span> Sistemas <span class="star serif">✶</span> Storytelling cinematográfico <span class="star serif">✶</span> Branding emocional <span class="star serif">✶</span> </span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" data-screen-label="02 Sobre mí">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 02</div>
+      <h2 class="sec-title">Sobre <em>mí</em></h2>
+      <div class="sec-meta">NACIONALIDAD
+MÉXICO ⇢ ESPAÑA</div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-portrait reveal-left">
+        <div class="ph" style="background:none;">
+          <img src="images/Diseño sin título.png" alt="Álvaro Quintanar" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="cap">
+          <span>Álvaro Q.S.</span>
+          <span>Roll 02 · 2026</span>
+        </div>
+      </div>
+
+      <div class="about-text reveal-right">
+        <p><span class="drop">M</span>e crié entre dos hogares: <em>México</em>, donde aprendí a observar, y <em>España</em>, donde aprendí a editar lo observado. Esa distancia entre ver y traducir es donde vive mi trabajo.</p>
+
+        <p>Empecé como marketer digital (campañas, funnels, ROAS) y poco a poco entendí que los números más interesantes son <em>consecuencia</em> de algo más profundo: una idea con tensión, una imagen con memoria, un tono que no suena a marca.</p>
+
+        <p>Hoy me defino como un creativo que piensa en sistemas. Me obsesionan el <em>storytelling</em>, la filosofía de la estética, la creación , la atención humana y cómo las marcas construyen (o demuelen) su propio significado.</p>
+
+        <p>Estoy evolucionando hacia <em>lo creativo</em>. No porque sea un título, sino porque es la disciplina que más se parece a cómo pienso: estratégica, emocional, intencional.</p>
+      </div>
+    </div>
+
+    <div class="about-bio-meta reveal">
+      <div><span class="k">Nombre</span><span class="v">Álvaro Quintanar Salinas</span></div>
+      <div><span class="k">Carácter</span><span class="v">Curioso · Analítico · Introspectivo · Estéticamente sensible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" data-screen-label="03 Formación">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 03</div>
+      <h2 class="sec-title"><em>Formación</em></h2>
+      <div class="sec-meta">Tres etapas intelectuales<br/>2019 · En curso</div>
+    </div>
+
+    <div class="education">
+
+      <div class="edu-list reveal-stagger">
+
+        <article class="edu-row">
+          <div class="yr">2019 · 2023
+Etapa I · Fundamentos</div>
+          <div class="roman">I.</div>
+          <div class="body">
+            <h3 class="title">Licenciatura en <em>Marketing</em></h3>
+            <span class="inst">EBC Escuela Bancaria y Comercial · Aguascalientes, México</span>
+            <div class="focus">
+              <span>Comportamiento del consumidor</span>
+              <span>Comunicación</span>
+              <span>Marca</span>
+              <span>Percepción</span>
+            </div>
+          </div>
+          <p class="narr">El primer encuentro consciente con la pregunta que aún me persigue: ¿por qué <em>elegimos</em> lo que elegimos? Aquí empezó el oficio.</p>
+        </article>
+
+        <article class="edu-row">
+          <div class="yr">2023 · 2024
+Etapa II · Sistema digital</div>
+          <div class="roman">II.</div>
+          <div class="body">
+            <h3 class="title">Máster en <em>Marketing Digital</em></h3>
+            <span class="inst">ESIC Business &amp; Marketing School · Valencia, España</span>
+            <div class="focus">
+              <span>Estrategia digital</span>
+              <span>Performance</span>
+              <span>Sistemas</span>
+              <span>Contenido</span>
+              <span>Ecosistema</span>
+            </div>
+          </div>
+          <p class="narr">El salto del concepto al <em>sistema</em>: aprendí a pensar el ecosistema digital como infraestructura (funnels, data, contenido, plataformas) y a ejecutar con disciplina.</p>
+        </article>
+
+        <article class="edu-row featured">
+          <div class="yr">2026 · En curso<span class="stage">Etapa III · Profundidad</span></div>
+          <div class="roman">III.</div>
+          <div class="body">
+            <h3 class="title">Doctorado en <em>Comportamiento del Consumidor</em></h3>
+            <span class="inst">Universidad de Granada · Granada, España</span>
+            <div class="focus">
+              <span>Percepción humana</span>
+              <span>Atención</span>
+              <span>Psicología del consumidor</span>
+              <span>Decisión</span>
+              <span>Estímulo digital</span>
+              <span>Estética</span>
+            </div>
+          </div>
+          <p class="narr">Una exploración profunda de cómo las personas <em>perciben, sienten y deciden</em> frente a estímulos visuales y digitales. Investigo lo que el marketing intuye y la psicología explica.</p>
+        </article>
+
+      </div>
+
+      <div class="edu-foot reveal">
+        <span>Tesis en desarrollo · 2026</span>
+        <span class="pulse">Investigación activa</span>
+        <span>Granada · Virtual</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="work" data-screen-label="04 Proyectos">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 04</div>
+      <h2 class="sec-title">Proyectos <em>destacados</em></h2>
+      <div class="sec-meta">Selección 2021 · 2026<br/>Cinco casos</div>
+    </div>
+
+    <div class="projects-wrap">
+
+      <!-- PROJECT 1 -->
+      <article class="project">
+        <div class="p-visual reveal-scale">
+          <span class="p-num">01</span>
+          <div class="ph olive" style="background:none;">
+            <img src="images/happy.jpg" alt="British College La Cañada" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="p-content reveal-right">
+          <div class="p-cat">Estrategia de Contenido / Dirección Creativa / Sistemas</div>
+          <h3 class="p-title">British College <em>La Cañada</em></h3>
+          <p class="p-overview">Trabajo integral de comunicación, sistemas y dirección estratégica para una institución educativa que necesitaba modernizar tanto su percepción como su infraestructura digital.</p>
+          <div class="p-blocks">
+            <div class="blk"><h5>Problema</h5><p>La comunicación era inconsistente y el proceso comercial estaba fragmentado. Los leads llegaban desde múltiples canales sin estructura clara de seguimiento, generando fricción y pérdida de oportunidades.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La percepción institucional no depende únicamente de la imagen, sino también de la experiencia. Un colegio moderno necesita comunicar coherencia tanto en narrativa como en sistemas.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Construcción de un ecosistema conectado entre contenido, página web, CRM y proceso comercial. Funnel digital más eficiente, automatizado y alineado con la narrativa institucional <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Gestión de redes, dirección de campañas, rediseño estratégico de la web, implementación e integración de CRM, automatización de procesos, estructuración del funnel de captación y optimización del seguimiento comercial.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Un sistema más eficiente, centralizado y escalable. Mejora en la organización de leads, reducción de fricción en el proceso comercial y una comunicación institucional mucho más moderna, coherente y preparada para crecer.</p></div>
+          </div>
+          <div class="p-foot">
+            <span>Rol · Estrategia + Sistemas + Dirección creativa</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="project">
+        <div class="p-visual reveal-scale">
+          <span class="p-num">02</span>
+          <div class="ph burg" style="background:none;">
+            <img src="images/closca.jpg" alt="Closca" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="p-content reveal-left">
+          <div class="p-cat">Performance Marketing / Dirección Creativa / Creative Testing</div>
+          <h3 class="p-title"><em>Closca</em></h3>
+          <p class="p-overview">Marca de movilidad urbana y diseño. El reto no era vender un casco: era hacer que un producto técnico se sintiera como una elección cultural.</p>
+          <div class="p-blocks">
+            <div class="blk"><h5>Problema</h5><p>ROAS bajo presión constante. Las creatividades convencionales explicaban el producto pero no lo deseaban. La conversión dependía de quién lo entendía, no de quién lo sentía.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La creatividad sin sistema de testeo es ruido. Con él, se convierte en datos. El producto ya tenía el brief correcto; lo que faltaba era <em style="color:var(--burgundy)">velocidad de aprendizaje</em>.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Programa de creative testing estructurado en ciclos semanales: hipótesis declaradas, variables aisladas, lectura cualitativa sobre datos reales. Cada pieza era una pregunta con respuesta medible.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Producción y dirección de contenido para TikTok Ads y Meta Ads. Estáticos, carruseles, conceptos en video y hooks centrados en tensión visual. Iteración continua sobre lo que el dato validaba.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Sistema de testeo con velocidad de aprendizaje real. Mejora del CTR, reducción del CPA, aumento en ventas y apertura de un nuevo canal de distribución hacia Estados Unidos.</p></div>
+          </div>
+          <div class="p-foot">
+            <span>Rol · Performance + Dirección creativa</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 -->
+      <article class="project">
+        <div class="p-visual reveal-scale">
+          <span class="p-num">03</span>
+          <div class="ph dark" style="background:none;">
+            <img src="images/idecolor .webp" alt="Idecolor" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="p-content reveal-right">
+          <div class="p-cat">E-commerce / Amazon / Operaciones Digitales</div>
+          <h3 class="p-title"><em>Idecolor</em></h3>
+          <p class="p-overview">Operación digital completa dentro del ecosistema Amazon. Un trabajo donde la creatividad se subordina a la infraestructura, y la infraestructura es, en sí misma, el producto.</p>
+          <div class="p-blocks">
+            <div class="blk"><h5>Problema</h5><p>Operación dispersa sin visión centralizada del ciclo de venta. La publicidad funcionaba de forma aislada, sin conexión real con el rendimiento del catálogo ni con la experiencia del cliente.</p></div>
+            <div class="blk"><h5>Insight</h5><p>En e-commerce, la estética sin operación no vende. El rendimiento real vive en la alineación entre catálogo, publicidad y datos. Cuando esos <em style="color:var(--burgundy)">sistemas se hablan</em>, el resultado cambia.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Integración de los flujos de Amazon Seller Central con una visión de optimización end-to-end. Amazon Ads como motor de decisión, no como gasto gestionado.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Gestión de Seller Central, control de pedidos, análisis y optimización de campañas dentro de Amazon Ads, segmentación de comunicación y lectura continua de datos para iterar catálogo y oferta.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Procesos más limpios, ciclos de iteración más cortos y menos fricción entre operación y conversión. Una estructura más preparada para escalar sin perder control.</p></div>
+          </div>
+          <div class="p-foot">
+            <span>Rol · E-commerce + Sistemas + Operaciones digitales</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 -->
+      <article class="project">
+        <div class="p-visual reveal-scale">
+          <span class="p-num">04</span>
+          <div class="ph" style="background:none;">
+            <img src="images/medialog buena.jpg" alt="Medialog" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="p-content reveal-left">
+          <div class="p-cat">Producción Visual / Desarrollo Web / Comunicación</div>
+          <h3 class="p-title"><em>Medialog</em></h3>
+          <p class="p-overview">Una etapa de exploración multidisciplinaria donde la creatividad dejó de sentirse abstracta y comenzó a convertirse en ejecución real.</p>
+          <div class="p-blocks">
+            <div class="blk"><h5>Problema</h5><p>Pequeñas y medianas empresas necesitaban comunicar mejor su identidad, profesionalizar su presencia y construir piezas visuales capaces de generar confianza y percepción.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La creatividad no vive únicamente en las ideas. Vive en la capacidad de adaptarse, resolver y construir soluciones reales desde distintos lenguajes: <em style="color:var(--burgundy)">video, diseño, comunicación y tecnología</em>.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Soluciones visuales y digitales flexibles para distintos tipos de clientes: restaurantes, viñedos, campañas políticas, eventos y marcas locales. Cada proyecto requería entender el contexto rápidamente y traducirlo en comunicación visual efectiva.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Producción audiovisual institucional y televisiva, grabación con dron, edición de video, desarrollo de páginas web, diseño visual y gestión de clientes. Campañas audiovisuales en el sur de México y desarrollo de e-commerce para una vinícola.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Una etapa que transformó la percepción del trabajo y de las propias capacidades. La versatilidad como ventaja creativa, las relaciones como parte del oficio y la valentía como condición necesaria para avanzar.</p></div>
+          </div>
+          <div class="p-foot">
+            <span>Rol · Producción visual + Desarrollo web + Comunicación</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 5 -->
+      <article class="project">
+        <div class="p-visual reveal-scale">
+          <span class="p-num">05</span>
+          <div class="ph" style="background:none;">
+            <img src="images/persona.jpg" alt="Desarrollo creativo personal" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="p-content reveal-right">
+          <div class="p-cat">Dirección Creativa / Marca Personal / Narrativa</div>
+          <h3 class="p-title">Desarrollo creativo <em>personal</em></h3>
+          <p class="p-overview">No es un proyecto. Es el laboratorio donde se desarrollan los sistemas creativos antes de aplicarlos en cliente. El espacio donde la intuición se convierte en método.</p>
+          <div class="p-blocks">
+            <div class="blk"><h5>Laboratorio</h5><p>Producción de contenido propio en YouTube, TikTok y formatos escritos. Cada pieza tiene dirección intencional: arco narrativo, decisión estética, hipótesis sobre atención.</p></div>
+            <div class="blk"><h5>Metodología</h5><p>El contenido personal funciona como <em style="color:var(--burgundy)">R&amp;D creativo</em>. Lo que aquí se prueba en narrativa, tono o dispositivo visual es lo que después se aplica con más confianza en contexto de marca.</p></div>
+            <div class="blk"><h5>Sistema</h5><p>Cada plataforma tiene su propio lenguaje y velocidad. YouTube para profundidad y construcción de ideas; TikTok para tensión, síntesis y cultura de atención corta; escritura para pensar en voz alta.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Una biblioteca de recursos creativos testeados, una voz propia reconocible y un proceso de iteración que ya no depende de la inspiración, sino de la práctica sistemática.</p></div>
+          </div>
+          <div class="p-foot">
+            <span>Rol · Autor + Director creativo</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" data-screen-label="05 Experiencia">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 05</div>
+      <h2 class="sec-title"><em>Experiencia</em></h2>
+      <div class="sec-meta">Cuatro etapas<br/>Una evolución</div>
+    </div>
+
+    <div class="experience">
+      <div class="timeline">
+
+        <div class="tl-row reveal">
+          <div class="tl-year">2025</div>
+          <div class="tl-role">
+            <div class="role">Performance &amp; Creative Testing</div>
+            <div class="company">Closca</div>
+          </div>
+          <div class="tl-narr">El terreno donde la creatividad se enfrenta al número. Aprendí <em>disciplina</em> creativa: hipótesis claras, variables aisladas, lectura honesta. La estética sin estrategia es decoración, y la estrategia sin estética no convierte.</div>
+        </div>
+
+        <div class="tl-row reveal">
+          <div class="tl-year">2024 · 2025</div>
+          <div class="tl-role">
+            <div class="role">Estrategia &amp; Dirección de Contenido</div>
+            <div class="company">British College La Cañada</div>
+          </div>
+          <div class="tl-narr">Salté del rol de <em>ejecutar</em> al de <em>dirigir</em>. Construí un sistema de contenido emocionalmente coherente y un lenguaje visual que la institución todavía utiliza. Dirigir es, antes que nada, escuchar lo que una marca aún no se atreve a decir.</div>
+        </div>
+
+        <div class="tl-row reveal">
+          <div class="tl-year">2024</div>
+          <div class="tl-role">
+            <div class="role">E-commerce &amp; Operaciones Digitales</div>
+            <div class="company">Idecolor</div>
+          </div>
+          <div class="tl-narr">Mi escuela de <em>infraestructura</em>. La parte invisible del marketing, la que enseña que toda gran idea necesita un sistema operativo detrás. Sin operación, la estética se desploma.</div>
+        </div>
+
+        <div class="tl-row reveal">
+          <div class="tl-year">2021 · 2022</div>
+          <div class="tl-role">
+            <div class="role">Narrativa Visual &amp; Exploración Creativa</div>
+            <div class="company">Medialog</div>
+          </div>
+          <div class="tl-narr">El primer estudio de realidad. Aprendí que la creatividad sin <em>oficio</em> es solo intención; aquí practiqué el oficio. Dron, video, web, diseño: un vocabulario visual construido desde la ejecución y el error.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" data-screen-label="06 Habilidades">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 06</div>
+      <h2 class="sec-title">Habilidades <em>&amp; sistemas</em></h2>
+    </div>
+
+    <div class="skills">
+      <div class="skills-grid reveal-stagger">
+        <!-- Row 1 -->
+        <div class="skill sk2 dark">
+          <div class="s-head"><span>01</span><span>Dirección</span></div>
+          <div class="s-name">Dirección creativa</div>
+          <span class="glyph">✶</span>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>02</span><span>Narrativa</span></div>
+          <div class="s-name">Storytelling</div>
+          <span class="glyph">∞</span>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>03</span><span>Verbal</span></div>
+          <div class="s-name">Copywriting</div>
+        </div>
+        <!-- Row 2 -->
+        <div class="skill burg">
+          <div class="s-head"><span>04</span><span>Identidad</span></div>
+          <div class="s-name">Branding</div>
+          <span class="glyph">✺</span>
+        </div>
+        <div class="skill sk2 olive">
+          <div class="s-head"><span>05</span><span>Estrategia</span></div>
+          <div class="s-name">Estrategia de contenido</div>
+          <span class="glyph">§</span>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>06</span><span>Performance</span></div>
+          <div class="s-name">Ads (Meta, Tiktok, Amazon, Google)</div>
+          <span class="glyph">M</span>
+        </div>
+        <!-- Row 3 -->
+        <div class="skill sk2 beige">
+          <div class="s-head"><span>07</span><span>Video</span></div>
+          <div class="s-name">Grabación y edición de video</div>
+          <span class="glyph">▶</span>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>08</span><span>Estructura</span></div>
+          <div class="s-name">Funnel thinking</div>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>09</span><span>Relación</span></div>
+          <div class="s-name">CRM</div>
+        </div>
+        <!-- Row 4 -->
+        <div class="skill">
+          <div class="s-head"><span>10</span><span>Web</span></div>
+          <div class="s-name">Creación y optimización web</div>
+        </div>
+        <div class="skill">
+          <div class="s-head"><span>11</span><span>Social</span></div>
+          <div class="s-name">Estrategia social</div>
+        </div>
+        <div class="skill sk2 dark">
+          <div class="s-head"><span>12</span><span>Comercio</span></div>
+          <div class="s-name">Amazon management</div>
+          <span class="glyph">A</span>
+        </div>
+        <!-- Row 5 -->
+        <div class="skill sk2 burg">
+          <div class="s-head"><span>13</span><span>Visual</span></div>
+          <div class="s-name">Comunicación visual</div>
+          <span class="glyph">◐</span>
+        </div>
+        <div class="skill sk2">
+          <div class="s-head"><span>14</span><span>Operación</span></div>
+          <div class="s-name">Estrategia de campañas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS CAROUSEL ============ -->
+<div class="tools-strip">
+  <div class="tools-stars"></div>
+  <div class="tools-label">Herramientas &amp; plataformas</div>
+  <div class="tools-track-wrap">
+    <div class="tools-track">
+
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/wordpress" alt="WordPress"><span>WordPress</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/elementor" alt="Elementor"><span>Elementor</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Illustrator.svg.png" alt="Illustrator"><span>Illustrator</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Canva.webp" alt="Canva"><span>Canva</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Premiere Pro.svg.png" alt="Premiere"><span>Premiere Pro</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon.png" alt="Amazon"><span>Amazon</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon Ads.png" alt="Amazon Ads"><span>Amazon Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon Seller Central.png" alt="Amazon Seller"><span>Seller Central</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleads" alt="Google Ads"><span>Google Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleanalytics" alt="Analytics"><span>Google Analytics</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/meta" alt="Meta Ads"><span>Meta Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/tiktok" alt="TikTok Ads"><span>TikTok Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><span>HubSpot</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/shopify" alt="Shopify"><span>Shopify</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Capcut.webp" alt="CapCut"><span>CapCut</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Final cut pro.png" alt="Final Cut"><span>Final Cut Pro</span></div>
+      <div class="tool-sep"></div>
+
+      <!-- Duplicate for infinite loop -->
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/wordpress" alt="WordPress"><span>WordPress</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/elementor" alt="Elementor"><span>Elementor</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Illustrator.svg.png" alt="Illustrator"><span>Illustrator</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Canva.webp" alt="Canva"><span>Canva</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Premiere Pro.svg.png" alt="Premiere"><span>Premiere Pro</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon.png" alt="Amazon"><span>Amazon</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon Ads.png" alt="Amazon Ads"><span>Amazon Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Amazon Seller Central.png" alt="Amazon Seller"><span>Seller Central</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleads" alt="Google Ads"><span>Google Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleanalytics" alt="Analytics"><span>Google Analytics</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/meta" alt="Meta Ads"><span>Meta Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/tiktok" alt="TikTok Ads"><span>TikTok Ads</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><span>HubSpot</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/shopify" alt="Shopify"><span>Shopify</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Capcut.webp" alt="CapCut"><span>CapCut</span></div>
+      <div class="tool-sep"></div>
+      <div class="tool-item"><img src="images/logos/Final cut pro.png" alt="Final Cut"><span>Final Cut Pro</span></div>
+      <div class="tool-sep"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ DIRECTION ============ -->
+<section id="direction" data-screen-label="07 Dirección creativa">
+  <div class="max">
+    <div class="sec-head reveal">
+      <div class="sec-num">§ 07</div>
+      <h2 class="sec-title">Contenido <em>&amp; dirección</em></h2>
+      <div class="sec-meta">En desarrollo<br/>Estudio personal</div>
+    </div>
+
+    <div class="direction">
+      <div class="dir-hero">
+        <p class="dir-statement reveal">Una práctica creativa <em>multidisciplinar</em> en construcción: vlogs, ensayos visuales, marca personal y storytelling filosófico.</p>
+        <p class="dir-aside reveal">No es contenido por hacer contenido. Es la forma en la que pongo a prueba ideas, tonos y dispositivos narrativos antes de aplicarlos en marca. El estudio antes del estudio.</p>
+      </div>
+
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(20,19,15,.75);margin-bottom:28px">Algunos ejemplos</p>
+
+      <div class="vid-grid reveal-stagger">
+
+        <!-- Row 1: 3 verticales -->
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Final viaje.jpg">
+            <source src="images/videos/Final viaje.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Presentación.jpg">
+            <source src="images/videos/Presentación.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Dron.jpg">
+            <source src="images/videos/Dron.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+
+        <!-- Row 2: horizontal full width -->
+        <div class="vid-item vid-h vid-full">
+          <video preload="none" playsinline poster="images/thumbs/Paris 07-06-25.jpg">
+            <source src="images/videos/Paris 07-06-25.mp4" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+
+        <!-- Row 3: 3 verticales -->
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Video Sticker.jpg">
+            <source src="images/videos/Video Sticker.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Video Educación.jpg">
+            <source src="images/videos/Video Educación.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/Creativo 1.jpg">
+            <source src="images/videos/Creativo 1.mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+
+        <!-- Row 4: horizontal full width -->
+        <div class="vid-item vid-h vid-full">
+          <video preload="none" playsinline poster="images/thumbs/Santander.jpg">
+            <source src="images/videos/Santander.mp4" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+
+        <!-- Row 5: horizontal (span 2) + vertical -->
+        <div class="vid-item vid-h vid-wide">
+          <video preload="none" playsinline poster="images/thumbs/06 (1)(1).jpg">
+            <source src="images/videos/06 (1)(1).mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+        <div class="vid-item vid-v">
+          <video preload="none" playsinline poster="images/thumbs/01 (2)(1).jpg">
+            <source src="images/videos/01 (2)(1).mov" type="video/mp4">
+          </video>
+          <div class="vid-overlay"><span class="vid-play">▶</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact" data-screen-label="08 Contacto">
+  <div class="max">
+    <div class="contact-meta">
+      <span>§ 08 · Contacto</span>
+      <span></span>
+      <span>Disponibilidad · Ahora 2026</span>
+    </div>
+
+    <h2 class="contact-headline reveal-left">Las ideas merecen <em>ejecución.</em></h2>
+
+    <div class="contact-grid">
+      <div class="col reveal">
+        <h4>Escríbeme directamente</h4>
+        <a href="mailto:alvaroqs9999@gmail.com">alvaroqs9999@gmail.com</a>
+        <p style="margin-top:18px">Respondo en menos de 48h. Para colaboraciones, dirección creativa, consultoría de sistemas o conversaciones largas sobre por qué Internet se ha vuelto tan visualmente aburrido.</p>
+      </div>
+      <div class="col reveal">
+        <h4>Redes</h4>
+        <a href="https://www.linkedin.com/in/alvaro-quintanar-39921822b/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/alvaroquintanar/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://www.youtube.com/@alvaroquintanars" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.tiktok.com/@alvaroquintanar" target="_blank" rel="noopener">TikTok ↗</a>
+        <a href="https://wa.me/34673374641" target="_blank" rel="noopener">WhatsApp ↗</a>
+      </div>
+      <div class="col reveal">
+        <h4>Trabajo &amp; ubicación</h4>
+        <p>España, disponible en remoto. Viajo cuando vale la pena.</p>
+        <p style="margin-top:18px;color:rgba(241,237,228,.55);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Idiomas · Español · Inglés</p>
+      </div>
+    </div>
+
+    <div class="contact-foot" style="margin-top:80px">
+      <span>© 2026 Álvaro Quintanar Salinas</span>
+      <span class="center">Diseñado &amp; dirigido por Álvaro Quintanar · contrátame</span>
+      <span class="right">v.01 · Edition España</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // CLOCK
+  function tick(){
+    const d = new Date();
+    const h = String(d.getHours()).padStart(2,'0');
+    const m = String(d.getMinutes()).padStart(2,'0');
+    const el = document.getElementById('time');
+    if(el) el.textContent = h+':'+m;
+  }
+  tick(); setInterval(tick, 30000);
+
+  // SCROLL PROGRESS BAR
+  const scrollBar = document.getElementById('scrollBar');
+  function updateProgress(){
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    scrollBar.style.width = (pct * 100) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // SCROLL REVEALS
+  const revealClasses = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger';
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.08, rootMargin:'0px 0px -48px 0px'});
+  document.querySelectorAll(revealClasses).forEach(el=>io.observe(el));
+
+  // PARALLAX on hero portrait
+  const portrait = document.querySelector('.hero-portrait');
+  window.addEventListener('scroll', ()=>{
+    if(portrait) portrait.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+  }, { passive: true });
+
+  // SOFT CURSOR FOLLOW
+  const cursor = document.getElementById('cursor');
+  let cx=0,cy=0,tx=0,ty=0;
+  window.addEventListener('mousemove', e => { tx=e.clientX; ty=e.clientY; });
+  function loop(){
+    cx += (tx-cx)*0.18; cy += (ty-cy)*0.18;
+    cursor.style.left=cx+'px'; cursor.style.top=cy+'px';
+    requestAnimationFrame(loop);
+  }
+  loop();
+  document.querySelectorAll('a, button, .tag, .note, .skill, .dir-card, .project').forEach(el=>{
+    el.addEventListener('mouseenter', ()=>cursor.classList.add('lg'));
+    el.addEventListener('mouseleave', ()=>cursor.classList.remove('lg'));
+  });
+
+  // SMOOTH ANCHORS
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        const t = document.querySelector(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+
+  // VIDEO CLICK TO PLAY
+  document.querySelectorAll('.vid-item').forEach(item => {
+    const video = item.querySelector('video');
+    const overlay = item.querySelector('.vid-overlay');
+    item.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        overlay.classList.add('hidden');
+      } else {
+        video.pause();
+        overlay.classList.remove('hidden');
+      }
+    });
+    video.addEventListener('ended', () => overlay.classList.remove('hidden'));
+  });
+
+  // NAV SCROLL
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', ()=>{
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.m-link').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Tool carousel: fallback to initial letter if icon fails to load
+  function setupToolFallback(img){
+    function showInitial(){
+      if(img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const initial = document.createElement('span');
+      initial.className = 'tool-initial';
+      initial.textContent = (img.alt || '?').charAt(0).toUpperCase();
+      img.parentNode.insertBefore(initial, img);
+      img.style.display = 'none';
+    }
+    img.onerror = showInitial;
+    if(img.complete && (!img.naturalWidth || img.naturalWidth === 0)) showInitial();
+  }
+  document.querySelectorAll('.tool-item img').forEach(setupToolFallback);
+</script>
+
+</body>
+</html>
