@@ -297,9 +297,32 @@
     .vid-item.vid-wide{grid-column:span 2}
   }
   @media(max-width:600px){
+    section{padding:0 20px}
+    .nav{padding:16px 20px}
+    .nav .meta{display:none}
+
+    .hero{padding-top:88px;padding-bottom:40px}
+    .hero-meta-top{grid-template-columns:1fr;gap:8px;margin-bottom:40px}
+    .hero-meta-top > *:nth-child(2){display:none}
+    .hero-headline h1{font-size:clamp(44px,13vw,72px);line-height:.95}
+    .hero-bottom{margin-top:36px;padding-top:24px;gap:20px}
+    .hero-sub{font-size:16px;max-width:none}
+    .hero-portrait-mobile{display:block;width:100%;max-height:380px;object-fit:cover;object-position:top}
+    .hero-cta{display:flex;flex-direction:column;gap:10px;width:100%}
+    .hero-cta .btn{width:100%;justify-content:center}
+
+    .marquee-track{font-size:26px;gap:28px}
+    .marquee-track span{gap:28px}
+
+    .sec-head{padding:40px 0 20px;margin-bottom:32px;gap:10px}
+    .sec-title{font-size:clamp(30px,9vw,48px)}
+
+    .p-blocks .blk:last-child:nth-child(odd){grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center}
+
     .vid-grid{grid-template-columns:1fr}
     .vid-item.vid-full,.vid-item.vid-wide{grid-column:span 1}
   }
+  .hero-portrait-mobile{display:none}
 
   /* ============ CONTACT ============ */
   .contact{background:var(--ink);color:var(--bg);margin-top:0;padding-top:120px;padding-bottom:48px;position:relative;overflow:hidden}
@@ -475,6 +498,7 @@
 
     <div class="hero-bottom">
       <p class="hero-sub reveal">Construyo campañas, sistemas de contenido y narrativas creativas que transforman <em style="color:var(--burgundy);font-style:italic">atención</em> en <em style="color:var(--burgundy);font-style:italic">percepción</em>. Trabajo en la intersección entre estrategia, estética y comportamiento humano.</p>
+      <img class="hero-portrait-mobile" src="images/Foto principal.png" alt="Álvaro Quintanar">
       <div class="hero-cta reveal">
         <a href="#work" class="btn dark">Ver proyectos <span class="arrow">→</span></a>
         <a href="#contact" class="btn">Contacto <span class="arrow">↗</span></a>
