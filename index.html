@@ -1289,12 +1289,7 @@ Etapa II · Sistema digital</div>
 <script>
 // ============ i18n: AUTO ENGLISH ============
 (function(){
-  const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-  if (!lang.startsWith('en')) return;
-
-  document.documentElement.lang = 'en';
-  document.title = 'Álvaro Quintanar Salinas · Marketing, Creative Direction & Content Strategy';
-
+  function applyEnglish() {
   const t = [
     // NAV
     ['.nav .links a[href="#about"]','About'],
@@ -1486,12 +1481,34 @@ Etapa II · Sistema digital</div>
     ['.contact-foot .right','v.01 · Spain Edition'],
   ];
 
-  t.forEach(([sel, html]) => {
-    document.querySelectorAll(sel).forEach(el => { el.innerHTML = html; });
-  });
+    t.forEach(([sel, html]) => {
+      document.querySelectorAll(sel).forEach(el => { el.innerHTML = html; });
+    });
 
-  const hbg = document.getElementById('hamburger');
-  if (hbg) hbg.setAttribute('aria-label', 'Menu');
+    document.documentElement.lang = 'en';
+    document.title = 'Álvaro Quintanar Salinas · Marketing, Creative Direction & Content Strategy';
+    const hbg = document.getElementById('hamburger');
+    if (hbg) hbg.setAttribute('aria-label', 'Menu');
+  }
+
+  // 1. Instant check: browser language or cached geo result
+  const cached = localStorage.getItem('aq-lang');
+  const browserEn = (navigator.language || '').toLowerCase().startsWith('en');
+
+  if (cached === 'en' || (!cached && browserEn)) {
+    applyEnglish();
+  }
+
+  // 2. Geo check via API (only on first visit, not cached yet)
+  if (!cached) {
+    fetch('/api/lang', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        localStorage.setItem('aq-lang', data.lang);
+        if (data.lang === 'en' && !browserEn) applyEnglish();
+      })
+      .catch(() => {});
+  }
 })();
 </script>
 
