@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Álvaro Quintanar Salinas · Marketing, Dirección Creativa & Estrategia de Contenido</title>
+<title>Álvaro Quintanar Salinas · Marketing, Creatividad & Estrategia de Contenido</title>
 
 <!-- SEO -->
-<meta name="description" content="Álvaro Quintanar Salinas — especialista en marketing, dirección creativa y estrategia de contenido. Portfolio de proyectos en performance marketing, branding y sistemas digitales.">
-<meta name="keywords" content="Álvaro Quintanar, Alvaro Quintanar Salinas, marketing digital, dirección creativa, estrategia de contenido, performance marketing, branding, España">
+<meta name="description" content="Álvaro Quintanar Salinas — especialista en marketing, creatividad y estrategia de contenido. Portfolio de proyectos en performance marketing, branding y narrativa de marca.">
+<meta name="keywords" content="Álvaro Quintanar, Alvaro Quintanar Salinas, marketing digital, creatividad, estrategia de contenido, performance marketing, branding, España">
 <meta name="author" content="Álvaro Quintanar Salinas">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alvaroquintanar.com/">
@@ -15,16 +15,16 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alvaroquintanar.com/">
-<meta property="og:title" content="Álvaro Quintanar Salinas · Marketing & Dirección Creativa">
-<meta property="og:description" content="Portfolio de Álvaro Quintanar Salinas — marketing, dirección creativa y estrategia de contenido para marcas que quieren sentirse vivas.">
+<meta property="og:title" content="Álvaro Quintanar Salinas · Marketing & Creatividad">
+<meta property="og:description" content="Portfolio de Álvaro Quintanar Salinas — marketing, creatividad y estrategia de contenido para marcas que quieren sentirse vivas.">
 <meta property="og:image" content="https://alvaroquintanar.com/images/Foto principal.png">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Álvaro Quintanar Salinas">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Álvaro Quintanar Salinas · Marketing & Dirección Creativa">
-<meta name="twitter:description" content="Portfolio de Álvaro Quintanar Salinas — marketing, dirección creativa y estrategia de contenido para marcas que quieren sentirse vivas.">
+<meta name="twitter:title" content="Álvaro Quintanar Salinas · Marketing & Creatividad">
+<meta name="twitter:description" content="Portfolio de Álvaro Quintanar Salinas — marketing, creatividad y estrategia de contenido para marcas que quieren sentirse vivas.">
 <meta name="twitter:image" content="https://alvaroquintanar.com/images/Foto principal.png">
 
 <!-- Schema.org Person -->
@@ -36,9 +36,9 @@
   "alternateName": "Alvaro Quintanar",
   "url": "https://alvaroquintanar.com",
   "image": "https://alvaroquintanar.com/images/Foto principal.png",
-  "jobTitle": "Marketing & Dirección Creativa",
-  "description": "Especialista en marketing digital, dirección creativa y estrategia de contenido para marcas.",
-  "knowsAbout": ["Marketing Digital", "Dirección Creativa", "Estrategia de Contenido", "Performance Marketing", "Branding", "Comportamiento del Consumidor"],
+  "jobTitle": "Marketing & Estrategia Creativa",
+  "description": "Especialista en marketing digital, creatividad y estrategia de contenido para marcas.",
+  "knowsAbout": ["Marketing Digital", "Estrategia Creativa", "Estrategia de Contenido", "Performance Marketing", "Branding", "Comportamiento del Consumidor"],
   "nationality": "Mexican",
   "address": {
     "@type": "PostalAddress",
@@ -255,37 +255,27 @@
 
   /* ============ EXPERIENCE ============ */
   .experience{padding-bottom:120px}
-  .timeline{border-top:1px solid var(--ink)}
-  .tl-row{display:grid;grid-template-columns:100px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule);padding:56px 0;transition:padding .5s}
-  .tl-row:hover{padding:64px 0}
-  .tl-year{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--muted);padding-top:8px;transition:color .4s}
-  .tl-row:hover .tl-year{color:var(--burgundy)}
-  .tl-role{padding:0 48px 0 0}
-  .tl-role .role{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(32px,3.6vw,54px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
-  .tl-role .company{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  .tl-narr{font-family:"Instrument Serif",serif;font-size:clamp(16px,1.4vw,20px);line-height:1.5;color:var(--ink-soft);max-width:38ch;padding-top:6px}
-  .tl-narr em{font-style:italic;color:var(--burgundy)}
+  .exp-timeline{position:relative;padding-left:0;padding-bottom:120px}
+  .exp-timeline::before{content:"";position:absolute;left:0;top:8px;bottom:48px;width:1px;background:var(--ink)}
+  .exp-entry{position:relative;padding:0 0 64px 20px;display:grid;grid-template-columns:1fr 1.2fr;gap:0 48px;align-items:start}
+  .exp-entry:last-child{padding-bottom:0}
+  .exp-entry::before{content:"";position:absolute;left:-4px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--ink);transition:background .3s,border-color .3s}
+  .exp-entry:first-child::before{background:var(--burgundy);border-color:var(--burgundy)}
+  .exp-entry:hover::before{background:var(--burgundy);border-color:var(--burgundy)}
+  .exp-entry .ee-left{display:flex;flex-direction:column;gap:6px;padding-top:4px}
+  .exp-entry .ee-year{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .exp-entry .ee-company{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  .exp-entry .ee-right{display:flex;flex-direction:column;gap:14px}
+  .exp-entry .ee-role{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(28px,2.8vw,44px);line-height:1;letter-spacing:-.01em;color:var(--ink)}
+  .exp-entry .ee-narr{font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:46ch;padding-top:14px;border-top:1px solid var(--rule)}
+  .exp-entry .ee-narr em{font-style:italic;color:var(--burgundy)}
 
   /* ============ SKILLS ============ */
   .skills{padding-bottom:120px}
-  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
-  .skill{background:var(--bg);padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;min-height:130px;transition:all .5s ease;cursor:default;position:relative;overflow:hidden}
-  .skill:hover{background:var(--ink);color:var(--bg)}
-  .skill .s-head{display:flex;justify-content:space-between;align-items:flex-start;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .5s}
-  .skill:hover .s-head{color:rgba(241,237,228,.6)}
-  .skill .s-name{font-family:"Instrument Serif",serif;font-size:19px;line-height:1.05;letter-spacing:-.005em;margin-top:auto}
-  .skill.sk2{grid-column:span 2}
-  .skill.x2,.skill.x3,.skill.x{grid-column:span 1}
-  .skill.dark{background:var(--ink);color:var(--bg)}
-  .skill.dark .s-head{color:rgba(241,237,228,.5)}
-  .skill.dark:hover{background:var(--burgundy)}
-  .skill.burg{background:var(--burgundy);color:var(--bg)}
-  .skill.burg .s-head{color:rgba(241,237,228,.65)}
-  .skill.olive{background:var(--olive);color:var(--bg)}
-  .skill.olive .s-head{color:rgba(241,237,228,.65)}
-  .skill.beige{background:var(--beige);color:var(--ink)}
-  .skill .glyph{position:absolute;right:-20px;bottom:-30px;font-family:"Instrument Serif",serif;font-style:italic;font-size:140px;line-height:1;color:rgba(20,19,15,.07);transition:color .5s}
-  .skill:hover .glyph{color:rgba(241,237,228,.1)}
+  .skills-list{border-top:1px solid var(--ink);display:grid;grid-template-columns:1fr 1fr;column-gap:48px}
+  .sl-row{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--rule);gap:16px}
+  .sl-name{font-family:"Instrument Serif",serif;font-size:clamp(18px,1.6vw,24px);letter-spacing:-.005em;color:var(--ink)}
+  .sl-cat{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0}
 
   /* ============ TOOLS CAROUSEL ============ */
   .tools-strip{position:relative;background:var(--bg);padding:52px 0;overflow:hidden;border-top:1px solid rgba(20,19,15,.08)}
@@ -457,12 +447,8 @@
     .project .p-visual,.project .p-content{order:initial!important}
     .think-grid{grid-template-columns:1fr}
     .note,.note.wide,.note.tall{grid-column:span 1;grid-row:auto}
-    .tl-row{grid-template-columns:1fr;gap:16px;padding:40px 0}
-    .tl-row:hover{padding:44px 0}
-    .tl-role{padding:0}
-    .tl-narr{max-width:none}
-    .skills-grid{grid-template-columns:repeat(2,1fr)}
-    .skill,.skill.x,.skill.x2,.skill.x3,.skill.sk2{grid-column:span 1}
+    .exp-entry{grid-template-columns:1fr;gap:16px}
+    .skills-list{grid-template-columns:1fr}
     .dir-hero{grid-template-columns:1fr}
     .dir-grid{grid-template-columns:repeat(2,1fr)}
     .dir-card,.dir-card.tall,.dir-card.wide,.dir-card.sml{grid-column:span 1;grid-row:auto}
@@ -533,17 +519,17 @@
 <section class="hero" data-screen-label="01 Hero">
   <div class="max" style="width:100%">
     <div class="hero-meta-top reveal-stagger">
-      <div><span class="label">Marketing · Sistemas · Dirección creativa</span></div>
+      <div><span class="label">Marketing · Creatividad · Estrategia de contenido</span></div>
       <div><span class="label">Localización</span>España</div>
-      <div><span class="label">Disponibilidad</span>Proyectos &amp; colaboraciones, ahora 2026</div>
+      <div><span class="label">Disponibilidad</span>Abierto a incorporación · 2026</div>
     </div>
 
     <div class="hero-headline reveal">
-      <h1>Marketing,<br/>sistemas <span class="amp">&amp;</span><br/><span class="it">dirección creativa</span><br/>para marcas que<br/>quieren sentirse<br/><em class="serif" style="font-style:italic;color:var(--olive)">vivas.</em></h1>
+      <h1>Marketing<br/>creativo <span class="amp">&amp;</span><br/><span class="it">narrativa</span><br/>que conecta<br/>con las<br/><em class="serif" style="font-style:italic;color:var(--olive)">personas.</em></h1>
     </div>
 
     <div class="hero-bottom">
-      <p class="hero-sub reveal">Construyo campañas, sistemas de contenido y narrativas creativas que transforman <em style="color:var(--burgundy);font-style:italic">atención</em> en <em style="color:var(--burgundy);font-style:italic">percepción</em>. Trabajo en la intersección entre estrategia, estética y comportamiento humano.</p>
+      <p class="hero-sub reveal">Marketer creativo con foco en estrategia y contenido. Busco un equipo donde la <em style="color:var(--burgundy);font-style:italic">creatividad</em> no sea un extra, sino parte del proceso.</p>
       <img class="hero-portrait-mobile" src="images/Foto principal.png" alt="Álvaro Quintanar">
       <div class="hero-cta reveal">
         <a href="#work" class="btn dark">Ver proyectos <span class="arrow">→</span></a>
@@ -561,19 +547,19 @@
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Dirección creativa
+    <span>Marketing creativo
 ✶
-Performance marketing
-✶
-Estrategia de contenido
-✶
-Sistemas
+Narrativa visual
 ✶
 Storytelling
 ✶
-Branding emocional
+Branding
+✶
+Estrategia de contenido
+✶
+Performance marketing
 ✶</span>
-    <span>Dirección creativa <span class="star serif">✶</span> Performance marketing <span class="star serif">✶</span> Estrategia de contenido <span class="star serif">✶</span> Sistemas <span class="star serif">✶</span> Storytelling cinematográfico <span class="star serif">✶</span> Branding emocional <span class="star serif">✶</span> </span>
+    <span>Marketing creativo <span class="star serif">✶</span> Narrativa visual <span class="star serif">✶</span> Storytelling <span class="star serif">✶</span> Branding <span class="star serif">✶</span> Estrategia de contenido <span class="star serif">✶</span> Performance marketing <span class="star serif">✶</span> </span>
   </div>
 </div>
 
@@ -599,13 +585,13 @@ MÉXICO ⇢ ESPAÑA</div>
       </div>
 
       <div class="about-text reveal-right">
-        <p><span class="drop">M</span>e crié entre dos hogares: <em>México</em>, donde aprendí a observar, y <em>España</em>, donde aprendí a editar lo observado. Esa distancia entre ver y traducir es donde vive mi trabajo.</p>
+        <p><span class="drop">P</span>arte de mi forma de trabajar viene de haber crecido entre dos culturas. Aprendí a observar distinto, adaptarme rápido y encontrar valor tanto en la <em>estrategia</em> como en la sensibilidad visual.</p>
 
-        <p>Empecé como marketer digital (campañas, funnels, ROAS) y poco a poco entendí que los números más interesantes son <em>consecuencia</em> de algo más profundo: una idea con tensión, una imagen con memoria, un tono que no suena a marca.</p>
+        <p>Empecé en marketing digital y entendí rápido que los números son consecuencia de algo más profundo: una idea con tensión, una imagen con memoria, un tono que no suena a <em>marca</em>.</p>
 
-        <p>Hoy me defino como un creativo que piensa en sistemas. Me obsesionan el <em>storytelling</em>, la filosofía de la estética, la creación , la atención humana y cómo las marcas construyen (o demuelen) su propio significado.</p>
+        <p>Hoy me defino como un creativo que piensa en sistemas. Me obsesionan el <em>storytelling</em>, la estética y cómo las marcas construyen su propio significado.</p>
 
-        <p>Estoy evolucionando hacia <em>lo creativo</em>. No porque sea un título, sino porque es la disciplina que más se parece a cómo pienso: estratégica, emocional, intencional.</p>
+        <p>La creatividad no es donde llego. Es donde <em>pienso</em>. Busco un equipo donde eso tenga valor.</p>
       </div>
     </div>
 
@@ -713,18 +699,18 @@ Etapa II · Sistema digital</div>
           </div>
         </div>
         <div class="p-content reveal-right">
-          <div class="p-cat">Estrategia de Contenido / Dirección Creativa / Sistemas</div>
+          <div class="p-cat">Marketing / Estrategia de Contenido / Creatividad</div>
           <h3 class="p-title">British College <em>La Cañada</em></h3>
-          <p class="p-overview">Trabajo integral de comunicación, sistemas y dirección estratégica para una institución educativa que necesitaba modernizar tanto su percepción como su infraestructura digital.</p>
+          <p class="p-overview">Un colegio que necesitaba modernizar su narrativa y su infraestructura al mismo tiempo. Construí el sistema que conectó ambas.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>La comunicación era inconsistente y el proceso comercial estaba fragmentado. Los leads llegaban desde múltiples canales sin estructura clara de seguimiento, generando fricción y pérdida de oportunidades.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La percepción institucional no depende únicamente de la imagen, sino también de la experiencia. Un colegio moderno necesita comunicar coherencia tanto en narrativa como en sistemas.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Construcción de un ecosistema conectado entre contenido, página web, CRM y proceso comercial. Funnel digital más eficiente, automatizado y alineado con la narrativa institucional <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Gestión de redes, dirección de campañas, rediseño estratégico de la web, implementación e integración de CRM, automatización de procesos, estructuración del funnel de captación y optimización del seguimiento comercial.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Un sistema más eficiente, centralizado y escalable. Mejora en la organización de leads, reducción de fricción en el proceso comercial y una comunicación institucional mucho más moderna, coherente y preparada para crecer.</p></div>
+            <div class="blk"><h5>Problema</h5><p>Comunicación inconsistente, proceso comercial fragmentado. Los leads llegaban pero no existía estructura para convertirlos.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La percepción de una institución no depende solo de su imagen, sino de su coherencia. El tono y el sistema tienen que hablar el mismo idioma.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Ecosistema conectado entre contenido, web, CRM y proceso comercial. Todo alineado bajo la narrativa <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Estrategia y producción de contenido, rediseño de la web, integración de CRM y estructuración del funnel de captación.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Sistema centralizado y escalable. Comunicación institucional más moderna, coherente y con menos fricción comercial.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · Estrategia + Sistemas + Dirección creativa</span>
+            <span>Rol · Marketing · Estrategia + Creatividad + Sistemas</span>
           </div>
         </div>
       </article>
@@ -738,18 +724,18 @@ Etapa II · Sistema digital</div>
           </div>
         </div>
         <div class="p-content reveal-left">
-          <div class="p-cat">Performance Marketing / Dirección Creativa / Creative Testing</div>
+          <div class="p-cat">Performance Marketing / Creatividad / Creative Testing</div>
           <h3 class="p-title"><em>Closca</em></h3>
           <p class="p-overview">Marca de movilidad urbana y diseño. El reto no era vender un casco: era hacer que un producto técnico se sintiera como una elección cultural.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>ROAS bajo presión constante. Las creatividades convencionales explicaban el producto pero no lo deseaban. La conversión dependía de quién lo entendía, no de quién lo sentía.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La creatividad sin sistema de testeo es ruido. Con él, se convierte en datos. El producto ya tenía el brief correcto; lo que faltaba era <em style="color:var(--burgundy)">velocidad de aprendizaje</em>.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Programa de creative testing estructurado en ciclos semanales: hipótesis declaradas, variables aisladas, lectura cualitativa sobre datos reales. Cada pieza era una pregunta con respuesta medible.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Producción y dirección de contenido para TikTok Ads y Meta Ads. Estáticos, carruseles, conceptos en video y hooks centrados en tensión visual. Iteración continua sobre lo que el dato validaba.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Sistema de testeo con velocidad de aprendizaje real. Mejora del CTR, reducción del CPA, aumento en ventas y apertura de un nuevo canal de distribución hacia Estados Unidos.</p></div>
+            <div class="blk"><h5>Problema</h5><p>Las creatividades explicaban el producto pero no lo deseaban. La conversión dependía de quién lo entendía, no de quién lo sentía.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La creatividad sin sistema de testeo es ruido. El producto tenía el brief correcto; lo que faltaba era <em style="color:var(--burgundy)">velocidad de aprendizaje</em>.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Creative testing estructurado: hipótesis claras, variables aisladas, lectura cualitativa sobre datos reales. Cada pieza era una pregunta con respuesta medible.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Producción y creación de contenido para TikTok Ads y Meta Ads. Estáticos, carruseles y hooks en video centrados en tensión visual.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Mejora de CTR, reducción de CPA, aumento en ventas y apertura de canal hacia Estados Unidos.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · Performance + Dirección creativa</span>
+            <span>Rol · Performance Marketing + Creatividad</span>
           </div>
         </div>
       </article>
@@ -765,13 +751,13 @@ Etapa II · Sistema digital</div>
         <div class="p-content reveal-right">
           <div class="p-cat">E-commerce / Amazon / Operaciones Digitales</div>
           <h3 class="p-title"><em>Idecolor</em></h3>
-          <p class="p-overview">Operación digital completa dentro del ecosistema Amazon. Un trabajo donde la creatividad se subordina a la infraestructura, y la infraestructura es, en sí misma, el producto.</p>
+          <p class="p-overview">Operación digital dentro del ecosistema Amazon. Un trabajo donde aprendí que la infraestructura bien construida es, en sí misma, una forma de creatividad.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>Operación dispersa sin visión centralizada del ciclo de venta. La publicidad funcionaba de forma aislada, sin conexión real con el rendimiento del catálogo ni con la experiencia del cliente.</p></div>
-            <div class="blk"><h5>Insight</h5><p>En e-commerce, la estética sin operación no vende. El rendimiento real vive en la alineación entre catálogo, publicidad y datos. Cuando esos <em style="color:var(--burgundy)">sistemas se hablan</em>, el resultado cambia.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Integración de los flujos de Amazon Seller Central con una visión de optimización end-to-end. Amazon Ads como motor de decisión, no como gasto gestionado.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Gestión de Seller Central, control de pedidos, análisis y optimización de campañas dentro de Amazon Ads, segmentación de comunicación y lectura continua de datos para iterar catálogo y oferta.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Procesos más limpios, ciclos de iteración más cortos y menos fricción entre operación y conversión. Una estructura más preparada para escalar sin perder control.</p></div>
+            <div class="blk"><h5>Problema</h5><p>Publicidad y catálogo funcionando por separado. Sin visión centralizada, el ciclo de venta sangraba por todos lados.</p></div>
+            <div class="blk"><h5>Insight</h5><p>En e-commerce, la estética sin operación no vende. Cuando los <em style="color:var(--burgundy)">sistemas se hablan</em>, el resultado cambia.</p></div>
+            <div class="blk"><h5>Estrategia</h5><p>Amazon Ads como motor de decisión, no como gasto gestionado. Visión end-to-end del ciclo de venta.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Gestión de Seller Central, optimización de campañas y lectura continua de datos para iterar catálogo y oferta.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Procesos más limpios, ciclos de iteración más cortos y estructura lista para escalar.</p></div>
           </div>
           <div class="p-foot">
             <span>Rol · E-commerce + Sistemas + Operaciones digitales</span>
@@ -790,13 +776,12 @@ Etapa II · Sistema digital</div>
         <div class="p-content reveal-left">
           <div class="p-cat">Producción Visual / Desarrollo Web / Comunicación</div>
           <h3 class="p-title"><em>Medialog</em></h3>
-          <p class="p-overview">Una etapa de exploración multidisciplinaria donde la creatividad dejó de sentirse abstracta y comenzó a convertirse en ejecución real.</p>
+          <p class="p-overview">Donde la creatividad dejó de ser abstracta y se convirtió en ejecución real. Clientes distintos, lenguajes distintos, el mismo oficio.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>Pequeñas y medianas empresas necesitaban comunicar mejor su identidad, profesionalizar su presencia y construir piezas visuales capaces de generar confianza y percepción.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La creatividad no vive únicamente en las ideas. Vive en la capacidad de adaptarse, resolver y construir soluciones reales desde distintos lenguajes: <em style="color:var(--burgundy)">video, diseño, comunicación y tecnología</em>.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Soluciones visuales y digitales flexibles para distintos tipos de clientes: restaurantes, viñedos, campañas políticas, eventos y marcas locales. Cada proyecto requería entender el contexto rápidamente y traducirlo en comunicación visual efectiva.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Producción audiovisual institucional y televisiva, grabación con dron, edición de video, desarrollo de páginas web, diseño visual y gestión de clientes. Campañas audiovisuales en el sur de México y desarrollo de e-commerce para una vinícola.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Una etapa que transformó la percepción del trabajo y de las propias capacidades. La versatilidad como ventaja creativa, las relaciones como parte del oficio y la valentía como condición necesaria para avanzar.</p></div>
+            <div class="blk"><h5>Contexto</h5><p>Restaurantes, viñedos, campañas políticas, marcas locales. Cada proyecto requería entender el contexto rápido y traducirlo en comunicación visual efectiva.</p></div>
+            <div class="blk"><h5>Insight</h5><p>La creatividad no vive en las ideas. Vive en adaptarse, resolver y construir desde distintos lenguajes: <em style="color:var(--burgundy)">video, diseño, web, narrativa</em>.</p></div>
+            <div class="blk"><h5>Ejecución</h5><p>Producción audiovisual, grabación con dron, edición de video, desarrollo web, diseño visual. Campañas en el sur de México y e-commerce para una vinícola.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>La versatilidad como ventaja creativa. Aprendí que el oficio se construye desde la ejecución y el error, no desde la teoría.</p></div>
           </div>
           <div class="p-foot">
             <span>Rol · Producción visual + Desarrollo web + Comunicación</span>
@@ -813,17 +798,17 @@ Etapa II · Sistema digital</div>
           </div>
         </div>
         <div class="p-content reveal-right">
-          <div class="p-cat">Dirección Creativa / Marca Personal / Narrativa</div>
+          <div class="p-cat">Creatividad / Marca Personal / Narrativa</div>
           <h3 class="p-title">Desarrollo creativo <em>personal</em></h3>
-          <p class="p-overview">No es un proyecto. Es el laboratorio donde se desarrollan los sistemas creativos antes de aplicarlos en cliente. El espacio donde la intuición se convierte en método.</p>
+          <p class="p-overview">El laboratorio donde pruebo ideas antes de llevarlas a marca. Donde la intuición se convierte en método.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Laboratorio</h5><p>Producción de contenido propio en YouTube, TikTok y formatos escritos. Cada pieza tiene dirección intencional: arco narrativo, decisión estética, hipótesis sobre atención.</p></div>
-            <div class="blk"><h5>Metodología</h5><p>El contenido personal funciona como <em style="color:var(--burgundy)">R&amp;D creativo</em>. Lo que aquí se prueba en narrativa, tono o dispositivo visual es lo que después se aplica con más confianza en contexto de marca.</p></div>
-            <div class="blk"><h5>Sistema</h5><p>Cada plataforma tiene su propio lenguaje y velocidad. YouTube para profundidad y construcción de ideas; TikTok para tensión, síntesis y cultura de atención corta; escritura para pensar en voz alta.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Una biblioteca de recursos creativos testeados, una voz propia reconocible y un proceso de iteración que ya no depende de la inspiración, sino de la práctica sistemática.</p></div>
+            <div class="blk"><h5>Laboratorio</h5><p>YouTube, TikTok y escritura. Cada pieza tiene intención creativa: arco narrativo, decisión estética, hipótesis sobre atención.</p></div>
+            <div class="blk"><h5>Metodología</h5><p>Funciona como <em style="color:var(--burgundy)">R&amp;D creativo</em>. Lo que pruebo aquí en tono y narrativa lo aplico después con más confianza en contexto de marca.</p></div>
+            <div class="blk"><h5>Sistema</h5><p>YouTube para profundidad; TikTok para tensión y síntesis; escritura para pensar en voz alta. Cada plataforma tiene su propio lenguaje.</p></div>
+            <div class="blk"><h5>Resultado</h5><p>Una voz propia reconocible y un proceso de iteración que no depende de la inspiración, sino de la práctica.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · Autor + Director creativo</span>
+            <span>Rol · Autor + Estratega creativo</span>
           </div>
         </div>
       </article>
@@ -842,42 +827,50 @@ Etapa II · Sistema digital</div>
     </div>
 
     <div class="experience">
-      <div class="timeline">
+      <div class="exp-timeline reveal-stagger">
 
-        <div class="tl-row reveal">
-          <div class="tl-year">2025</div>
-          <div class="tl-role">
-            <div class="role">Performance &amp; Creative Testing</div>
-            <div class="company">Closca</div>
+        <div class="exp-entry">
+          <div class="ee-left">
+            <span class="ee-year">2025</span>
+            <span class="ee-company">Closca</span>
           </div>
-          <div class="tl-narr">El terreno donde la creatividad se enfrenta al número. Aprendí <em>disciplina</em> creativa: hipótesis claras, variables aisladas, lectura honesta. La estética sin estrategia es decoración, y la estrategia sin estética no convierte.</div>
+          <div class="ee-right">
+            <div class="ee-role">Performance &amp; Creative Testing</div>
+            <p class="ee-narr">Donde la creatividad se enfrenta al número. Aprendí que sin hipótesis, la creatividad es decoración. Y que sin <em>estética</em>, la estrategia no convierte.</p>
+          </div>
         </div>
 
-        <div class="tl-row reveal">
-          <div class="tl-year">2024 · 2025</div>
-          <div class="tl-role">
-            <div class="role">Estrategia &amp; Dirección de Contenido</div>
-            <div class="company">British College La Cañada</div>
+        <div class="exp-entry">
+          <div class="ee-left">
+            <span class="ee-year">2024 · 2025</span>
+            <span class="ee-company">British College La Cañada</span>
           </div>
-          <div class="tl-narr">Salté del rol de <em>ejecutar</em> al de <em>dirigir</em>. Construí un sistema de contenido emocionalmente coherente y un lenguaje visual que la institución todavía utiliza. Dirigir es, antes que nada, escuchar lo que una marca aún no se atreve a decir.</div>
+          <div class="ee-right">
+            <div class="ee-role">Marketing &amp; Estrategia de Contenido</div>
+            <p class="ee-narr">Del rol de ejecutar al de <em>liderar</em>. Construí el sistema de contenido y el lenguaje visual que la institución todavía usa.</p>
+          </div>
         </div>
 
-        <div class="tl-row reveal">
-          <div class="tl-year">2024</div>
-          <div class="tl-role">
-            <div class="role">E-commerce &amp; Operaciones Digitales</div>
-            <div class="company">Idecolor</div>
+        <div class="exp-entry">
+          <div class="ee-left">
+            <span class="ee-year">2024</span>
+            <span class="ee-company">Idecolor</span>
           </div>
-          <div class="tl-narr">Mi escuela de <em>infraestructura</em>. La parte invisible del marketing, la que enseña que toda gran idea necesita un sistema operativo detrás. Sin operación, la estética se desploma.</div>
+          <div class="ee-right">
+            <div class="ee-role">E-commerce &amp; Operaciones Digitales</div>
+            <p class="ee-narr">Mi escuela de <em>infraestructura</em>. Aprendí que toda gran idea necesita un sistema operativo detrás. Sin operación, la estética se desploma.</p>
+          </div>
         </div>
 
-        <div class="tl-row reveal">
-          <div class="tl-year">2021 · 2022</div>
-          <div class="tl-role">
-            <div class="role">Narrativa Visual &amp; Exploración Creativa</div>
-            <div class="company">Medialog</div>
+        <div class="exp-entry">
+          <div class="ee-left">
+            <span class="ee-year">2021 · 2022</span>
+            <span class="ee-company">Medialog</span>
           </div>
-          <div class="tl-narr">El primer estudio de realidad. Aprendí que la creatividad sin <em>oficio</em> es solo intención; aquí practiqué el oficio. Dron, video, web, diseño: un vocabulario visual construido desde la ejecución y el error.</div>
+          <div class="ee-right">
+            <div class="ee-role">Narrativa Visual &amp; Producción Creativa</div>
+            <p class="ee-narr">El primer estudio de realidad. Dron, video, web, diseño: un vocabulario visual construido desde la <em>ejecución</em> y el error.</p>
+          </div>
         </div>
 
       </div>
@@ -890,80 +883,25 @@ Etapa II · Sistema digital</div>
   <div class="max">
     <div class="sec-head reveal">
       <div class="sec-num">§ 06</div>
-      <h2 class="sec-title">Habilidades <em>&amp; sistemas</em></h2>
+      <h2 class="sec-title">Lo que <em>sé hacer</em></h2>
     </div>
 
     <div class="skills">
-      <div class="skills-grid reveal-stagger">
-        <!-- Row 1 -->
-        <div class="skill sk2 dark">
-          <div class="s-head"><span>01</span><span>Dirección</span></div>
-          <div class="s-name">Dirección creativa</div>
-          <span class="glyph">✶</span>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>02</span><span>Narrativa</span></div>
-          <div class="s-name">Storytelling</div>
-          <span class="glyph">∞</span>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>03</span><span>Verbal</span></div>
-          <div class="s-name">Copywriting</div>
-        </div>
-        <!-- Row 2 -->
-        <div class="skill burg">
-          <div class="s-head"><span>04</span><span>Identidad</span></div>
-          <div class="s-name">Branding</div>
-          <span class="glyph">✺</span>
-        </div>
-        <div class="skill sk2 olive">
-          <div class="s-head"><span>05</span><span>Estrategia</span></div>
-          <div class="s-name">Estrategia de contenido</div>
-          <span class="glyph">§</span>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>06</span><span>Performance</span></div>
-          <div class="s-name">Ads (Meta, Tiktok, Amazon, Google)</div>
-          <span class="glyph">M</span>
-        </div>
-        <!-- Row 3 -->
-        <div class="skill sk2 beige">
-          <div class="s-head"><span>07</span><span>Video</span></div>
-          <div class="s-name">Grabación y edición de video</div>
-          <span class="glyph">▶</span>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>08</span><span>Estructura</span></div>
-          <div class="s-name">Funnel thinking</div>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>09</span><span>Relación</span></div>
-          <div class="s-name">CRM</div>
-        </div>
-        <!-- Row 4 -->
-        <div class="skill">
-          <div class="s-head"><span>10</span><span>Web</span></div>
-          <div class="s-name">Creación y optimización web</div>
-        </div>
-        <div class="skill">
-          <div class="s-head"><span>11</span><span>Social</span></div>
-          <div class="s-name">Estrategia social</div>
-        </div>
-        <div class="skill sk2 dark">
-          <div class="s-head"><span>12</span><span>Comercio</span></div>
-          <div class="s-name">Amazon management</div>
-          <span class="glyph">A</span>
-        </div>
-        <!-- Row 5 -->
-        <div class="skill sk2 burg">
-          <div class="s-head"><span>13</span><span>Visual</span></div>
-          <div class="s-name">Comunicación visual</div>
-          <span class="glyph">◐</span>
-        </div>
-        <div class="skill sk2">
-          <div class="s-head"><span>14</span><span>Operación</span></div>
-          <div class="s-name">Estrategia de campañas</div>
-        </div>
+      <div class="skills-list reveal-stagger">
+        <div class="sl-row"><span class="sl-name">Estrategia creativa</span><span class="sl-cat">Creativo</span></div>
+        <div class="sl-row"><span class="sl-name">Estrategia de contenido</span><span class="sl-cat">Estrategia</span></div>
+        <div class="sl-row"><span class="sl-name">Storytelling</span><span class="sl-cat">Narrativa</span></div>
+        <div class="sl-row"><span class="sl-name">Ads (Meta, TikTok, Amazon, Google)</span><span class="sl-cat">Performance</span></div>
+        <div class="sl-row"><span class="sl-name">Copywriting</span><span class="sl-cat">Verbal</span></div>
+        <div class="sl-row"><span class="sl-name">Grabación y edición de video</span><span class="sl-cat">Video</span></div>
+        <div class="sl-row"><span class="sl-name">Branding</span><span class="sl-cat">Identidad</span></div>
+        <div class="sl-row"><span class="sl-name">Funnel thinking</span><span class="sl-cat">Estructura</span></div>
+        <div class="sl-row"><span class="sl-name">Comunicación visual</span><span class="sl-cat">Visual</span></div>
+        <div class="sl-row"><span class="sl-name">CRM</span><span class="sl-cat">Relación</span></div>
+        <div class="sl-row"><span class="sl-name">Creación y optimización web</span><span class="sl-cat">Web</span></div>
+        <div class="sl-row"><span class="sl-name">Estrategia social</span><span class="sl-cat">Social</span></div>
+        <div class="sl-row"><span class="sl-name">Amazon management</span><span class="sl-cat">Comercio</span></div>
+        <div class="sl-row"><span class="sl-name">Estrategia de campañas</span><span class="sl-cat">Operación</span></div>
       </div>
     </div>
   </div>
@@ -1048,18 +986,18 @@ Etapa II · Sistema digital</div>
 </div>
 
 <!-- ============ DIRECTION ============ -->
-<section id="direction" data-screen-label="07 Dirección creativa">
+<section id="direction" data-screen-label="07 Contenido & creatividad">
   <div class="max">
     <div class="sec-head reveal">
       <div class="sec-num">§ 07</div>
-      <h2 class="sec-title">Contenido <em>&amp; dirección</em></h2>
+      <h2 class="sec-title">Contenido <em>&amp; creatividad</em></h2>
       <div class="sec-meta">En desarrollo<br/>Estudio personal</div>
     </div>
 
     <div class="direction">
       <div class="dir-hero">
-        <p class="dir-statement reveal">Una práctica creativa <em>multidisciplinar</em> en construcción: vlogs, ensayos visuales, marca personal y storytelling filosófico.</p>
-        <p class="dir-aside reveal">No es contenido por hacer contenido. Es la forma en la que pongo a prueba ideas, tonos y dispositivos narrativos antes de aplicarlos en marca. El estudio antes del estudio.</p>
+        <p class="dir-statement reveal">El laboratorio donde pruebo ideas antes de llevarlas a <em>marca</em>. Vlogs, ensayos visuales, narrativa propia.</p>
+        <p class="dir-aside reveal">No es contenido por hacer contenido. Cada pieza tiene intención: un tono que probar, una estructura que validar, una idea que aún no sé si funciona.</p>
       </div>
 
       <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(20,19,15,.75);margin-bottom:28px">Algunos ejemplos</p>
@@ -1141,16 +1079,16 @@ Etapa II · Sistema digital</div>
     <div class="contact-meta">
       <span>§ 08 · Contacto</span>
       <span></span>
-      <span>Disponibilidad · Ahora 2026</span>
+      <span>Abierto a incorporación · 2026</span>
     </div>
 
-    <h2 class="contact-headline reveal-left">Las ideas merecen <em>ejecución.</em></h2>
+    <h2 class="contact-headline reveal-left">Listo para <em>incorporarme.</em></h2>
 
     <div class="contact-grid">
       <div class="col reveal">
         <h4>Escríbeme directamente</h4>
         <a href="mailto:alvaroqs9999@gmail.com">alvaroqs9999@gmail.com</a>
-        <p style="margin-top:18px">Respondo en menos de 48h. Para colaboraciones, dirección creativa, consultoría de sistemas o conversaciones largas sobre por qué Internet se ha vuelto tan visualmente aburrido.</p>
+        <p style="margin-top:18px">Respondo en menos de 48h. Busco incorporarme a un equipo de marketing donde pueda aportar en estrategia, contenido y creatividad.</p>
       </div>
       <div class="col reveal">
         <h4>Redes</h4>
@@ -1161,15 +1099,15 @@ Etapa II · Sistema digital</div>
         <a href="https://wa.me/34673374641" target="_blank" rel="noopener">WhatsApp ↗</a>
       </div>
       <div class="col reveal">
-        <h4>Trabajo &amp; ubicación</h4>
-        <p>España, disponible en remoto. Viajo cuando vale la pena.</p>
+        <h4>Ubicación &amp; disponibilidad</h4>
+        <p>España. Disponible para trabajo presencial, híbrido o remoto.</p>
         <p style="margin-top:18px;color:rgba(241,237,228,.55);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Idiomas · Español · Inglés</p>
       </div>
     </div>
 
     <div class="contact-foot" style="margin-top:80px">
       <span>© 2026 Álvaro Quintanar Salinas</span>
-      <span class="center">Diseñado &amp; dirigido por Álvaro Quintanar · contrátame</span>
+      <span class="center">Diseñado por Álvaro Quintanar · Abierto a oportunidades</span>
       <span class="right">v.01 · Edition España</span>
     </div>
   </div>
@@ -1448,27 +1386,27 @@ Etapa II · Sistema digital</div>
 
     // SKILLS
     ['#skills .sec-title','Skills <em>&amp; systems</em>'],
-    ['.skills-grid .skill:nth-child(1) .s-head span:last-child','Direction'],
-    ['.skills-grid .skill:nth-child(1) .s-name','Creative Direction'],
-    ['.skills-grid .skill:nth-child(2) .s-head span:last-child','Narrative'],
-    ['.skills-grid .skill:nth-child(3) .s-head span:last-child','Verbal'],
-    ['.skills-grid .skill:nth-child(4) .s-head span:last-child','Identity'],
-    ['.skills-grid .skill:nth-child(5) .s-head span:last-child','Strategy'],
-    ['.skills-grid .skill:nth-child(5) .s-name','Content Strategy'],
-    ['.skills-grid .skill:nth-child(6) .s-head span:last-child','Performance'],
-    ['.skills-grid .skill:nth-child(7) .s-head span:last-child','Video'],
-    ['.skills-grid .skill:nth-child(7) .s-name','Video recording & editing'],
-    ['.skills-grid .skill:nth-child(8) .s-head span:last-child','Structure'],
-    ['.skills-grid .skill:nth-child(9) .s-head span:last-child','Relationship'],
-    ['.skills-grid .skill:nth-child(10) .s-head span:last-child','Web'],
-    ['.skills-grid .skill:nth-child(10) .s-name','Web creation & optimization'],
-    ['.skills-grid .skill:nth-child(11) .s-head span:last-child','Social'],
-    ['.skills-grid .skill:nth-child(11) .s-name','Social strategy'],
-    ['.skills-grid .skill:nth-child(12) .s-head span:last-child','Commerce'],
-    ['.skills-grid .skill:nth-child(13) .s-head span:last-child','Visual'],
-    ['.skills-grid .skill:nth-child(13) .s-name','Visual Communication'],
-    ['.skills-grid .skill:nth-child(14) .s-head span:last-child','Operations'],
-    ['.skills-grid .skill:nth-child(14) .s-name','Campaign strategy'],
+    ['.skills-list .sl-row:nth-child(1) .sl-name','Creative Direction'],
+    ['.skills-list .sl-row:nth-child(1) .sl-cat','Direction'],
+    ['.skills-list .sl-row:nth-child(2) .sl-name','Content Strategy'],
+    ['.skills-list .sl-row:nth-child(2) .sl-cat','Strategy'],
+    ['.skills-list .sl-row:nth-child(3) .sl-cat','Narrative'],
+    ['.skills-list .sl-row:nth-child(4) .sl-name','Ads (Meta, TikTok, Amazon, Google)'],
+    ['.skills-list .sl-row:nth-child(4) .sl-cat','Performance'],
+    ['.skills-list .sl-row:nth-child(6) .sl-name','Video recording & editing'],
+    ['.skills-list .sl-row:nth-child(6) .sl-cat','Video'],
+    ['.skills-list .sl-row:nth-child(7) .sl-cat','Identity'],
+    ['.skills-list .sl-row:nth-child(8) .sl-cat','Structure'],
+    ['.skills-list .sl-row:nth-child(9) .sl-name','Visual Communication'],
+    ['.skills-list .sl-row:nth-child(9) .sl-cat','Visual'],
+    ['.skills-list .sl-row:nth-child(10) .sl-cat','Relationship'],
+    ['.skills-list .sl-row:nth-child(11) .sl-name','Web creation & optimization'],
+    ['.skills-list .sl-row:nth-child(11) .sl-cat','Web'],
+    ['.skills-list .sl-row:nth-child(12) .sl-name','Social strategy'],
+    ['.skills-list .sl-row:nth-child(12) .sl-cat','Social'],
+    ['.skills-list .sl-row:nth-child(13) .sl-cat','Commerce'],
+    ['.skills-list .sl-row:nth-child(14) .sl-name','Campaign strategy'],
+    ['.skills-list .sl-row:nth-child(14) .sl-cat','Operations'],
 
     // TOOLS
     ['.tools-label','Tools &amp; platforms'],
