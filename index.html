@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Álvaro Quintanar Salinas · Creador de Contenido, Storytelling & Dirección Creativa</title>
+<title>Álvaro Quintanar · Behavioral Sciences</title>
 
 <!-- SEO -->
-<meta name="description" content="Álvaro Quintanar Salinas — creador de contenido y director creativo especializado en storytelling y estrategia de contenido. Portfolio de proyectos en narrativa de marca, branding y producción audiovisual.">
-<meta name="keywords" content="Álvaro Quintanar, Alvaro Quintanar Salinas, creador de contenido, storytelling, dirección creativa, estrategia de contenido, branding, producción audiovisual, España">
+<meta name="description" content="Álvaro Quintanar Salinas — Behavioral Sciences Consultant especializado en economía conductual y comportamiento del consumidor. Portfolio de proyectos en arquitectura de decisión, behavioral design y research conductual.">
+<meta name="keywords" content="Álvaro Quintanar, Alvaro Quintanar Salinas, behavioral economics, economía conductual, comportamiento del consumidor, behavioral design, arquitectura de decisión, consultoría, España">
 <meta name="author" content="Álvaro Quintanar Salinas">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://alvaroquintanar.com/">
@@ -15,16 +15,16 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alvaroquintanar.com/">
-<meta property="og:title" content="Álvaro Quintanar Salinas · Creador de Contenido & Dirección Creativa">
-<meta property="og:description" content="Portfolio de Álvaro Quintanar Salinas — creación de contenido, storytelling y dirección creativa para marcas que quieren sentirse vivas.">
+<meta property="og:title" content="Álvaro Quintanar Salinas · Behavioral Sciences Consultant">
+<meta property="og:description" content="Portfolio de Álvaro Quintanar Salinas — economía conductual, arquitectura de decisión y consultoría estratégica aplicada al comportamiento del consumidor.">
 <meta property="og:image" content="https://alvaroquintanar.com/images/Foto principal.png">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Álvaro Quintanar Salinas">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Álvaro Quintanar Salinas · Creador de Contenido & Dirección Creativa">
-<meta name="twitter:description" content="Portfolio de Álvaro Quintanar Salinas — creación de contenido, storytelling y dirección creativa para marcas que quieren sentirse vivas.">
+<meta name="twitter:title" content="Álvaro Quintanar Salinas · Behavioral Sciences Consultant">
+<meta name="twitter:description" content="Portfolio de Álvaro Quintanar Salinas — economía conductual, arquitectura de decisión y consultoría estratégica aplicada al comportamiento del consumidor.">
 <meta name="twitter:image" content="https://alvaroquintanar.com/images/Foto principal.png">
 
 <!-- Schema.org Person -->
@@ -36,9 +36,9 @@
   "alternateName": "Alvaro Quintanar",
   "url": "https://alvaroquintanar.com",
   "image": "https://alvaroquintanar.com/images/Foto principal.png",
-  "jobTitle": "Creador de Contenido & Dirección Creativa",
-  "description": "Creador de contenido y director creativo especializado en storytelling y estrategia de contenido para marcas.",
-  "knowsAbout": ["Creación de Contenido", "Storytelling", "Dirección Creativa", "Estrategia de Contenido", "Branding", "Comportamiento del Consumidor"],
+  "jobTitle": "Behavioral Sciences Consultant",
+  "description": "Investigador y consultor especializado en behavioral economics y comportamiento del consumidor aplicado a estrategia de negocio.",
+  "knowsAbout": ["Behavioral Economics", "Economía Conductual", "Comportamiento del Consumidor", "Arquitectura de Decisión", "Behavioral Design", "Nudge Design"],
   "nationality": "Mexican",
   "address": {
     "@type": "PostalAddress",
@@ -96,6 +96,10 @@
   .clock{display:inline-flex;gap:6px;align-items:center}
   .clock::before{content:"";width:6px;height:6px;border-radius:50%;background:#c8a39a;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .lang-toggle{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:inherit;background:transparent;border:1px solid currentColor;border-radius:999px;padding:5px 11px;cursor:pointer;transition:background .3s,color .3s;line-height:1}
+  .lang-toggle:hover{background:var(--ink);color:var(--bg)}
+  .nav.scrolled .lang-toggle:hover{background:var(--bg);color:var(--ink)}
 
   /* PAGE PADDING */
   section{padding:0 32px;position:relative}
@@ -335,7 +339,8 @@
   @media(max-width:600px){
     section{padding:0 20px}
     .nav{padding:16px 20px}
-    .nav .meta{display:none}
+    .nav .meta{display:flex;gap:10px}
+    .nav .meta .clock,.nav .meta > span{display:none}
 
     .hero{padding-top:88px;padding-bottom:40px}
     .hero-meta-top{grid-template-columns:1fr;gap:8px;margin-bottom:40px}
@@ -488,15 +493,15 @@
 <nav class="nav">
   <div class="brand">Álvaro <i>Quintanar</i></div>
   <div class="links">
-    <a href="#about">Sobre</a>
-    <a href="#direction">Contenido</a>
-    <a href="#work">Proyectos</a>
-    <a href="#experience">Experiencia</a>
-    <a href="#contact">Contacto</a>
+    <a href="#about" data-i18n="nav.about">Sobre</a>
+    <a href="#work" data-i18n="nav.work">Proyectos</a>
+    <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+    <a href="#contact" data-i18n="nav.contact">Contacto</a>
   </div>
   <div class="meta">
     <span class="clock">ESP <span id="time">—</span></span>
     <span>2026 / EST.</span>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -505,15 +510,12 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <ul class="m-links">
-    <li><a href="#about" class="m-link">Sobre</a></li>
-    <li><a href="#direction" class="m-link">Contenido</a></li>
-    <li><a href="#work" class="m-link">Proyectos</a></li>
-    <li><a href="#skills" class="m-link">Habilidades</a></li>
-    <li><a href="#experience" class="m-link">Experiencia</a></li>
-    <li><a href="#education" class="m-link">Formación</a></li>
-    <li><a href="#contact" class="m-link">Contacto</a></li>
+    <li><a href="#about" class="m-link" data-i18n="nav.about">Sobre</a></li>
+    <li><a href="#work" class="m-link" data-i18n="nav.work">Proyectos</a></li>
+    <li><a href="#experience" class="m-link" data-i18n="nav.experience">Experiencia</a></li>
+    <li><a href="#contact" class="m-link" data-i18n="nav.contact">Contacto</a></li>
   </ul>
-  <div class="m-foot">Álvaro Quintanar Salinas · España · 2026</div>
+  <div class="m-foot" data-i18n="mobile.foot">Álvaro Quintanar Salinas · España · 2026</div>
 </div>
 
 
@@ -521,47 +523,47 @@
 <section class="hero" data-screen-label="01 Hero">
   <div class="max" style="width:100%">
     <div class="hero-meta-top reveal-stagger">
-      <div><span class="label">Creador de contenido · Storytelling · Dirección creativa</span></div>
-      <div><span class="label">Localización</span>España</div>
-      <div><span class="label">Disponibilidad</span>Abierto a incorporación · 2026</div>
+      <div data-i18n="hero.tagline"><span class="label">Behavioral Sciences · Economía Conductual · Consultoría Estratégica</span></div>
+      <div data-i18n="hero.location"><span class="label">Localización</span>España</div>
+      <div data-i18n="hero.availability"><span class="label">Disponibilidad</span>Proyectos &amp; colaboraciones, ahora 2026</div>
     </div>
 
     <div class="hero-headline reveal">
-      <h1>Contenido<br/>creativo <span class="amp">&amp;</span><br/><span class="it">narrativa</span><br/>que conecta<br/>con las<br/><em class="serif" style="font-style:italic;color:var(--olive)">personas.</em></h1>
+      <h1 data-i18n="hero.h1">Ciencia del<br/><span class="it">comportamiento</span><br/>aplicada a<br/>cómo las<br/>personas <em class="serif" style="font-style:italic;color:var(--olive)">deciden.</em></h1>
     </div>
 
     <div class="hero-bottom">
-      <p class="hero-sub reveal">Creador de contenido con foco en narrativa y dirección creativa. Busco un equipo donde el <em style="color:var(--burgundy);font-style:italic">contenido</em> no sea un extra, sino parte del proceso.</p>
+      <p class="hero-sub reveal" data-i18n="hero.sub">Especialista en <em style="color:var(--burgundy);font-style:italic">comportamiento del consumidor</em>. Aplico economía conductual para convertir el conocimiento sobre cómo las personas deciden en <em style="color:var(--burgundy);font-style:italic">estrategia de negocio</em> con impacto real.</p>
       <img class="hero-portrait-mobile" src="images/Foto principal.png" alt="Álvaro Quintanar">
       <div class="hero-cta reveal">
-        <a href="#work" class="btn dark">Ver proyectos <span class="arrow">→</span></a>
-        <a href="#contact" class="btn">Contacto <span class="arrow">↗</span></a>
+        <a href="#work" class="btn dark" data-i18n="hero.cta1">Ver proyectos <span class="arrow">→</span></a>
+        <a href="#contact" class="btn" data-i18n="hero.cta2">Contacto <span class="arrow">↗</span></a>
       </div>
     </div>
   </div>
 
   <div class="hero-portrait reveal">
     <img src="images/Foto principal.png" alt="Álvaro Quintanar" style="width:100%;height:100%;object-fit:cover;display:block;">
-    <span class="pcaption">Álvaro Q.S. · España '26</span>
+    <span class="pcaption" data-i18n="hero.caption">Álvaro Q.S. · España '26</span>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Creación de contenido
+    <span data-i18n="marquee.a">Behavioral Economics
 ✶
-Storytelling
+Economía conductual
 ✶
-Narrativa visual
+Arquitectura de decisión
 ✶
-Dirección creativa
+Sesgos cognitivos
 ✶
-Estrategia de contenido
+Investigación de mercados
 ✶
-Branding
+Nudge design
 ✶</span>
-    <span>Creación de contenido <span class="star serif">✶</span> Storytelling <span class="star serif">✶</span> Narrativa visual <span class="star serif">✶</span> Dirección creativa <span class="star serif">✶</span> Estrategia de contenido <span class="star serif">✶</span> Branding <span class="star serif">✶</span> </span>
+    <span data-i18n="marquee.b">Behavioral Economics <span class="star serif">✶</span> Economía conductual <span class="star serif">✶</span> Arquitectura de decisión <span class="star serif">✶</span> Sesgos cognitivos <span class="star serif">✶</span> Investigación de mercados <span class="star serif">✶</span> Nudge design <span class="star serif">✶</span> </span>
   </div>
 </div>
 
@@ -570,8 +572,8 @@ Branding
   <div class="max">
     <div class="sec-head reveal">
       <div class="sec-num">§ 02</div>
-      <h2 class="sec-title">Sobre <em>mí</em></h2>
-      <div class="sec-meta">NACIONALIDAD
+      <h2 class="sec-title" data-i18n="about.title">Sobre <em>mí</em></h2>
+      <div class="sec-meta" data-i18n="about.meta">NACIONALIDAD
 MÉXICO ⇢ ESPAÑA</div>
     </div>
 
@@ -587,118 +589,26 @@ MÉXICO ⇢ ESPAÑA</div>
       </div>
 
       <div class="about-text reveal-right">
-        <p><span class="drop">P</span>arte de mi forma de trabajar viene de haber crecido entre dos culturas. Aprendí a observar distinto, adaptarme rápido y encontrar valor tanto en la <em>estrategia</em> como en la sensibilidad visual.</p>
+        <p data-i18n="about.p1"><span class="drop">L</span>a pregunta que me persigue es siempre la misma: ¿por qué elegimos lo que elegimos? Empecé a responderla desde el marketing, pero necesitaba ir más adentro. Hoy investigo en un <em>Doctorado en Comportamiento del Consumidor</em> en la UGR, donde trabajo sobre percepción, atención y mecanismos de decisión.</p>
 
-        <p>Empecé en marketing digital y entendí rápido que los números son consecuencia de algo más profundo: una idea con tensión, una imagen con memoria, un tono que no suena a <em>marca</em>.</p>
-
-        <p>Hoy me defino, ante todo, como un <em>creador de contenido</em> que piensa en sistemas. Me obsesionan el <em>storytelling</em>, la estética y cómo las marcas construyen su propio significado.</p>
-
-        <p>El contenido no es donde llego. Es donde <em>pienso</em>. Busco un equipo donde eso tenga valor.</p>
+        <p data-i18n="about.p2">En paralelo, aplico esa lente conductual en proyectos reales: he diseñado funnels que reducen <em>fricción cognitiva</em>, testeado hipótesis sobre atención y comportamiento en campañas de performance, y construido sistemas desde la psicología de quien los recibe. Pienso como investigador y ejecuto como <em>estratega</em>.</p>
       </div>
     </div>
 
     <div class="about-bio-meta reveal">
-      <div><span class="k">Nombre</span><span class="v">Álvaro Quintanar Salinas</span></div>
-      <div><span class="k">Carácter</span><span class="v">Curioso · Analítico · Introspectivo · Estéticamente sensible</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DIRECTION ============ -->
-<section id="direction" data-screen-label="03 Contenido">
-  <div class="max">
-    <div class="sec-head reveal">
-      <div class="sec-num">§ 03</div>
-      <h2 class="sec-title">Contenido <em>&amp; creatividad</em></h2>
-      <div class="sec-meta">El laboratorio<br/>Antes que la marca</div>
-    </div>
-
-    <div class="direction">
-      <div class="dir-hero">
-        <p class="dir-statement reveal">El laboratorio donde pruebo ideas antes de llevarlas a <em>marca</em>. Vlogs, ensayos visuales, narrativa propia.</p>
-        <p class="dir-aside reveal">No es contenido por hacer contenido. Cada pieza tiene intención: un tono que probar, una estructura que validar, una idea que aún no sé si funciona.</p>
-      </div>
-
-      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(20,19,15,.75);margin-bottom:28px">Algunos ejemplos</p>
-
-      <div class="vid-grid reveal-stagger">
-
-        <!-- Row 1: 3 verticales -->
-        <div class="vid-item vid-v" data-yt="1DN1yYAsK58">
-          <img src="https://img.youtube.com/vi/1DN1yYAsK58/maxresdefault.jpg" alt="Final viaje">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-v" data-yt="86LyZDVtPp4">
-          <img src="https://img.youtube.com/vi/86LyZDVtPp4/maxresdefault.jpg" alt="Presentación">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-v" data-yt="luL2D0qT5V8">
-          <img src="https://img.youtube.com/vi/luL2D0qT5V8/maxresdefault.jpg" alt="Dron">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-        <!-- Row 2: horizontal full width -->
-        <div class="vid-item vid-h vid-full" data-yt="PWRLZMo0IeA">
-          <img src="https://img.youtube.com/vi/PWRLZMo0IeA/maxresdefault.jpg" alt="París">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-        <!-- Row 3: 3 verticales -->
-        <div class="vid-item vid-v" data-yt="IsKu2n3RfCk">
-          <img src="https://img.youtube.com/vi/IsKu2n3RfCk/maxresdefault.jpg" alt="Video Sticker">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-v" data-yt="uvo-r1jjeOA">
-          <img src="https://img.youtube.com/vi/uvo-r1jjeOA/maxresdefault.jpg" alt="Video Educación">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-v" data-yt="BGdmz1yDk4A">
-          <img src="https://img.youtube.com/vi/BGdmz1yDk4A/maxresdefault.jpg" alt="Creativo 1">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-        <!-- Row 4: horizontal full width -->
-        <div class="vid-item vid-h vid-full" data-yt="76RkJh05_hc">
-          <img src="https://img.youtube.com/vi/76RkJh05_hc/maxresdefault.jpg" alt="Santander">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-        <!-- Row 5: horizontal (span 2) + vertical -->
-        <div class="vid-item vid-h vid-wide" data-yt="JiU2iiO8-S0">
-          <img src="https://img.youtube.com/vi/JiU2iiO8-S0/maxresdefault.jpg" alt="Video 06">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-v" data-yt="eCIrhpUecMc">
-          <img src="https://img.youtube.com/vi/eCIrhpUecMc/maxresdefault.jpg" alt="Video 01">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-        <!-- Row YouTube: 3 videos horizontales -->
-        <div class="vid-item vid-h" data-yt="jWV-Rp6v2ZM">
-          <img src="https://img.youtube.com/vi/jWV-Rp6v2ZM/hqdefault.jpg" alt="Video YouTube 1">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-h" data-yt="3DC6MuOCf3c">
-          <img src="https://img.youtube.com/vi/3DC6MuOCf3c/hqdefault.jpg" alt="Video YouTube 2">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-        <div class="vid-item vid-h" data-yt="nOXCcxSm0kM">
-          <img src="https://img.youtube.com/vi/nOXCcxSm0kM/hqdefault.jpg" alt="Video YouTube 3">
-          <div class="vid-overlay"><span class="vid-play">▶</span></div>
-        </div>
-
-      </div>
+      <div data-i18n="about.bio1"><span class="k">Perfil</span><span class="v">Investigador conductual · Estratega aplicado</span></div>
+      <div data-i18n="about.bio2"><span class="k">Formación activa</span><span class="v">Doctorado en Comportamiento del Consumidor · UGR · 2026</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============ PROJECTS ============ -->
-<section id="work" data-screen-label="04 Proyectos">
+<section id="work" data-screen-label="03 Proyectos">
   <div class="max">
     <div class="sec-head reveal">
-      <div class="sec-num">§ 04</div>
-      <h2 class="sec-title">Proyectos <em>destacados</em></h2>
-      <div class="sec-meta">Selección 2021 · 2026<br/>Cinco casos</div>
+      <div class="sec-num">§ 03</div>
+      <h2 class="sec-title" data-i18n="work.title">Proyectos <em>destacados</em></h2>
+      <div class="sec-meta" data-i18n="work.meta">Selección 2024 · 2025<br/>Tres casos</div>
     </div>
 
     <div class="projects-wrap">
@@ -707,22 +617,21 @@ MÉXICO ⇢ ESPAÑA</div>
       <article class="project">
         <div class="p-visual reveal-scale">
           <span class="p-num">01</span>
-          <div class="ph" style="background:none;">
-            <img src="images/persona.jpg" alt="Desarrollo creativo personal" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="ph olive" style="background:none;">
+            <img src="images/happy.jpg" alt="British College La Cañada" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
         </div>
         <div class="p-content reveal-right">
-          <div class="p-cat">Creatividad / Marca Personal / Narrativa</div>
-          <h3 class="p-title">Desarrollo creativo <em>personal</em></h3>
-          <p class="p-overview">El laboratorio donde pruebo ideas antes de llevarlas a marca. Donde la intuición se convierte en método.</p>
+          <div class="p-cat" data-i18n="work.p1.cat">Behavioral Design / Arquitectura de Decisión</div>
+          <h3 class="p-title">British College <em>La Cañada</em></h3>
+          <p class="p-overview" data-i18n="work.p1.overview">Un problema de comportamiento, no de comunicación: los padres llegaban pero no tomaban la decisión de matricular. Identifiqué las barreras cognitivas y rediseñé el journey.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Laboratorio</h5><p>YouTube, TikTok y escritura. Cada pieza tiene intención creativa: arco narrativo, decisión estética, hipótesis sobre atención.</p></div>
-            <div class="blk"><h5>Metodología</h5><p>Funciona como <em style="color:var(--burgundy)">R&amp;D creativo</em>. Lo que pruebo aquí en tono y narrativa lo aplico después con más confianza en contexto de marca.</p></div>
-            <div class="blk"><h5>Sistema</h5><p>YouTube para profundidad; TikTok para tensión y síntesis; escritura para pensar en voz alta. Cada plataforma tiene su propio lenguaje.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Una voz propia reconocible y un proceso de iteración que no depende de la inspiración, sino de la práctica.</p></div>
+            <div class="blk" data-i18n="work.p1.blk1"><h5>Insight conductual</h5><p>La confianza institucional se construye por coherencia cognitiva. Cuando el tono, el entorno digital y el proceso comercial hablan el mismo idioma, la fricción cae y la conversión sube. Efecto de señalización de calidad percibida.</p></div>
+            <div class="blk" data-i18n="work.p1.blk2"><h5>Intervención</h5><p>Diseño del ecosistema como arquitectura de decisión: cada punto de contacto reducía la incertidumbre. CRM como sistema de acompañamiento conductual del proceso de matrícula.</p></div>
+            <div class="blk" data-i18n="work.p1.blk3"><h5>Resultado</h5><p>Incremento sostenido en captación de leads cualificados y reducción de fricción en el cierre. El sistema sigue en uso.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · Autor + Estratega creativo</span>
+            <span data-i18n="work.p1.foot">Rol · Behavioral Design + Arquitectura de Decisión</span>
           </div>
         </div>
       </article>
@@ -730,23 +639,21 @@ MÉXICO ⇢ ESPAÑA</div>
       <article class="project">
         <div class="p-visual reveal-scale">
           <span class="p-num">02</span>
-          <div class="ph olive" style="background:none;">
-            <img src="images/happy.jpg" alt="British College La Cañada" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="ph burg" style="background:none;">
+            <img src="images/closca.jpg" alt="Closca" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
         </div>
         <div class="p-content reveal-left">
-          <div class="p-cat">Marketing / Estrategia de Contenido / Creatividad</div>
-          <h3 class="p-title">British College <em>La Cañada</em></h3>
-          <p class="p-overview">Un colegio que necesitaba modernizar su narrativa y su infraestructura al mismo tiempo. Construí el sistema que conectó ambas.</p>
+          <div class="p-cat" data-i18n="work.p2.cat">Behavioral Creative Testing / Sesgos Cognitivos</div>
+          <h3 class="p-title"><em>Closca</em></h3>
+          <p class="p-overview" data-i18n="work.p2.overview">La brecha entre la actitud declarada hacia la movilidad sostenible y el comportamiento de compra real. Disonancia conductual aplicada a performance.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>Comunicación inconsistente, proceso comercial fragmentado. Los leads llegaban pero no existía estructura para convertirlos.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La percepción de una institución no depende solo de su imagen, sino de su coherencia. El tono y el sistema tienen que hablar el mismo idioma.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Ecosistema conectado entre contenido, web, CRM y proceso comercial. Todo alineado bajo la narrativa <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Estrategia y producción de contenido, rediseño de la web, integración de CRM y estructuración del funnel de captación.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Sistema centralizado y escalable. Comunicación institucional más moderna, coherente y con menos fricción comercial.</p></div>
+            <div class="blk" data-i18n="work.p2.blk1"><h5>Insight conductual</h5><p>Las creatividades activaban System 2 (evaluación racional) pero no alcanzaban System 1. El hook debía activar aspiración e identidad social, no argumentos funcionales.</p></div>
+            <div class="blk" data-i18n="work.p2.blk2"><h5>Intervención</h5><p>Testing estructurado con hipótesis conductuales aisladas: frame de identidad vs. frame de utilidad. Variables: hook emocional, prueba social, urgencia, formato visual.</p></div>
+            <div class="blk" data-i18n="work.p2.blk3"><h5>Resultado</h5><p>La hipótesis de identidad ganó sobre la funcional. Mejora de CTR, reducción de CPA y apertura de canal hacia EE.UU.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · Marketing · Estrategia + Creatividad + Sistemas</span>
+            <span data-i18n="work.p2.foot">Rol · Behavioral Research + Testing conductual</span>
           </div>
         </div>
       </article>
@@ -754,70 +661,21 @@ MÉXICO ⇢ ESPAÑA</div>
       <article class="project">
         <div class="p-visual reveal-scale">
           <span class="p-num">03</span>
-          <div class="ph" style="background:none;">
-            <img src="images/medialog buena.jpg" alt="Medialog" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-        </div>
-        <div class="p-content reveal-right">
-          <div class="p-cat">Producción Visual / Desarrollo Web / Comunicación</div>
-          <h3 class="p-title"><em>Medialog</em></h3>
-          <p class="p-overview">Donde la creatividad dejó de ser abstracta y se convirtió en ejecución real. Clientes distintos, lenguajes distintos, el mismo oficio.</p>
-          <div class="p-blocks">
-            <div class="blk"><h5>Contexto</h5><p>Restaurantes, viñedos, campañas políticas, marcas locales. Cada proyecto requería entender el contexto rápido y traducirlo en comunicación visual efectiva.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La creatividad no vive en las ideas. Vive en adaptarse, resolver y construir desde distintos lenguajes: <em style="color:var(--burgundy)">video, diseño, web, narrativa</em>.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Producción audiovisual, grabación con dron, edición de video, desarrollo web, diseño visual. Campañas en el sur de México y e-commerce para una vinícola.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>La versatilidad como ventaja creativa. Aprendí que el oficio se construye desde la ejecución y el error, no desde la teoría.</p></div>
-          </div>
-          <div class="p-foot">
-            <span>Rol · Producción visual + Desarrollo web + Comunicación</span>
-          </div>
-        </div>
-      </article>
-      <!-- PROJECT 4 -->
-      <article class="project">
-        <div class="p-visual reveal-scale">
-          <span class="p-num">04</span>
-          <div class="ph burg" style="background:none;">
-            <img src="images/closca.jpg" alt="Closca" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-        </div>
-        <div class="p-content reveal-left">
-          <div class="p-cat">Performance Marketing / Creatividad / Creative Testing</div>
-          <h3 class="p-title"><em>Closca</em></h3>
-          <p class="p-overview">Marca de movilidad urbana y diseño. El reto no era vender un casco: era hacer que un producto técnico se sintiera como una elección cultural.</p>
-          <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>Las creatividades explicaban el producto pero no lo deseaban. La conversión dependía de quién lo entendía, no de quién lo sentía.</p></div>
-            <div class="blk"><h5>Insight</h5><p>La creatividad sin sistema de testeo es ruido. El producto tenía el brief correcto; lo que faltaba era <em style="color:var(--burgundy)">velocidad de aprendizaje</em>.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Creative testing estructurado: hipótesis claras, variables aisladas, lectura cualitativa sobre datos reales. Cada pieza era una pregunta con respuesta medible.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Producción y creación de contenido para TikTok Ads y Meta Ads. Estáticos, carruseles y hooks en video centrados en tensión visual.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Mejora de CTR, reducción de CPA, aumento en ventas y apertura de canal hacia Estados Unidos.</p></div>
-          </div>
-          <div class="p-foot">
-            <span>Rol · Performance Marketing + Creatividad</span>
-          </div>
-        </div>
-      </article>
-      <!-- PROJECT 5 -->
-      <article class="project">
-        <div class="p-visual reveal-scale">
-          <span class="p-num">05</span>
           <div class="ph dark" style="background:none;">
             <img src="images/idecolor .webp" alt="Idecolor" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
         </div>
         <div class="p-content reveal-right">
-          <div class="p-cat">E-commerce / Amazon / Operaciones Digitales</div>
+          <div class="p-cat" data-i18n="work.p3.cat">Arquitectura de Compra / Decisión Online</div>
           <h3 class="p-title"><em>Idecolor</em></h3>
-          <p class="p-overview">Operación digital dentro del ecosistema Amazon. Un trabajo donde aprendí que la infraestructura bien construida es, en sí misma, una forma de creatividad.</p>
+          <p class="p-overview" data-i18n="work.p3.overview">Cómo la organización del catálogo, el framing del precio y la estructura de la oferta determinan el comportamiento de compra antes de que el usuario lo piense conscientemente.</p>
           <div class="p-blocks">
-            <div class="blk"><h5>Problema</h5><p>Publicidad y catálogo funcionando por separado. Sin visión centralizada, el ciclo de venta sangraba por todos lados.</p></div>
-            <div class="blk"><h5>Insight</h5><p>En e-commerce, la estética sin operación no vende. Cuando los <em style="color:var(--burgundy)">sistemas se hablan</em>, el resultado cambia.</p></div>
-            <div class="blk"><h5>Estrategia</h5><p>Amazon Ads como motor de decisión, no como gasto gestionado. Visión end-to-end del ciclo de venta.</p></div>
-            <div class="blk"><h5>Ejecución</h5><p>Gestión de Seller Central, optimización de campañas y lectura continua de datos para iterar catálogo y oferta.</p></div>
-            <div class="blk"><h5>Resultado</h5><p>Procesos más limpios, ciclos de iteración más cortos y estructura lista para escalar.</p></div>
+            <div class="blk" data-i18n="work.p3.blk1"><h5>Insight conductual</h5><p>La paradoja de la elección y el efecto de anclaje. En e-commerce, menos opciones bien organizadas convierten más que un catálogo amplio sin jerarquía perceptual.</p></div>
+            <div class="blk" data-i18n="work.p3.blk2"><h5>Intervención</h5><p>Rediseño de la jerarquía del catálogo y optimización del framing de precio. Amazon Ads como fuente de datos conductuales para iterar.</p></div>
+            <div class="blk" data-i18n="work.p3.blk3"><h5>Resultado</h5><p>Mejora de eficiencia publicitaria e incremento de ventas con menor gasto.</p></div>
           </div>
           <div class="p-foot">
-            <span>Rol · E-commerce + Sistemas + Operaciones digitales</span>
+            <span data-i18n="work.p3.foot">Rol · Arquitectura de Decisión + Análisis Conductual</span>
           </div>
         </div>
       </article>
@@ -827,119 +685,41 @@ MÉXICO ⇢ ESPAÑA</div>
 </section>
 
 <!-- ============ SKILLS ============ -->
-<section id="skills" data-screen-label="05 Habilidades">
+<section id="skills" data-screen-label="04 Habilidades">
   <div class="max">
     <div class="sec-head reveal">
-      <div class="sec-num">§ 05</div>
-      <h2 class="sec-title">Lo que <em>sé hacer</em></h2>
+      <div class="sec-num">§ 04</div>
+      <h2 class="sec-title" data-i18n="skills.title">Capacidades <em>conductuales</em></h2>
     </div>
 
     <div class="skills">
       <div class="skills-list reveal-stagger">
-        <div class="sl-row"><span class="sl-name">Estrategia creativa</span><span class="sl-cat">Creativo</span></div>
-        <div class="sl-row"><span class="sl-name">Storytelling</span><span class="sl-cat">Narrativa</span></div>
-        <div class="sl-row"><span class="sl-name">Grabación y edición de video</span><span class="sl-cat">Video</span></div>
-        <div class="sl-row"><span class="sl-name">Estrategia de contenido</span><span class="sl-cat">Estrategia</span></div>
-        <div class="sl-row"><span class="sl-name">Copywriting</span><span class="sl-cat">Verbal</span></div>
-        <div class="sl-row"><span class="sl-name">Comunicación visual</span><span class="sl-cat">Visual</span></div>
-        <div class="sl-row"><span class="sl-name">Branding</span><span class="sl-cat">Identidad</span></div>
-        <div class="sl-row"><span class="sl-name">Estrategia social</span><span class="sl-cat">Social</span></div>
-        <div class="sl-row"><span class="sl-name">Creación y optimización web</span><span class="sl-cat">Web</span></div>
-        <div class="sl-row"><span class="sl-name">Ads (Meta, TikTok, Amazon, Google)</span><span class="sl-cat">Performance</span></div>
-        <div class="sl-row"><span class="sl-name">Estrategia de campañas</span><span class="sl-cat">Operación</span></div>
-        <div class="sl-row"><span class="sl-name">Funnel thinking</span><span class="sl-cat">Estructura</span></div>
-        <div class="sl-row"><span class="sl-name">CRM</span><span class="sl-cat">Relación</span></div>
-        <div class="sl-row"><span class="sl-name">Amazon management</span><span class="sl-cat">Comercio</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name1">Behavioral Economics (Economía conductual)</span><span class="sl-cat">BECO</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name2">Arquitectura de decisión y nudge design</span><span class="sl-cat" data-i18n="skills.cat2">Intervención</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name3">Análisis de sesgos cognitivos y heurísticas</span><span class="sl-cat" data-i18n="skills.cat3">Cognitivo</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name4">Frameworks COM-B y EAST</span><span class="sl-cat" data-i18n="skills.cat4">Metodología</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name5">Investigación cualitativa y cuantitativa</span><span class="sl-cat">Research</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name6">Síntesis de insights y formulación de hipótesis</span><span class="sl-cat" data-i18n="skills.cat6">Análisis</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name7">Desk research y benchmarking</span><span class="sl-cat">Research</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name8">Customer journey y friction mapping</span><span class="sl-cat">Journey</span></div>
+        <div class="sl-row"><span class="sl-name">Behavioral creative testing</span><span class="sl-cat">Testing</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name10">Comunicación de insights a perfiles ejecutivos</span><span class="sl-cat">Reporting</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name11">Estrategia de negocio desde lente conductual</span><span class="sl-cat" data-i18n="skills.cat11">Estrategia</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name12">Visión end-to-end de proyectos</span><span class="sl-cat" data-i18n="skills.cat12">Negocio</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name13">CRM y sistemas de acompañamiento</span><span class="sl-cat" data-i18n="skills.cat13">Sistemas</span></div>
+        <div class="sl-row"><span class="sl-name" data-i18n="skills.name14">Análisis de datos de comportamiento</span><span class="sl-cat">Data</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TOOLS CAROUSEL ============ -->
-<div class="tools-strip">
-  <div class="tools-stars"></div>
-  <div class="tools-label">Herramientas &amp; plataformas</div>
-  <div class="tools-track-wrap">
-    <div class="tools-track">
-
-      <div class="tool-item"><img src="images/logos/Premiere Pro.svg.png" alt="Premiere"><span>Premiere Pro</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Capcut.webp" alt="CapCut"><span>CapCut</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Final cut pro.png" alt="Final Cut"><span>Final Cut Pro</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Canva.webp" alt="Canva"><span>Canva</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Illustrator.svg.png" alt="Illustrator"><span>Illustrator</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/wordpress" alt="WordPress"><span>WordPress</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/elementor" alt="Elementor"><span>Elementor</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/meta" alt="Meta Ads"><span>Meta Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/tiktok" alt="TikTok Ads"><span>TikTok Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleads" alt="Google Ads"><span>Google Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleanalytics" alt="Analytics"><span>Google Analytics</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><span>HubSpot</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/shopify" alt="Shopify"><span>Shopify</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon.png" alt="Amazon"><span>Amazon</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon Ads.png" alt="Amazon Ads"><span>Amazon Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon Seller Central.png" alt="Amazon Seller"><span>Seller Central</span></div>
-      <div class="tool-sep"></div>
-
-      <!-- Duplicate for infinite loop -->
-      <div class="tool-item"><img src="images/logos/Premiere Pro.svg.png" alt="Premiere"><span>Premiere Pro</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Capcut.webp" alt="CapCut"><span>CapCut</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Final cut pro.png" alt="Final Cut"><span>Final Cut Pro</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Canva.webp" alt="Canva"><span>Canva</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Illustrator.svg.png" alt="Illustrator"><span>Illustrator</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/wordpress" alt="WordPress"><span>WordPress</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/elementor" alt="Elementor"><span>Elementor</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/meta" alt="Meta Ads"><span>Meta Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/tiktok" alt="TikTok Ads"><span>TikTok Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleads" alt="Google Ads"><span>Google Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/googleanalytics" alt="Analytics"><span>Google Analytics</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><span>HubSpot</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="https://cdn.simpleicons.org/shopify" alt="Shopify"><span>Shopify</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon.png" alt="Amazon"><span>Amazon</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon Ads.png" alt="Amazon Ads"><span>Amazon Ads</span></div>
-      <div class="tool-sep"></div>
-      <div class="tool-item"><img src="images/logos/Amazon Seller Central.png" alt="Amazon Seller"><span>Seller Central</span></div>
-      <div class="tool-sep"></div>
-
-    </div>
-  </div>
-</div>
-
 <!-- ============ EXPERIENCE ============ -->
-<section id="experience" data-screen-label="06 Experiencia">
+<section id="experience" data-screen-label="05 Experiencia">
   <div class="max">
     <div class="sec-head reveal">
-      <div class="sec-num">§ 06</div>
-      <h2 class="sec-title"><em>Experiencia</em></h2>
-      <div class="sec-meta">Cuatro etapas<br/>Una evolución</div>
+      <div class="sec-num">§ 05</div>
+      <h2 class="sec-title" data-i18n="exp.title"><em>Experiencia</em></h2>
+      <div class="sec-meta" data-i18n="exp.meta">Cuatro etapas<br/>Una evolución</div>
     </div>
 
     <div class="experience">
@@ -951,8 +731,8 @@ MÉXICO ⇢ ESPAÑA</div>
             <span class="ee-company">Closca</span>
           </div>
           <div class="ee-right">
-            <div class="ee-role">Performance &amp; Creative Testing</div>
-            <p class="ee-narr">Donde la creatividad se enfrenta al número. Aprendí que sin hipótesis, la creatividad es decoración. Y que sin <em>estética</em>, la estrategia no convierte.</p>
+            <div class="ee-role">Behavioral Creative Testing</div>
+            <p class="ee-narr" data-i18n="exp.narr1">Diseñé <em>hipótesis conductuales</em>, aislé variables de atención y comportamiento. El comportamiento real contradice con frecuencia la <em>intención declarada</em>.</p>
           </div>
         </div>
 
@@ -962,8 +742,8 @@ MÉXICO ⇢ ESPAÑA</div>
             <span class="ee-company">British College La Cañada</span>
           </div>
           <div class="ee-right">
-            <div class="ee-role">Marketing &amp; Estrategia de Contenido</div>
-            <p class="ee-narr">Del rol de ejecutar al de <em>liderar</em>. Construí el sistema de contenido y el lenguaje visual que la institución todavía usa.</p>
+            <div class="ee-role" data-i18n="exp.role2">Behavioral Design &amp; Arquitectura de Decisión</div>
+            <p class="ee-narr" data-i18n="exp.narr2">Identifiqué <em>barreras cognitivas</em> en el proceso de matrícula, reduje fricción y construí señales de <em>confianza institucional</em> percibida.</p>
           </div>
         </div>
 
@@ -973,8 +753,8 @@ MÉXICO ⇢ ESPAÑA</div>
             <span class="ee-company">Idecolor</span>
           </div>
           <div class="ee-right">
-            <div class="ee-role">E-commerce &amp; Operaciones Digitales</div>
-            <p class="ee-narr">Mi escuela de <em>infraestructura</em>. Aprendí que toda gran idea necesita un sistema operativo detrás. Sin operación, la estética se desploma.</p>
+            <div class="ee-role" data-i18n="exp.role3">Arquitectura de Compra &amp; Análisis Conductual</div>
+            <p class="ee-narr" data-i18n="exp.narr3">La <em>arquitectura de la oferta</em> determina el comportamiento antes de que el usuario decida conscientemente. Datos de Ads como fuente primaria de insight.</p>
           </div>
         </div>
 
@@ -984,8 +764,8 @@ MÉXICO ⇢ ESPAÑA</div>
             <span class="ee-company">Medialog</span>
           </div>
           <div class="ee-right">
-            <div class="ee-role">Narrativa Visual &amp; Producción Creativa</div>
-            <p class="ee-narr">El primer estudio de realidad. Dron, video, web, diseño: un vocabulario visual construido desde la <em>ejecución</em> y el error.</p>
+            <div class="ee-role" data-i18n="exp.role4">Comunicación &amp; Producción Estratégica</div>
+            <p class="ee-narr" data-i18n="exp.narr4">Primer contacto real con la comunicación de marca: cada decisión visual y narrativa es una <em>hipótesis sobre percepción</em>.</p>
           </div>
         </div>
 
@@ -995,12 +775,12 @@ MÉXICO ⇢ ESPAÑA</div>
 </section>
 
 <!-- ============ EDUCATION ============ -->
-<section id="education" data-screen-label="07 Formación">
+<section id="education" data-screen-label="06 Formación">
   <div class="max">
     <div class="sec-head reveal">
-      <div class="sec-num">§ 07</div>
-      <h2 class="sec-title"><em>Formación</em></h2>
-      <div class="sec-meta">Tres etapas intelectuales<br/>2019 · En curso</div>
+      <div class="sec-num">§ 06</div>
+      <h2 class="sec-title" data-i18n="edu.title"><em>Formación</em></h2>
+      <div class="sec-meta" data-i18n="edu.meta">Tres etapas intelectuales<br/>2019 · En curso</div>
     </div>
 
     <div class="education">
@@ -1008,30 +788,30 @@ MÉXICO ⇢ ESPAÑA</div>
       <div class="edu-list reveal-stagger">
 
         <article class="edu-row">
-          <div class="yr">2019 · 2023
+          <div class="yr" data-i18n="edu.yr1">2019 · 2023
 Etapa I · Fundamentos</div>
           <div class="roman">I.</div>
           <div class="body">
-            <h3 class="title">Licenciatura en <em>Marketing</em></h3>
-            <span class="inst">EBC Escuela Bancaria y Comercial · Aguascalientes, México</span>
-            <div class="focus">
+            <h3 class="title" data-i18n="edu.title1">Licenciatura en <em>Marketing</em></h3>
+            <span class="inst" data-i18n="edu.inst1">EBC Escuela Bancaria y Comercial · Aguascalientes, México</span>
+            <div class="focus" data-i18n="edu.focus1">
               <span>Comportamiento del consumidor</span>
               <span>Comunicación</span>
               <span>Marca</span>
               <span>Percepción</span>
             </div>
           </div>
-          <p class="narr">El primer encuentro consciente con la pregunta que aún me persigue: ¿por qué <em>elegimos</em> lo que elegimos? Aquí empezó el oficio.</p>
+          <p class="narr" data-i18n="edu.narr1">El primer encuentro consciente con la pregunta que aún me persigue: ¿por qué <em>elegimos</em> lo que elegimos? Aquí empezó el oficio.</p>
         </article>
 
         <article class="edu-row">
-          <div class="yr">2023 · 2024
+          <div class="yr" data-i18n="edu.yr2">2023 · 2024
 Etapa II · Sistema digital</div>
           <div class="roman">II.</div>
           <div class="body">
-            <h3 class="title">Máster en <em>Marketing Digital</em></h3>
-            <span class="inst">ESIC Business &amp; Marketing School · Valencia, España</span>
-            <div class="focus">
+            <h3 class="title" data-i18n="edu.title2">Máster en <em>Marketing Digital</em></h3>
+            <span class="inst" data-i18n="edu.inst2">ESIC Business &amp; Marketing School · Valencia, España</span>
+            <div class="focus" data-i18n="edu.focus2">
               <span>Estrategia digital</span>
               <span>Performance</span>
               <span>Sistemas</span>
@@ -1039,16 +819,16 @@ Etapa II · Sistema digital</div>
               <span>Ecosistema</span>
             </div>
           </div>
-          <p class="narr">El salto del concepto al <em>sistema</em>: aprendí a pensar el ecosistema digital como infraestructura (funnels, data, contenido, plataformas) y a ejecutar con disciplina.</p>
+          <p class="narr" data-i18n="edu.narr2">El salto del concepto al <em>sistema</em>: aprendí a pensar el ecosistema digital como infraestructura (funnels, data, contenido, plataformas) y a ejecutar con disciplina.</p>
         </article>
 
         <article class="edu-row featured">
-          <div class="yr">2026 · En curso<span class="stage">Etapa III · Profundidad</span></div>
+          <div class="yr" data-i18n="edu.yr3">2026 · En curso<span class="stage">Etapa III · Profundidad</span></div>
           <div class="roman">III.</div>
           <div class="body">
-            <h3 class="title">Doctorado en <em>Comportamiento del Consumidor</em></h3>
-            <span class="inst">Universidad de Granada · Granada, España</span>
-            <div class="focus">
+            <h3 class="title" data-i18n="edu.title3">Doctorado en <em>Comportamiento del Consumidor</em></h3>
+            <span class="inst" data-i18n="edu.inst3">Universidad de Granada · Granada, España</span>
+            <div class="focus" data-i18n="edu.focus3">
               <span>Percepción humana</span>
               <span>Atención</span>
               <span>Psicología del consumidor</span>
@@ -1057,12 +837,12 @@ Etapa II · Sistema digital</div>
               <span>Estética</span>
             </div>
           </div>
-          <p class="narr">Una exploración profunda de cómo las personas <em>perciben, sienten y deciden</em> frente a estímulos visuales y digitales. Investigo lo que el marketing intuye y la psicología explica.</p>
+          <p class="narr" data-i18n="edu.narr3">Investigación activa sobre cómo las personas perciben, sienten y deciden frente a estímulos digitales y de consumo. Aplico marcos de <em>Behavioral Economics</em> y psicología cognitiva. Metodología cuantitativa y cualitativa.</p>
         </article>
 
       </div>
 
-      <div class="edu-foot reveal">
+      <div class="edu-foot reveal" data-i18n="edu.foot">
         <span>Tesis en desarrollo · 2026</span>
         <span class="pulse">Investigación activa</span>
         <span>Granada · Virtual</span>
@@ -1072,24 +852,24 @@ Etapa II · Sistema digital</div>
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section id="contact" class="contact" data-screen-label="08 Contacto">
+<section id="contact" class="contact" data-screen-label="07 Contacto">
   <div class="max">
     <div class="contact-meta">
-      <span>§ 08 · Contacto</span>
-      <span></span>
-      <span>Abierto a incorporación · 2026</span>
+      <span data-i18n="contact.meta1">§ 07 · Contacto</span>
+      <span>Behavioral Sciences Consultant</span>
+      <span data-i18n="contact.meta3">Disponibilidad · Ahora 2026</span>
     </div>
 
-    <h2 class="contact-headline reveal-left">Listo para <em>incorporarme.</em></h2>
+    <h2 class="contact-headline reveal-left" data-i18n="contact.headline">Listo para <em>aportar.</em></h2>
 
     <div class="contact-grid">
       <div class="col reveal">
-        <h4>Escríbeme directamente</h4>
+        <h4 data-i18n="contact.col1.h">Escríbeme directamente</h4>
         <a href="mailto:alvaroqs9999@gmail.com">alvaroqs9999@gmail.com</a>
-        <p style="margin-top:18px">Respondo en menos de 48h. Busco incorporarme a un equipo de contenido donde pueda aportar en narrativa, estrategia y dirección creativa.</p>
+        <p style="margin-top:18px" data-i18n="contact.col1.p">Respondo en menos de 48h. Busco incorporarme a un equipo de consultoría donde pueda aplicar behavioral economics para transformar el conocimiento del comportamiento humano en estrategia de negocio.</p>
       </div>
       <div class="col reveal">
-        <h4>Redes</h4>
+        <h4 data-i18n="contact.col2.h">Redes</h4>
         <a href="https://www.linkedin.com/in/alvaro-quintanar-39921822b/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://www.instagram.com/alvaroquintanar/" target="_blank" rel="noopener">Instagram ↗</a>
         <a href="https://www.youtube.com/@alvaroquintanars" target="_blank" rel="noopener">YouTube ↗</a>
@@ -1097,16 +877,16 @@ Etapa II · Sistema digital</div>
         <a href="https://wa.me/34673374641" target="_blank" rel="noopener">WhatsApp ↗</a>
       </div>
       <div class="col reveal">
-        <h4>Ubicación &amp; disponibilidad</h4>
-        <p>España. Disponible para trabajo presencial, híbrido o remoto.</p>
-        <p style="margin-top:18px;color:rgba(241,237,228,.55);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Idiomas · Español · Inglés</p>
+        <h4 data-i18n="contact.col3.h">Ubicación &amp; disponibilidad</h4>
+        <p data-i18n="contact.col3.p1">España, disponible en remoto. Viajo cuando vale la pena.</p>
+        <p style="margin-top:18px;color:rgba(241,237,228,.55);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase" data-i18n="contact.col3.p2">Idiomas · Español · Inglés</p>
       </div>
     </div>
 
     <div class="contact-foot" style="margin-top:80px">
       <span>© 2026 Álvaro Quintanar Salinas</span>
-      <span class="center">Diseñado por Álvaro Quintanar · Abierto a oportunidades</span>
-      <span class="right">v.01 · Edition España</span>
+      <span class="center" data-i18n="contact.foot.center">Diseñado &amp; dirigido por Álvaro Quintanar · contrátame</span>
+      <span class="right" data-i18n="contact.foot.right">v.01 · Edition España</span>
     </div>
   </div>
 </section>
@@ -1238,230 +1018,163 @@ Etapa II · Sistema digital</div>
 </script>
 
 <script>
-// ============ i18n: AUTO ENGLISH ============
+// ============ i18n: MANUAL TOGGLE (ES default) + AUTO SUGGEST ============
 (function(){
-  function applyEnglish() {
-  const t = [
-    // NAV
-    ['.nav .links a[href="#about"]','About'],
-    ['.nav .links a[href="#direction"]','Content'],
-    ['.nav .links a[href="#work"]','Projects'],
-    ['.nav .links a[href="#experience"]','Experience'],
-    ['.nav .links a[href="#contact"]','Contact'],
-    ['.mobile-menu .m-link[href="#about"]','About'],
-    ['.mobile-menu .m-link[href="#direction"]','Content'],
-    ['.mobile-menu .m-link[href="#work"]','Projects'],
-    ['.mobile-menu .m-link[href="#skills"]','Skills'],
-    ['.mobile-menu .m-link[href="#experience"]','Experience'],
-    ['.mobile-menu .m-link[href="#education"]','Education'],
-    ['.mobile-menu .m-link[href="#contact"]','Contact'],
-    ['.m-foot','Álvaro Quintanar Salinas · Spain · 2026'],
+  const translationsEN = {
+    'nav.about':'About','nav.work':'Work','nav.experience':'Experience','nav.contact':'Contact',
+    'mobile.foot':'Álvaro Quintanar Salinas · Spain · 2026',
 
-    // HERO
-    ['.hero-meta-top > div:nth-child(1)','<span class="label">Content Creator · Storytelling · Creative Direction</span>'],
-    ['.hero-meta-top > div:nth-child(2)','<span class="label">Location</span>Spain'],
-    ['.hero-meta-top > div:nth-child(3)','<span class="label">Availability</span>Open to opportunities · 2026'],
-    ['.hero-headline h1','Creative<br/>content <span class="amp">&amp;</span><br/><span class="it">narrative</span><br/>that connects<br/>with<br/><em class="serif" style="font-style:italic;color:var(--olive)">people.</em>'],
-    ['.hero-sub','Content creator focused on narrative and creative direction. I\'m looking for a team where <em style="color:var(--burgundy);font-style:italic">content</em> isn\'t an extra, but part of the process.'],
-    ['.hero-cta .btn.dark','View projects <span class="arrow">→</span>'],
-    ['.hero-cta .btn:not(.dark)','Contact <span class="arrow">↗</span>'],
-    ['.pcaption','Álvaro Q.S. · Spain \'26'],
+    'hero.tagline':'<span class="label">Behavioral Sciences · Behavioral Economics · Strategic Consulting</span>',
+    'hero.location':'<span class="label">Location</span>Spain',
+    'hero.availability':'<span class="label">Availability</span>Projects &amp; collaborations, now 2026',
+    'hero.h1':'The science of<br/><span class="it">behavior</span><br/>applied to<br/>how people<br/><em class="serif" style="font-style:italic;color:var(--olive)">decide.</em>',
+    'hero.sub':'<em style="color:var(--burgundy);font-style:italic">Consumer behavior</em> specialist. I apply behavioral economics to turn the science of how people decide into <em style="color:var(--burgundy);font-style:italic">business strategy</em> with real impact.',
+    'hero.cta1':'View projects <span class="arrow">→</span>',
+    'hero.cta2':'Contact <span class="arrow">↗</span>',
+    'hero.caption':"Álvaro Q.S. · Spain '26",
 
-    // MARQUEE
-    ['.marquee-track > span:first-child','Content Creation\n✶\nStorytelling\n✶\nVisual Narrative\n✶\nCreative Direction\n✶\nContent Strategy\n✶\nBranding\n✶'],
-    ['.marquee-track > span:last-child','Content Creation <span class="star serif">✶</span> Storytelling <span class="star serif">✶</span> Visual Narrative <span class="star serif">✶</span> Creative Direction <span class="star serif">✶</span> Content Strategy <span class="star serif">✶</span> Branding <span class="star serif">✶</span> '],
+    'marquee.a':'Behavioral Economics\n✶\nDecision Architecture\n✶\nCognitive Biases\n✶\nMarket Research\n✶\nNudge Design\n✶\nConsumer Psychology\n✶',
+    'marquee.b':'Behavioral Economics <span class="star serif">✶</span> Decision Architecture <span class="star serif">✶</span> Cognitive Biases <span class="star serif">✶</span> Market Research <span class="star serif">✶</span> Nudge Design <span class="star serif">✶</span> Consumer Psychology <span class="star serif">✶</span> ',
 
-    // ABOUT
-    ['#about .sec-title','About <em>me</em>'],
-    ['#about .sec-meta','NATIONALITY\nMEXICO ⇢ SPAIN'],
-    ['.about-text p:nth-child(1)','<span class="drop">P</span>art of how I work comes from growing up between two cultures. I learned to observe differently, adapt quickly and find value both in <em>strategy</em> and visual sensitivity.'],
-    ['.about-text p:nth-child(2)','I started in digital marketing and quickly understood that numbers are the consequence of something deeper: an idea with tension, an image with memory, a tone that doesn\'t sound like a <em>brand</em>.'],
-    ['.about-text p:nth-child(3)','Today I define myself, above all, as a <em>content creator</em> who thinks in systems. I\'m obsessed with <em>storytelling</em>, aesthetics and how brands build their own meaning.'],
-    ['.about-text p:nth-child(4)','Content isn\'t where I arrive. It\'s where I <em>think</em>. I\'m looking for a team where that has value.'],
-    ['.about-bio-meta > div:nth-child(2) .k','Character'],
-    ['.about-bio-meta > div:nth-child(2) .v','Curious · Analytical · Introspective · Aesthetically sensitive'],
+    'about.title':'About <em>me</em>',
+    'about.meta':'NATIONALITY\nMEXICO ⇢ SPAIN',
+    'about.p1':'<span class="drop">T</span>he question that has always followed me is the same one: why do we choose what we choose? I started answering it through marketing, but I needed to go deeper. Today I\'m researching a <em>PhD in Consumer Behavior</em> at the University of Granada, working on perception, attention and decision mechanisms.',
+    'about.p2':'In parallel, I apply that behavioral lens to real projects: I\'ve designed funnels that reduce <em>cognitive friction</em>, tested hypotheses about attention and behavior in performance campaigns, and built systems from the psychology of the people receiving them. I think like a researcher and execute like a <em>strategist</em>.',
+    'about.bio1':'<span class="k">Profile</span><span class="v">Behavioral researcher · Applied strategist</span>',
+    'about.bio2':'<span class="k">Current studies</span><span class="v">PhD in Consumer Behavior · UGR · 2026</span>',
 
-    // EDUCATION
-    ['#education .sec-title','<em>Education</em>'],
-    ['#education .sec-meta','Three intellectual stages<br/>2019 · Ongoing'],
-    ['.edu-list .edu-row:nth-child(1) .yr','2019 · 2023\nStage I · Foundations'],
-    ['.edu-list .edu-row:nth-child(1) .title','Bachelor\'s in <em>Marketing</em>'],
-    ['.edu-list .edu-row:nth-child(1) .inst','EBC Business School · Aguascalientes, Mexico'],
-    ['.edu-list .edu-row:nth-child(1) .focus','<span>Consumer behavior</span><span>Communication</span><span>Brand</span><span>Perception</span>'],
-    ['.edu-list .edu-row:nth-child(1) .narr','The first conscious encounter with the question that still haunts me: why do we <em>choose</em> what we choose? This is where the craft began.'],
-    ['.edu-list .edu-row:nth-child(2) .yr','2023 · 2024\nStage II · Digital system'],
-    ['.edu-list .edu-row:nth-child(2) .title','Master\'s in <em>Digital Marketing</em>'],
-    ['.edu-list .edu-row:nth-child(2) .inst','ESIC Business &amp; Marketing School · Valencia, Spain'],
-    ['.edu-list .edu-row:nth-child(2) .focus','<span>Digital strategy</span><span>Performance</span><span>Systems</span><span>Content</span><span>Ecosystem</span>'],
-    ['.edu-list .edu-row:nth-child(2) .narr','The leap from concept to <em>system</em>: I learned to think of the digital ecosystem as infrastructure (funnels, data, content, platforms) and to execute with discipline.'],
-    ['.edu-list .edu-row:nth-child(3) .yr','2026 · Ongoing<span class="stage">Stage III · Depth</span>'],
-    ['.edu-list .edu-row:nth-child(3) .title','PhD in <em>Consumer Behavior</em>'],
-    ['.edu-list .edu-row:nth-child(3) .inst','University of Granada · Granada, Spain'],
-    ['.edu-list .edu-row:nth-child(3) .focus','<span>Human perception</span><span>Attention</span><span>Consumer psychology</span><span>Decision</span><span>Digital stimulus</span><span>Aesthetics</span>'],
-    ['.edu-list .edu-row:nth-child(3) .narr','A deep exploration of how people <em>perceive, feel and decide</em> in response to visual and digital stimuli. I research what marketing intuits and psychology explains.'],
-    ['.edu-foot span:nth-child(1)','Thesis in development · 2026'],
-    ['.edu-foot span:nth-child(2)','Active research'],
-    ['.edu-foot span:nth-child(3)','Granada · Remote'],
+    'edu.title':'<em>Education</em>',
+    'edu.meta':'Three intellectual stages<br/>2019 · Ongoing',
+    'edu.yr1':'2019 · 2023\nStage I · Fundamentals',
+    'edu.title1':'Bachelor\'s in <em>Marketing</em>',
+    'edu.inst1':'EBC Escuela Bancaria y Comercial · Aguascalientes, Mexico',
+    'edu.focus1':'<span>Consumer behavior</span><span>Communication</span><span>Brand</span><span>Perception</span>',
+    'edu.narr1':'The first conscious encounter with the question that still follows me: why do we <em>choose</em> what we choose? This is where the craft began.',
+    'edu.yr2':'2023 · 2024\nStage II · Digital systems',
+    'edu.title2':'Master\'s in <em>Digital Marketing</em>',
+    'edu.inst2':'ESIC Business &amp; Marketing School · Valencia, Spain',
+    'edu.focus2':'<span>Digital strategy</span><span>Performance</span><span>Systems</span><span>Content</span><span>Ecosystem</span>',
+    'edu.narr2':'The leap from concept to <em>system</em>: I learned to think of the digital ecosystem as infrastructure (funnels, data, content, platforms) and to execute with discipline.',
+    'edu.yr3':'2026 · Ongoing<span class="stage">Stage III · Depth</span>',
+    'edu.title3':'PhD in <em>Consumer Behavior</em>',
+    'edu.inst3':'University of Granada · Granada, Spain',
+    'edu.focus3':'<span>Human perception</span><span>Attention</span><span>Consumer psychology</span><span>Decision-making</span><span>Digital stimuli</span><span>Aesthetics</span>',
+    'edu.narr3':'Active research into how people perceive, feel and decide when facing digital and consumption stimuli. I apply <em>Behavioral Economics</em> frameworks and cognitive psychology. Quantitative and qualitative methodology.',
+    'edu.foot':'<span>Thesis in progress · 2026</span><span class="pulse">Active research</span><span>Granada · Remote</span>',
 
-    // PROJECTS
-    ['#work .sec-title','Featured <em>Projects</em>'],
-    ['#work .sec-meta','Selection 2021 · 2026<br/>Five cases'],
-    // P1
-    ['.project:nth-child(1) .p-cat','Creative Direction / Personal Brand / Narrative'],
-    ['.project:nth-child(1) .p-title','Personal creative <em>development</em>'],
-    ['.project:nth-child(1) .p-overview','Not a project. It\'s the laboratory where creative systems are developed before applying them to clients. The space where intuition becomes method.'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(1) h5','Laboratory'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(1) p','Own content production on YouTube, TikTok and written formats. Each piece has intentional direction: narrative arc, aesthetic decision, hypothesis about attention.'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(2) h5','Methodology'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(2) p','Personal content works as <em style="color:var(--burgundy)">creative R&amp;D</em>. What is tested here in narrative, tone or visual device is what is later applied with more confidence in a brand context.'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(3) h5','System'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(3) p','Each platform has its own language and pace. YouTube for depth and idea-building; TikTok for tension, synthesis and short attention culture; writing to think out loud.'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(4) h5','Result'],
-    ['.project:nth-child(1) .p-blocks .blk:nth-child(4) p','A library of tested creative resources, a recognizable personal voice and an iteration process that no longer depends on inspiration, but on systematic practice.'],
-    ['.project:nth-child(1) .p-foot span','Role · Author + Creative Director'],
-    // P2
-    ['.project:nth-child(2) .p-cat','Content Strategy / Creative Direction / Systems'],
-    ['.project:nth-child(2) .p-overview','Comprehensive communication, systems and strategic direction work for an educational institution that needed to modernize both its perception and its digital infrastructure.'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(1) h5','Problem'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(1) p','Communication was inconsistent and the commercial process was fragmented. Leads arrived from multiple channels without a clear follow-up structure, generating friction and lost opportunities.'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(2) h5','Insight'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(2) p','Institutional perception depends not only on image, but also on experience. A modern school needs to communicate coherence in both narrative and systems.'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(3) h5','Strategy'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(3) p','Building a connected ecosystem between content, website, CRM and commercial process. A more efficient, automated digital funnel aligned with the institutional narrative <em style="color:var(--burgundy)">Happy &amp; Well Prepared</em>.'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(4) h5','Execution'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(4) p','Social media management, campaign direction, strategic website redesign, CRM implementation and integration, process automation, lead funnel structuring and commercial follow-up optimization.'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(5) h5','Result'],
-    ['.project:nth-child(2) .p-blocks .blk:nth-child(5) p','A more efficient, centralized and scalable system. Improved lead organization, reduced friction in the commercial process and a much more modern, coherent institutional communication ready to grow.'],
-    ['.project:nth-child(2) .p-foot span','Role · Strategy + Systems + Creative Direction'],
-    // P3
-    ['.project:nth-child(3) .p-cat','Visual Production / Web Development / Communication'],
-    ['.project:nth-child(3) .p-overview','A stage of multidisciplinary exploration where creativity stopped feeling abstract and began to become real execution.'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(1) h5','Problem'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(1) p','Small and medium businesses needed to better communicate their identity, professionalize their presence and build visual pieces capable of generating trust and perception.'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(2) h5','Insight'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(2) p','Creativity doesn\'t live only in ideas. It lives in the ability to adapt, solve and build real solutions from different languages: <em style="color:var(--burgundy)">video, design, communication and technology</em>.'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(3) h5','Strategy'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(3) p','Flexible visual and digital solutions for different types of clients: restaurants, wineries, political campaigns, events and local brands. Each project required quickly understanding the context and translating it into effective visual communication.'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(4) h5','Execution'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(4) p','Institutional and television audiovisual production, drone filming, video editing, web development, visual design and client management. Audiovisual campaigns in southern Mexico and e-commerce development for a winery.'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(5) h5','Result'],
-    ['.project:nth-child(3) .p-blocks .blk:nth-child(5) p','A stage that transformed the perception of the work and one\'s own capabilities. Versatility as a creative advantage, relationships as part of the craft and courage as a necessary condition for moving forward.'],
-    ['.project:nth-child(3) .p-foot span','Role · Visual Production + Web Development + Communication'],
-    // P4
-    ['.project:nth-child(4) .p-cat','Performance Marketing / Creative Direction / Creative Testing'],
-    ['.project:nth-child(4) .p-overview','Urban mobility and design brand. The challenge wasn\'t selling a helmet: it was making a technical product feel like a cultural choice.'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(1) h5','Problem'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(1) p','ROAS under constant pressure. Conventional creatives explained the product but didn\'t make people desire it. Conversion depended on who understood it, not who felt it.'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(2) h5','Insight'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(2) p','Creativity without a testing system is noise. With one, it becomes data. The product already had the right brief; what was missing was <em style="color:var(--burgundy)">learning velocity</em>.'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(3) h5','Strategy'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(3) p','Structured creative testing program in weekly cycles: declared hypotheses, isolated variables, qualitative reading on real data. Every piece was a question with a measurable answer.'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(4) h5','Execution'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(4) p','Content production and direction for TikTok Ads and Meta Ads. Statics, carousels, video concepts and hooks centered on visual tension. Continuous iteration on what the data validated.'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(5) h5','Result'],
-    ['.project:nth-child(4) .p-blocks .blk:nth-child(5) p','Testing system with real learning velocity. Improved CTR, reduced CPA, increased sales and opening of a new distribution channel toward the United States.'],
-    ['.project:nth-child(4) .p-foot span','Role · Performance + Creative Direction'],
-    // P5
-    ['.project:nth-child(5) .p-cat','E-commerce / Amazon / Digital Operations'],
-    ['.project:nth-child(5) .p-overview','Complete digital operation within the Amazon ecosystem. Work where creativity is subordinated to infrastructure, and infrastructure is, in itself, the product.'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(1) h5','Problem'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(1) p','Scattered operation with no centralized vision of the sales cycle. Advertising worked in isolation, with no real connection to catalog performance or customer experience.'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(2) h5','Insight'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(2) p','In e-commerce, aesthetics without operations doesn\'t sell. Real performance lives in the alignment between catalog, advertising and data. When those <em style="color:var(--burgundy)">systems talk to each other</em>, the result changes.'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(3) h5','Strategy'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(3) p','Integration of Amazon Seller Central flows with an end-to-end optimization vision. Amazon Ads as a decision engine, not managed spending.'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(4) h5','Execution'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(4) p','Seller Central management, order control, Amazon Ads campaign analysis and optimization, communication segmentation and continuous data reading to iterate catalog and offer.'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(5) h5','Result'],
-    ['.project:nth-child(5) .p-blocks .blk:nth-child(5) p','Cleaner processes, shorter iteration cycles and less friction between operation and conversion. A structure better prepared to scale without losing control.'],
-    ['.project:nth-child(5) .p-foot span','Role · E-commerce + Systems + Digital Operations'],
+    'work.title':'Featured <em>projects</em>',
+    'work.meta':'Selection 2024 · 2025<br/>Three cases',
 
-    // EXPERIENCE
-    ['#experience .sec-title','<em>Experience</em>'],
-    ['#experience .sec-meta','Four stages<br/>One evolution'],
-    ['.exp-timeline .exp-entry:nth-child(1) .ee-role','Performance &amp; Creative Testing'],
-    ['.exp-timeline .exp-entry:nth-child(1) .ee-narr','Where creativity faces the numbers. I learned that without a hypothesis, creativity is decoration. And that without <em>aesthetics</em>, strategy doesn\'t convert.'],
-    ['.exp-timeline .exp-entry:nth-child(2) .ee-role','Marketing &amp; Content Strategy'],
-    ['.exp-timeline .exp-entry:nth-child(2) .ee-narr','From executing to <em>leading</em>. I built the content system and visual language the institution still uses.'],
-    ['.exp-timeline .exp-entry:nth-child(3) .ee-role','E-commerce &amp; Digital Operations'],
-    ['.exp-timeline .exp-entry:nth-child(3) .ee-narr','My school of <em>infrastructure</em>. I learned that every great idea needs an operating system behind it. Without operations, aesthetics collapses.'],
-    ['.exp-timeline .exp-entry:nth-child(4) .ee-role','Visual Narrative &amp; Creative Production'],
-    ['.exp-timeline .exp-entry:nth-child(4) .ee-narr','The first real-world studio. Drone, video, web, design: a visual vocabulary built from <em>execution</em> and error.'],
+    'work.p1.cat':'Behavioral Design / Decision Architecture',
+    'work.p1.overview':'A behavioral problem, not a communication one: parents were arriving but not making the decision to enroll. I identified the cognitive barriers and redesigned the journey.',
+    'work.p1.blk1':'<h5>Behavioral insight</h5><p>Institutional trust is built through cognitive coherence. When tone, digital environment and sales process speak the same language, friction drops and conversion rises. A perceived-quality signaling effect.</p>',
+    'work.p1.blk2':'<h5>Intervention</h5><p>Ecosystem design as decision architecture: every touchpoint reduced uncertainty. CRM as a system of behavioral support throughout the enrollment process.</p>',
+    'work.p1.blk3':'<h5>Result</h5><p>Sustained growth in qualified lead capture and reduced friction at closing. The system is still in use today.</p>',
+    'work.p1.foot':'Role · Behavioral Design + Decision Architecture',
 
-    // SKILLS
-    ['#skills .sec-title','Skills <em>&amp; systems</em>'],
-    ['.skills-list .sl-row:nth-child(1) .sl-name','Creative Direction'],
-    ['.skills-list .sl-row:nth-child(1) .sl-cat','Direction'],
-    ['.skills-list .sl-row:nth-child(2) .sl-cat','Narrative'],
-    ['.skills-list .sl-row:nth-child(3) .sl-name','Video recording & editing'],
-    ['.skills-list .sl-row:nth-child(3) .sl-cat','Video'],
-    ['.skills-list .sl-row:nth-child(4) .sl-name','Content Strategy'],
-    ['.skills-list .sl-row:nth-child(4) .sl-cat','Strategy'],
-    ['.skills-list .sl-row:nth-child(6) .sl-name','Visual Communication'],
-    ['.skills-list .sl-row:nth-child(6) .sl-cat','Visual'],
-    ['.skills-list .sl-row:nth-child(7) .sl-cat','Identity'],
-    ['.skills-list .sl-row:nth-child(8) .sl-name','Social strategy'],
-    ['.skills-list .sl-row:nth-child(8) .sl-cat','Social'],
-    ['.skills-list .sl-row:nth-child(9) .sl-name','Web creation & optimization'],
-    ['.skills-list .sl-row:nth-child(9) .sl-cat','Web'],
-    ['.skills-list .sl-row:nth-child(10) .sl-name','Ads (Meta, TikTok, Amazon, Google)'],
-    ['.skills-list .sl-row:nth-child(10) .sl-cat','Performance'],
-    ['.skills-list .sl-row:nth-child(11) .sl-name','Campaign strategy'],
-    ['.skills-list .sl-row:nth-child(11) .sl-cat','Operations'],
-    ['.skills-list .sl-row:nth-child(12) .sl-cat','Structure'],
-    ['.skills-list .sl-row:nth-child(13) .sl-cat','Relationship'],
-    ['.skills-list .sl-row:nth-child(14) .sl-cat','Commerce'],
+    'work.p2.cat':'Behavioral Creative Testing / Cognitive Biases',
+    'work.p2.overview':'The gap between stated attitudes toward sustainable mobility and actual purchase behavior. Behavioral dissonance applied to performance marketing.',
+    'work.p2.blk1':'<h5>Behavioral insight</h5><p>Creatives were activating System 2 (rational evaluation) but never reaching System 1. The hook needed to trigger aspiration and social identity, not functional arguments.</p>',
+    'work.p2.blk2':'<h5>Intervention</h5><p>Structured testing with isolated behavioral hypotheses: identity frame vs. utility frame. Variables: emotional hook, social proof, urgency, visual format.</p>',
+    'work.p2.blk3':'<h5>Result</h5><p>The identity hypothesis beat the functional one. Improved CTR, reduced CPA, and the opening of a new channel into the US.</p>',
+    'work.p2.foot':'Role · Behavioral Research + Behavioral Testing',
 
-    // TOOLS
-    ['.tools-label','Tools &amp; platforms'],
+    'work.p3.cat':'Purchase Architecture / Online Decision-Making',
+    'work.p3.overview':'How catalog organization, price framing and offer structure shape purchase behavior before the user consciously thinks about it.',
+    'work.p3.blk1':'<h5>Behavioral insight</h5><p>The paradox of choice and the anchoring effect. In e-commerce, fewer, well-organized options convert better than a wide catalog with no perceptual hierarchy.</p>',
+    'work.p3.blk2':'<h5>Intervention</h5><p>Redesign of the catalog hierarchy and optimization of price framing. Amazon Ads used as a source of behavioral data to iterate.</p>',
+    'work.p3.blk3':'<h5>Result</h5><p>Improved advertising efficiency and increased sales with lower spend.</p>',
+    'work.p3.foot':'Role · Decision Architecture + Behavioral Analysis',
 
-    // DIRECTION
-    ['#direction .sec-title','Content <em>&amp; creativity</em>'],
-    ['#direction .sec-meta','The laboratory<br/>Before the brand'],
-    ['.dir-statement','The laboratory where I test ideas before taking them to <em>brand</em>. Vlogs, visual essays, my own narrative.'],
-    ['.dir-aside','It\'s not content for content\'s sake. Every piece has intention: a tone to test, a structure to validate, an idea I\'m not yet sure works.'],
-    ['.direction > p','Some examples'],
+    'exp.title':'<em>Experience</em>',
+    'exp.meta':'Four stages<br/>One evolution',
+    'exp.narr1':'I designed <em>behavioral hypotheses</em>, isolating variables of attention and behavior. Actual behavior frequently contradicts <em>stated intent</em>.',
+    'exp.role2':'Behavioral Design &amp; Decision Architecture',
+    'exp.narr2':'I identified <em>cognitive barriers</em> in the enrollment process, reduced friction and built signals of perceived <em>institutional trust</em>.',
+    'exp.role3':'Purchase Architecture &amp; Behavioral Analysis',
+    'exp.narr3':'<em>Offer architecture</em> shapes behavior before the user consciously decides. Ads data as the primary source of insight.',
+    'exp.role4':'Communication &amp; Strategic Production',
+    'exp.narr4':'My first real contact with brand communication: every visual and narrative decision is a <em>hypothesis about perception</em>.',
 
-    // CONTACT
-    ['.contact-meta span:nth-child(1)','§ 08 · Contact'],
-    ['.contact-meta span:nth-child(3)','Open to opportunities · 2026'],
-    ['.contact-headline','Ready to <em>join.</em>'],
-    ['.contact-grid .col:nth-child(1) h4','Write to me directly'],
-    ['.contact-grid .col:nth-child(1) p','I respond within 48h. I\'m looking to join a content team where I can contribute in narrative, strategy and creative direction.'],
-    ['.contact-grid .col:nth-child(2) h4','Social'],
-    ['.contact-grid .col:nth-child(3) h4','Work &amp; location'],
-    ['.contact-grid .col:nth-child(3) p:nth-child(2)','Spain. Available for on-site, hybrid or remote work.'],
-    ['.contact-grid .col:nth-child(3) p:nth-child(3)','Languages · Spanish · English'],
-    ['.contact-foot span:nth-child(1)','© 2026 Álvaro Quintanar Salinas'],
-    ['.contact-foot .center','Designed by Álvaro Quintanar · Open to opportunities'],
-    ['.contact-foot .right','v.01 · Spain Edition'],
-  ];
+    'skills.title':'Behavioral <em>capabilities</em>',
+    'skills.name1':'Behavioral Economics',
+    'skills.cat2':'Intervention','skills.name2':'Decision architecture &amp; nudge design',
+    'skills.cat3':'Cognitive','skills.name3':'Cognitive bias &amp; heuristics analysis',
+    'skills.cat4':'Methodology','skills.name4':'COM-B and EAST frameworks',
+    'skills.name5':'Qualitative &amp; quantitative research',
+    'skills.cat6':'Analysis','skills.name6':'Insight synthesis &amp; hypothesis formulation',
+    'skills.name7':'Desk research &amp; benchmarking',
+    'skills.name8':'Customer journey &amp; friction mapping',
+    'skills.name10':'Communicating insights to executive stakeholders',
+    'skills.cat11':'Strategy','skills.name11':'Business strategy through a behavioral lens',
+    'skills.cat12':'Business','skills.name12':'End-to-end project vision',
+    'skills.cat13':'Systems','skills.name13':'CRM &amp; nurture systems',
+    'skills.name14':'Behavioral data analysis',
 
-    t.forEach(([sel, html]) => {
-      document.querySelectorAll(sel).forEach(el => { el.innerHTML = html; });
+    'contact.meta1':'§ 07 · Contact',
+    'contact.meta3':'Availability · Now 2026',
+    'contact.headline':'Ready to <em>contribute.</em>',
+    'contact.col1.h':'Email me directly',
+    'contact.col1.p':'I respond within 48h. I\'m looking to join a consulting team where I can apply behavioral economics to turn the understanding of human behavior into business strategy.',
+    'contact.col2.h':'Social',
+    'contact.col3.h':'Location &amp; availability',
+    'contact.col3.p1':"Spain, available remotely. I travel when it's worth it.",
+    'contact.col3.p2':'Languages · Spanish · English',
+    'contact.foot.center':'Designed &amp; directed by Álvaro Quintanar · hire me',
+    'contact.foot.right':'v.01 · Spain Edition'
+  };
+
+  const i18nEls = Array.from(document.querySelectorAll('[data-i18n]'));
+  const originalES = {};
+  i18nEls.forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(!(key in originalES)) originalES[key] = el.innerHTML;
+  });
+
+  const langToggle = document.getElementById('langToggle');
+  const hamburgerBtn = document.getElementById('hamburger');
+  const metaTitleES = 'Álvaro Quintanar · Behavioral Sciences';
+  const metaTitleEN = 'Álvaro Quintanar Salinas · Behavioral Sciences Consultant';
+  let currentLang = 'es';
+
+  function applyLang(lang){
+    i18nEls.forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const esVal = originalES[key];
+      const enVal = translationsEN[key];
+      el.innerHTML = lang === 'es' ? esVal : (enVal !== undefined ? enVal : esVal);
     });
-
-    document.documentElement.lang = 'en';
-    document.title = 'Álvaro Quintanar Salinas · Content Creator, Storytelling & Creative Direction';
-    const hbg = document.getElementById('hamburger');
-    if (hbg) hbg.setAttribute('aria-label', 'Menu');
+    document.documentElement.lang = lang;
+    document.title = lang === 'es' ? metaTitleES : metaTitleEN;
+    if(hamburgerBtn) hamburgerBtn.setAttribute('aria-label', lang === 'es' ? 'Menú' : 'Menu');
+    if(langToggle){
+      langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+      langToggle.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a Español');
+    }
+    currentLang = lang;
+    try{ localStorage.setItem('aq-lang', lang); }catch(e){}
   }
 
-  // 1. Instant check: browser language or cached geo result
-  const cached = localStorage.getItem('aq-lang');
+  if(langToggle){
+    langToggle.addEventListener('click', ()=> applyLang(currentLang === 'es' ? 'en' : 'es'));
+  }
+
+  // 1. Instant check: manual choice cached, or browser language
+  let cached = null;
+  try{ cached = localStorage.getItem('aq-lang'); }catch(e){}
   const browserEn = (navigator.language || '').toLowerCase().startsWith('en');
 
   if (cached === 'en' || (!cached && browserEn)) {
-    applyEnglish();
+    applyLang('en');
   }
 
-  // 2. Geo check via API (only on first visit, not cached yet)
+  // 2. Geo suggestion via API (only on first visit, not cached yet — never overrides a manual choice)
   if (!cached) {
     fetch('/api/lang', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => {
-        localStorage.setItem('aq-lang', data.lang);
-        if (data.lang === 'en' && !browserEn) applyEnglish();
+        if (data.lang === 'en' && !browserEn) applyLang('en');
+        try{ localStorage.setItem('aq-lang', data.lang); }catch(e){}
       })
       .catch(() => {});
   }
