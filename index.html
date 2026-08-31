@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://alvaroquintanar.com/">
 <meta property="og:title" content="Álvaro Quintanar Salinas · Growth Marketing & Paid Media Strategist">
 <meta property="og:description" content="Growth marketer y estratega de paid media, GTM y contenido, con metodología basada en comportamiento del consumidor. Portfolio de campañas y resultados.">
-<meta property="og:image" content="https://alvaroquintanar.com/images/Foto principal.png">
+<meta property="og:image" content="https://alvaroquintanar.com/images/Boceto Artistico.jpeg">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Álvaro Quintanar Salinas">
 
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Álvaro Quintanar Salinas · Growth Marketing & Paid Media Strategist">
 <meta name="twitter:description" content="Growth marketer y estratega de paid media, GTM y contenido, con metodología basada en comportamiento del consumidor. Portfolio de campañas y resultados.">
-<meta name="twitter:image" content="https://alvaroquintanar.com/images/Foto principal.png">
+<meta name="twitter:image" content="https://alvaroquintanar.com/images/Boceto Artistico.jpeg">
 
 <!-- Schema.org Person -->
 <script type="application/ld+json">
@@ -35,7 +35,7 @@
   "name": "Álvaro Quintanar Salinas",
   "alternateName": "Alvaro Quintanar",
   "url": "https://alvaroquintanar.com",
-  "image": "https://alvaroquintanar.com/images/Foto principal.png",
+  "image": "https://alvaroquintanar.com/images/Boceto Artistico.jpeg",
   "jobTitle": "Growth Marketing & Paid Media Strategist",
   "description": "Growth marketer y estratega de paid media, Go-to-Market y contenido, con formación en comportamiento del consumidor aplicado al marketing.",
   "knowsAbout": ["Growth Marketing", "Paid Media", "Performance Marketing", "Go-to-Market Strategy", "Content Strategy", "CRO", "Behavioral Economics", "Meta Ads", "TikTok Ads", "Google Ads"],
@@ -96,6 +96,11 @@
   .clock{display:inline-flex;gap:6px;align-items:center}
   .clock::before{content:"";width:6px;height:6px;border-radius:50%;background:#c8a39a;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .lang-toggle{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:inherit;background:transparent;border:1px solid currentColor;border-radius:999px;padding:5px 11px;cursor:pointer;transition:background .3s,color .3s;line-height:1}
+  .lang-toggle:hover{background:var(--ink);color:var(--bg)}
+  .nav.scrolled .lang-toggle:hover{background:var(--bg);color:var(--ink)}
+  .mobile-menu .lang-toggle{margin-top:40px;align-self:flex-start}
 
   /* PAGE PADDING */
   section{padding:0 32px;position:relative}
@@ -497,6 +502,7 @@
   <div class="meta">
     <span class="clock">ESP <span id="time">—</span></span>
     <span>2026 / EST.</span>
+    <button class="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -513,6 +519,7 @@
     <li><a href="#direction" class="m-link">Contenido</a></li>
     <li><a href="#contact" class="m-link">Contacto</a></li>
   </ul>
+  <button class="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
   <div class="m-foot">Álvaro Quintanar Salinas · España · 2026</div>
 </div>
 
@@ -532,7 +539,7 @@
 
     <div class="hero-bottom">
       <p class="hero-sub reveal">Diseño y ejecuto estrategias de <em style="color:var(--burgundy);font-style:italic">growth marketing</em>, paid media y go-to-market, con base metodológica en comportamiento del consumidor (doctorado en curso). No adivino qué funciona: lo testeo.</p>
-      <img class="hero-portrait-mobile" src="images/Foto principal.png" alt="Álvaro Quintanar">
+      <img class="hero-portrait-mobile" src="images/Boceto Artistico.jpeg" alt="Álvaro Quintanar">
       <div class="hero-cta reveal">
         <a href="#work" class="btn dark">Ver proyectos <span class="arrow">→</span></a>
         <a href="https://www.linkedin.com/in/alvaro-quintanar-39921822b/" target="_blank" rel="noopener" class="btn">LinkedIn <span class="arrow">↗</span></a>
@@ -541,7 +548,7 @@
   </div>
 
   <div class="hero-portrait reveal">
-    <img src="images/Foto principal.png" alt="Álvaro Quintanar" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <img src="images/Boceto Artistico.jpeg" alt="Álvaro Quintanar" style="width:100%;height:100%;object-fit:cover;display:block;">
     <span class="pcaption">Álvaro Q.S. · España '26</span>
   </div>
 </section>
@@ -1237,7 +1244,6 @@ Etapa II · Sistema digital</div>
 <script>
 // ============ i18n: AUTO ENGLISH ============
 (function(){
-  function applyEnglish() {
   const t = [
     // NAV
     ['.nav .links a[href="#about"]','About'],
@@ -1433,6 +1439,7 @@ Etapa II · Sistema digital</div>
     ['.contact-foot .right','v.01 · Spain Edition'],
   ];
 
+  function applyEnglish() {
     t.forEach(([sel, html]) => {
       document.querySelectorAll(sel).forEach(el => { el.innerHTML = html; });
     });
@@ -1441,23 +1448,63 @@ Etapa II · Sistema digital</div>
     document.title = 'Álvaro Quintanar Salinas · Growth Marketing, Paid Media & GTM Strategy';
     const hbg = document.getElementById('hamburger');
     if (hbg) hbg.setAttribute('aria-label', 'Menu');
+    setToggleLabel('en');
   }
 
-  // 1. Instant check: browser language or cached geo result
+  const ES_TITLE = document.title;
+
+  // Capture the original Spanish HTML of every translated element before
+  // anything is touched, so we can switch back to it later.
+  const originals = [];
+  t.forEach(([sel]) => {
+    document.querySelectorAll(sel).forEach(el => {
+      originals.push([el, el.innerHTML]);
+    });
+  });
+
+  function applySpanish() {
+    originals.forEach(([el, html]) => { el.innerHTML = html; });
+    document.documentElement.lang = 'es';
+    document.title = ES_TITLE;
+    const hbg = document.getElementById('hamburger');
+    if (hbg) hbg.setAttribute('aria-label', 'Menú');
+    setToggleLabel('es');
+  }
+
+  function setToggleLabel(lang) {
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+      btn.textContent = lang === 'en' ? 'ES' : 'EN';
+    });
+  }
+
+  function setLang(lang, persist) {
+    if (lang === 'en') applyEnglish(); else applySpanish();
+    if (persist) localStorage.setItem('aq-lang', lang);
+  }
+
+  document.querySelectorAll('.lang-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.lang === 'en' ? 'en' : 'es';
+      setLang(current === 'en' ? 'es' : 'en', true);
+    });
+  });
+
+  // 1. Instant check: manual choice (cached), or browser language on first visit
   const cached = localStorage.getItem('aq-lang');
   const browserEn = (navigator.language || '').toLowerCase().startsWith('en');
 
   if (cached === 'en' || (!cached && browserEn)) {
-    applyEnglish();
+    setLang('en', false);
   }
 
-  // 2. Geo check via API (only on first visit, not cached yet)
+  // 2. Geo check via API (only on first visit, not cached yet, and only as a
+  // suggestion: a manual click above always wins and is never overridden)
   if (!cached) {
     fetch('/api/lang', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => {
-        localStorage.setItem('aq-lang', data.lang);
-        if (data.lang === 'en' && !browserEn) applyEnglish();
+        if (!localStorage.getItem('aq-lang')) localStorage.setItem('aq-lang', data.lang);
+        if (data.lang === 'en' && !browserEn && document.documentElement.lang !== 'en') setLang('en', false);
       })
       .catch(() => {});
   }
