@@ -22,11 +22,13 @@
 <style>html,body{margin:0;height:100%;background:#e9e6e1;}</style>
 <script src="assets/vendor/react.production.min.js"></script>
 <script src="assets/vendor/react-dom.production.min.js"></script>
+<script>window.__resources = {}; /* la plantilla ya va en esta página: evita que el runtime la vuelva a descargar */</script>
 <script src="assets/vendor/dc-runtime.js"></script>
 <noscript><p style="font:15px/1.5 Helvetica,Arial,sans-serif;padding:24px;">Alvaro Quintanar Salinas · Estrategia creativa, contenido, video y web · <a href="mailto:alvaroqs9999@gmail.com">alvaroqs9999@gmail.com</a></p></noscript>
 </head>
 <body>
 
+<template id="v-desktop">
 <x-dc>
 <helmet>
 <style>
@@ -883,6 +885,931 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+</template>
+
+<template id="v-mobile">
+<x-dc>
+<helmet>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#e9e6e1;-webkit-font-smoothing:antialiased;}
+a{color:#1c1b19;text-decoration:none;} a:hover{color:#6b6862;}
+</style>
+</helmet>
+<div style="position:fixed; inset:0; overflow:hidden; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1c1b19;">
+
+  <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%, #ece9e2 0%, #e4e0d7 60%, #dbd6cb 100%);"></div>
+  <img src="assets/fondo.jpg" alt="" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 32%; transform:scale(1.06); filter:blur(8px); pointer-events:none; user-select:none;">
+  <div style="position:absolute; inset:0; background:rgba(245,243,239,0.08);"></div>
+
+  <div style="position:absolute; top:0; left:0; right:0; height:30px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; background:rgba(255,255,255,0.28); backdrop-filter:blur(24px) saturate(1.6); -webkit-backdrop-filter:blur(24px) saturate(1.6); font-size:13px; z-index:900; user-select:none;">
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div style="width:11px; height:11px; border-radius:50%; background:#1c1b19;"></div>
+      <div style="font-weight:700;">Alvaro Q.S.</div>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; align-items:center; gap:18px;">
+      <div sc-camel-on-click="{{ menu.projects }}" style="cursor:pointer;" style-hover="opacity:.6;">Estrategia</div>
+      <div sc-camel-on-click="{{ menu.lab }}" style="cursor:pointer;" style-hover="opacity:.6;">Contenido</div>
+      <div sc-camel-on-click="{{ menu.videos }}" style="cursor:pointer;" style-hover="opacity:.6;">Video</div>
+      <div sc-camel-on-click="{{ menu.web }}" style="cursor:pointer;" style-hover="opacity:.6;">Web</div>
+      </div>
+      </sc-if>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px; font-variant-numeric:tabular-nums;">
+      <div style="display:flex; align-items:center; gap:4px; font-size:11px;">
+        <div sc-camel-on-click="{{ setEs }}" style="cursor:pointer; opacity:{{ langEs.op }}; font-weight:{{ langEs.fw }};">ES</div>
+        <div style="opacity:.35;">/</div>
+        <div sc-camel-on-click="{{ setEn }}" style="cursor:pointer; opacity:{{ langEn.op }}; font-weight:{{ langEn.fw }};">EN</div>
+      </div>
+      <div sc-camel-on-mouse-enter="{{ tipOn.origin }}" sc-camel-on-mouse-leave="{{ tipOff }}" style="position:relative; font-size:11px; cursor:default;">MX ⇢ ES
+        <sc-if value="{{ tip.origin }}"><div style="position:absolute; top:24px; right:0; white-space:nowrap; background:rgba(28,27,25,0.88); color:#fff; font-size:12px; padding:7px 10px; border-radius:7px;">Doble nacionalidad</div></sc-if>
+      </div>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <div sc-camel-on-mouse-enter="{{ tipOn.loc }}" sc-camel-on-mouse-leave="{{ tipOff }}" style="position:relative; font-size:11px; cursor:default;">40.42°N
+        <sc-if value="{{ tip.loc }}"><div style="position:absolute; top:24px; right:0; white-space:nowrap; background:rgba(28,27,25,0.88); color:#fff; font-size:12px; padding:7px 10px; border-radius:7px;">Madrid · remoto o híbrido</div></sc-if>
+      </div>
+      <div sc-camel-on-mouse-enter="{{ tipOn.signal }}" sc-camel-on-mouse-leave="{{ tipOff }}" style="position:relative; display:flex; align-items:flex-end; gap:2px; height:12px; cursor:default;">
+        <div style="width:3px; height:4px; background:#1c1b19; border-radius:1px;"></div>
+        <div style="width:3px; height:6px; background:#1c1b19; border-radius:1px;"></div>
+        <div style="width:3px; height:9px; background:#1c1b19; border-radius:1px;"></div>
+        <div style="width:3px; height:12px; background:rgba(28,27,25,0.3); border-radius:1px;"></div>
+        <sc-if value="{{ tip.signal }}"><div style="position:absolute; top:24px; right:0; white-space:nowrap; background:rgba(28,27,25,0.88); color:#fff; font-size:12px; padding:7px 10px; border-radius:7px;">Español nativo · Inglés C1</div></sc-if>
+      </div>
+      </sc-if>
+      <div sc-camel-on-mouse-enter="{{ tipOn.avail }}" sc-camel-on-mouse-leave="{{ tipOff }}" style="position:relative; display:flex; align-items:center; cursor:default;">
+        <div style="width:7px; height:7px; border-radius:50%; background:oklch(0.72 0.17 145); box-shadow:0 0 0 3px oklch(0.72 0.17 145 / 0.25);"></div>
+        <sc-if value="{{ tip.avail }}"><div style="position:absolute; top:24px; right:0; white-space:nowrap; background:rgba(28,27,25,0.88); color:#fff; font-size:12px; padding:7px 10px; border-radius:7px;">Abierto a incorporación · 2026</div></sc-if>
+      </div>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <div sc-camel-on-mouse-enter="{{ tipOn.phd }}" sc-camel-on-mouse-leave="{{ tipOff }}" style="position:relative; display:flex; align-items:center; gap:5px; cursor:default;">
+        <div style="font-size:10px; font-weight:500;">PhD</div>
+        <div style="position:relative; width:22px; height:11px; border:1.2px solid #1c1b19; border-radius:3px; padding:1px; box-sizing:border-box;">
+          <div style="width:50%; height:100%; background:#1c1b19; border-radius:1px;"></div>
+          <div style="position:absolute; right:-4px; top:2.5px; width:2px; height:4px; background:#1c1b19; border-radius:0 1px 1px 0;"></div>
+        </div>
+        <sc-if value="{{ tip.phd }}"><div style="position:absolute; top:24px; right:0; white-space:nowrap; background:rgba(28,27,25,0.88); color:#fff; font-size:12px; padding:7px 10px; border-radius:7px;">Doctorado en comportamiento del consumidor · UGR · cargando</div></sc-if>
+      </div>
+      </sc-if>
+      <div style="display:flex; gap:8px;">
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><div style="text-transform:capitalize;">{{ dateStr }}</div></sc-if>
+        <div style="font-weight:500;">{{ timeStr }}</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="0">
+    <div sc-camel-on-click="{{ g.open }}" style="position:absolute; left:{{ g.left }}; top:{{ g.top }}; width:{{ g.width }}; display:flex; justify-content:space-between; align-items:baseline; padding-bottom:7px; border-bottom:1px solid rgba(255,255,255,0.7); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.5); cursor:pointer; user-select:none; opacity:{{ g.opacity }}; transition:opacity .8s .5s; z-index:2;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;">{{ g.title }}</div>
+      <div style="font-size:11px;">{{ g.meta }}</div>
+    </div>
+  </sc-for>
+
+  <sc-for list="{{ icons }}" as="it" hint-placeholder-count="0">
+    <div sc-camel-on-pointer-down="{{ it.down }}" sc-camel-on-mouse-enter="{{ it.enter }}" sc-camel-on-mouse-leave="{{ it.leave }}" style="position:absolute; left:{{ it.left }}; top:{{ it.top }}; width:100px; margin-left:-50px; margin-top:-44px; display:flex; flex-direction:column; align-items:center; gap:7px; cursor:pointer; user-select:none; touch-action:none; opacity:{{ it.opacity }}; z-index:{{ it.z }}; transition:{{ it.transition }};">
+      <div style="position:relative; height:62px; display:flex; align-items:flex-end; justify-content:center; transform:{{ it.lift }}; filter:{{ it.filter }}; transition:transform .4s cubic-bezier(.3,1.7,.5,1), filter .3s;">
+        <sc-if value="{{ it.isFolder }}">
+          <div style="position:relative; width:64px; height:50px;">
+            <div style="position:absolute; left:0; top:0; width:26px; height:12px; background:#b9cfe3; border-radius:4px 7px 0 0;"></div>
+            <div style="position:absolute; left:0; top:6px; width:64px; height:44px; background:#a8c3dc; border-radius:2px 5px 5px 5px;"></div>
+            <div style="position:absolute; left:7px; top:{{ it.paperTop }}; width:50px; height:36px; background:#fff; border-radius:2px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition:top .4s cubic-bezier(.3,1.7,.5,1);">
+              <img src="{{ it.peek }}" alt="" draggable="false" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div style="position:absolute; left:0; bottom:0; width:64px; height:39px; background:linear-gradient(#d6e5f2,#bdd3e7); border-radius:4px; transform-origin:50% 100%; transform:{{ it.flap }}; transition:transform .4s cubic-bezier(.3,1.7,.5,1); box-shadow:inset 0 1px 0 rgba(255,255,255,0.8);"></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ it.isImg }}">
+          <div style="position:relative;">
+            <img src="{{ it.img }}" alt="" draggable="false" style="display:block; width:{{ it.w }}; height:{{ it.h }}; object-fit:{{ it.ifit }}; background:{{ it.ibg }}; border:{{ it.iborder }}; border-radius:{{ it.iradius }}; box-shadow:0 4px 14px rgba(0,0,0,0.25);">
+            <sc-if value="{{ it.isVideo }}">
+              <div style="position:absolute; left:50%; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px; border-radius:50%; background:rgba(255,255,255,0.9); opacity:{{ it.playOpacity }}; transition:opacity .25s; display:flex; align-items:center; justify-content:center;">
+                <div style="width:0; height:0; margin-left:2px; border-left:7px solid #1c1b19; border-top:4.5px solid transparent; border-bottom:4.5px solid transparent;"></div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+        <sc-if value="{{ it.isFile }}">
+          <div style="position:relative; width:44px; height:56px; background:#fff; border-radius:3px; box-shadow:0 4px 14px rgba(0,0,0,0.22); display:flex; flex-direction:column; gap:4px; padding:14px 8px 0; box-sizing:border-box;">
+            <div style="position:absolute; right:0; top:0; width:11px; height:11px; background:#e4e1dc; border-bottom-left-radius:3px;"></div>
+            <div style="font-weight:700; font-size:11px; line-height:1;">{{ it.glyph }}</div>
+            <div style="height:2px; background:#d9d6d0;"></div>
+            <div style="height:2px; width:80%; background:#d9d6d0;"></div>
+            <div style="height:2px; width:60%; background:#d9d6d0;"></div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="font-weight:700; font-size:10px; line-height:1.2; letter-spacing:.03em; text-transform:uppercase; text-align:center; max-width:96px; padding:2px 6px; border-radius:4px; color:{{ it.labelColor }}; background:{{ it.labelBg }}; text-shadow:{{ it.labelShadow }}; transition:background .2s, color .2s;">{{ it.label }}</div>
+    </div>
+  </sc-for>
+
+  <sc-if value="{{ showCaption }}">
+    <div style="position:absolute; left:18px; bottom:20px; display:flex; flex-direction:column; gap:4px; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.45); pointer-events:none; z-index:2;">
+      <div style="font-size:15px; font-weight:700;">Alvaro Quintanar Salinas</div>
+      <div style="font-size:12px;">Estrategia creativa · Contenido · Video · Web</div>
+      <div style="font-size:10px; opacity:.85; margin-top:4px;">clic para abrir · arrastra para mover</div>
+    </div>
+  </sc-if>
+
+
+  <div sc-camel-on-mouse-leave="{{ dockLeave }}" style="position:absolute; left:50%; bottom:12px; transform:translateX(-50%) scale({{ dockScale }}); transform-origin:50% 100%; display:flex; align-items:flex-end; gap:6px; padding:6px 8px; background:rgba(255,255,255,0.34); backdrop-filter:blur(28px) saturate(1.6); -webkit-backdrop-filter:blur(28px) saturate(1.6); border:1px solid rgba(255,255,255,0.5); border-radius:18px; z-index:800; max-width:{{ dockMax }}; overflow-x:{{ dockOverflow }}; box-sizing:border-box; scrollbar-width:none;">
+    <sc-for list="{{ dock }}" as="d" hint-placeholder-count="0">
+      <sc-if value="{{ d.sep }}"><div style="width:1px; height:40px; margin:0 3px 4px; background:rgba(28,27,25,0.2);"></div></sc-if>
+      <sc-if value="{{ d.item }}">
+        <div sc-camel-on-mouse-enter="{{ d.enter }}" sc-camel-on-click="{{ d.click }}" style="position:relative; flex:none; width:46px; height:46px; transform-origin:50% 100%; transform:{{ d.transform }}; transition:transform .2s ease-out; cursor:pointer;">
+          <sc-if value="{{ d.hovered }}"><div style="position:absolute; bottom:54px; left:50%; transform:translateX(-50%); white-space:nowrap; background:rgba(255,255,255,0.8); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); box-shadow:0 2px 6px rgba(0,0,0,0.1); color:#1c1b19; font-size:9px; font-weight:600; padding:2px 6px; border-radius:5px; display:flex; align-items:center; gap:4px;"><div>{{ d.name }}</div><sc-if value="{{ d.hasLvl }}"><div style="width:14px; height:2px; border-radius:1px; background:rgba(28,27,25,0.1); overflow:hidden;"><div style="height:100%; width:{{ d.pct }}; background:{{ d.ac }};"></div></div><div style="font-size:8px; font-weight:500; color:#6b6862;">{{ d.lvlName }}</div></sc-if></div></sc-if>
+          <div style="position:relative; width:46px; height:46px; border-radius:11px; background:{{ d.bg }}; box-shadow:0 2px 6px rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center; overflow:hidden; font-weight:700; font-size:{{ d.fs }}; color:{{ d.fg }};">
+            <div>{{ d.letters }}</div>
+            <sc-if value="{{ d.logo }}"><img src="{{ d.logo }}" alt="" draggable="false" style="position:absolute; inset:{{ d.li }}; width:{{ d.ls }}; height:{{ d.ls }}; object-fit:contain;"></sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+
+  </sc-if>
+
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; top:30px; left:0; right:0; bottom:104px; overflow-y:auto; padding:22px 14px 16px; box-sizing:border-box; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); row-gap:20px; column-gap:4px; align-content:start; z-index:2;">
+      <div style="position:relative; grid-column:span 2; height:150px; margin:0 6px 4px; border-radius:22px; overflow:hidden; background:linear-gradient(160deg, oklch(0.82 0.04 230 / 0.55), oklch(0.7 0.05 240 / 0.45)); backdrop-filter:blur(24px) saturate(1.6); -webkit-backdrop-filter:blur(24px) saturate(1.6); box-shadow:0 4px 14px rgba(0,0,0,0.14); color:#1c1b19; user-select:none;">
+        <img src="assets/mapa-mx-es.svg" alt="" draggable="false" style="position:absolute; left:0; top:4px; width:100%; height:auto; pointer-events:none;">
+        <div style="position:absolute; left:12px; top:10px; display:flex; align-items:center; gap:6px; padding:3px 8px 3px 6px; border-radius:20px; background:rgba(255,255,255,0.75); font-size:10px; font-weight:700;">
+          <div style="width:6px; height:6px; border-radius:50%; background:oklch(0.72 0.17 145);"></div>
+          <div>Disponible</div>
+        </div>
+        <div style="position:absolute; left:12px; right:12px; bottom:10px; display:flex; flex-direction:column; gap:1px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:.02em;">MX ⇢ ES</div>
+          <div style="font-size:10px; font-weight:600; color:#2b2a27;">Madrid · remoto o híbrido</div>
+        </div>
+      </div>
+      <div sc-camel-on-click="{{ mRecap.open }}" style="position:relative; grid-column:span 2; height:150px; margin:0 6px 4px; border-radius:22px; overflow:hidden; background:#1c1b19; box-shadow:0 4px 14px rgba(0,0,0,0.18); cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent;" style-active="transform:scale(.96);">
+        <img src="{{ mRecap.thumb }}" alt="" draggable="false" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0) 60%);"></div>
+        <div style="position:absolute; left:12px; right:12px; bottom:12px; display:flex; align-items:flex-end; justify-content:space-between; gap:8px; color:#fff;">
+          <div style="display:flex; flex-direction:column; gap:2px;">
+            <div style="font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; opacity:.85;">Último video</div>
+            <div style="font-size:15px; font-weight:700;">{{ mRecap.t }}</div>
+          </div>
+          <div style="flex:none; width:30px; height:30px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center;">
+            <div style="width:0; height:0; margin-left:3px; border-left:10px solid #1c1b19; border-top:6px solid transparent; border-bottom:6px solid transparent;"></div>
+          </div>
+        </div>
+      </div>
+      <sc-for list="{{ mApps }}" as="a" hint-placeholder-count="0">
+        <div sc-camel-on-click="{{ a.open }}" style="display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; opacity:{{ a.op }}; transform:{{ a.anim }}; transition:{{ a.tr }};" style-active="transform:scale(.9);">
+          <div style="position:relative; width:60px; height:60px; border-radius:14px; overflow:hidden; background:{{ a.bg }}; backdrop-filter:{{ a.blur }}; -webkit-backdrop-filter:{{ a.blur }}; box-shadow:0 4px 12px rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:{{ a.fs }}; color:{{ a.fg }};">
+            <div>{{ a.letters }}</div>
+            <sc-if value="{{ a.img }}"><img src="{{ a.img }}" alt="" draggable="false" style="position:absolute; left:{{ a.pad }}; top:{{ a.pad }}; width:{{ a.isz }}; height:{{ a.isz }}; object-fit:{{ a.fit }}; border-radius:{{ a.irad }};"></sc-if>
+            <sc-if value="{{ a.isFolder }}">
+              <div style="position:absolute; inset:8px; display:grid; grid-template-columns:repeat(3, 12px); grid-auto-rows:12px; gap:4px;">
+                <sc-for list="{{ a.minis }}" as="m"><div style="position:relative; width:12px; height:12px; border-radius:3px; overflow:hidden; background:{{ m.bg }};"><img src="{{ m.img }}" alt="" draggable="false" style="width:100%; height:100%; object-fit:{{ m.fit }}; display:block;"></div></sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div style="max-width:100%; font-size:11px; line-height:1.2; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.6); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ a.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="position:absolute; left:10px; right:10px; bottom:12px; height:84px; border-radius:30px; background:rgba(255,255,255,0.3); backdrop-filter:blur(28px) saturate(1.6); -webkit-backdrop-filter:blur(28px) saturate(1.6); display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); align-items:center; justify-items:center; z-index:3;">
+      <sc-for list="{{ mDock }}" as="a" hint-placeholder-count="0">
+        <div sc-camel-on-click="{{ a.open }}" style="position:relative; width:60px; height:60px; border-radius:14px; overflow:hidden; background:{{ a.bg }}; box-shadow:0 4px 12px rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:{{ a.fs }}; color:{{ a.fg }}; cursor:pointer; -webkit-tap-highlight-color:transparent;" style-active="transform:scale(.9);">
+          <div>{{ a.letters }}</div>
+          <sc-if value="{{ a.img }}"><img src="{{ a.img }}" alt="" draggable="false" style="position:absolute; left:{{ a.pad }}; top:{{ a.pad }}; width:{{ a.isz }}; height:{{ a.isz }}; object-fit:{{ a.fit }};"></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-for list="{{ windows }}" as="w" hint-placeholder-count="0">
+    <div sc-camel-on-pointer-down="{{ w.focus }}" style="position:absolute; left:{{ w.left }}; top:{{ w.top }}; width:{{ w.width }}; height:{{ w.height }}; z-index:{{ w.z }}; opacity:{{ w.opacity }}; transform:{{ w.transform }}; transform-origin:{{ w.origin }}; transition:opacity .25s, transform .45s cubic-bezier(.2,1.1,.3,1); background:{{ w.bg }}; backdrop-filter:blur(30px) saturate(1.5); -webkit-backdrop-filter:blur(30px) saturate(1.5); border:{{ w.border }}; border-radius:{{ w.radius }}; box-sizing:border-box; box-shadow:0 30px 80px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.08); overflow:hidden;">
+      <sc-if value="{{ w.full }}">
+        <div style="position:relative; height:60px; display:flex; align-items:center; padding:0 14px 0 20px; gap:12px; user-select:none; border-bottom:1px solid {{ w.line }}; color:{{ w.fg }};">
+          <div style="flex:1; min-width:0; font-size:17px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ w.title }}</div>
+          <div sc-camel-on-click="{{ w.close }}" style="flex:none; width:44px; height:44px; border-radius:50%; background:{{ w.xBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; -webkit-tap-highlight-color:transparent;" style-active="transform:scale(.9);">
+            <div style="position:relative; width:18px; height:18px;">
+              <div style="position:absolute; left:-1px; top:8px; width:20px; height:2.5px; border-radius:2px; background:{{ w.fg }}; transform:rotate(45deg);"></div>
+              <div style="position:absolute; left:-1px; top:8px; width:20px; height:2.5px; border-radius:2px; background:{{ w.fg }}; transform:rotate(-45deg);"></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ w.windowed }}" hint-placeholder-val="{{ true }}">
+      <div sc-camel-on-pointer-down="{{ w.dragStart }}" style="position:relative; height:40px; display:flex; align-items:center; padding:0 14px; gap:8px; cursor:grab; user-select:none; touch-action:none; border-bottom:1px solid rgba(28,27,25,0.08);">
+        <div sc-camel-on-pointer-down="{{ w.close }}" style="width:24px; height:24px; margin:-6px; display:flex; align-items:center; justify-content:center; cursor:pointer;"><div style="width:12px; height:12px; border-radius:50%; background:#ee6a5f;" style-hover="filter:brightness(.8);"></div></div>
+        <div style="width:12px; height:12px; border-radius:50%; background:#f5be4f;"></div>
+        <div style="width:12px; height:12px; border-radius:50%; background:#62c554;"></div>
+        <div style="position:absolute; left:80px; right:80px; text-align:center; font-size:12px; color:#6b6862; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none;">{{ w.title }}</div>
+      </div>
+      </sc-if>
+      <div style="max-height:{{ w.maxH }}; height:{{ w.bodyH }}; overflow:auto; -webkit-overflow-scrolling:touch;">
+
+        <sc-if value="{{ w.isProjects }}">
+          <div style="padding:20px; display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:18px;">
+            <sc-for list="{{ w.items }}" as="p">
+              <div sc-camel-on-click="{{ p.open }}" style="display:flex; flex-direction:column; gap:8px; cursor:pointer; transition:transform .3s cubic-bezier(.3,1.6,.5,1);" style-hover="transform:translateY(-4px);">
+                <img src="{{ p.img }}" alt="" style="width:100%; aspect-ratio:4/3; object-fit:{{ p.fit }}; background:#fff; border-radius:8px; display:block; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+                <div style="display:flex; flex-direction:column; gap:2px;">
+                  <div style="font-size:14px; font-weight:700;">{{ p.name }}</div>
+                  <div style="font-size:12px; color:#6b6862;">{{ p.short }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isVideos }}">
+          <div style="padding:20px; display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:16px;">
+            <sc-for list="{{ w.items }}" as="v">
+              <div sc-camel-on-click="{{ v.open }}" style="display:flex; flex-direction:column; gap:7px; cursor:pointer; transition:transform .3s cubic-bezier(.3,1.6,.5,1);" style-hover="transform:translateY(-4px) scale(1.02);">
+                <img src="{{ v.thumb }}" alt="" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:7px; display:block; box-shadow:0 2px 10px rgba(0,0,0,0.12);">
+                <div style="font-size:13px; font-weight:500;">{{ v.t }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isWeb }}">
+          <div style="padding:28px 30px 32px; display:flex; flex-direction:column; gap:26px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="font-size:32px; font-weight:700; letter-spacing:-0.02em; line-height:1;">Webs</div>
+              <div style="font-size:15px; line-height:1.5; color:#6b6862; max-width:520px; text-wrap:pretty;">Algunos sitios que he diseñado y construido: estructura, contenido, diseño y montaje.</div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:26px;">
+              <sc-for list="{{ w.items }}" as="s">
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <div style="width:100%; aspect-ratio:16/10; border-radius:10px; overflow:hidden; background:rgba(28,27,25,0.05); box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                    <a href="{{ s.url }}" target="_blank" rel="noopener" style="display:block; width:100%; height:100%;"><img src="{{ s.shot }}" alt="{{ s.name }}" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; padding:12%; box-sizing:border-box; background:#fff;"></a>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px;">
+                    <div style="font-size:17px; font-weight:700;">{{ s.name }}</div>
+                    <div style="font-size:12px; color:#6b6862;">{{ s.year }}</div>
+                  </div>
+                  <div style="font-size:14px; line-height:1.5; text-wrap:pretty;">{{ s.desc }}</div>
+                  <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                    <sc-for list="{{ s.tags }}" as="tag">
+                      <div style="font-size:12px; padding:4px 10px; border-radius:20px; background:rgba(28,27,25,0.07);">{{ tag }}</div>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex; gap:16px; font-size:13px; font-weight:500;">
+                    <sc-if value="{{ s.url }}"><a href="{{ s.url }}" target="_blank" rel="noopener">Visitar ↗</a></sc-if>
+                    <sc-if value="{{ s.project }}"><div sc-camel-on-click="{{ s.openProject }}" style="cursor:pointer;" style-hover="opacity:.6;">Ver proyecto →</div></sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isProject }}">
+          <div style="display:flex; flex-direction:column;">
+            <img src="{{ w.p.img }}" alt="" style="width:100%; aspect-ratio:16/7; object-fit:{{ w.p.fit }}; background:#fff; display:block;">
+            <div style="padding:26px 30px 28px; display:flex; flex-direction:column; gap:26px;">
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="display:flex; justify-content:space-between; gap:12px; font-size:11px; font-weight:500; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">
+                  <div>{{ w.p.role }}</div><div>{{ w.p.year }}</div>
+                </div>
+                <div style="font-size:36px; font-weight:700; letter-spacing:-0.025em; line-height:1;">{{ w.p.name }}</div>
+                <div style="font-size:18px; line-height:1.45; text-wrap:pretty;">{{ w.p.summary }}</div>
+              </div>
+              <div style="display:grid; grid-template-columns:{{ w.projCols }}; gap:30px; padding-top:22px; border-top:1px solid rgba(28,27,25,0.1);">
+                <div style="display:flex; flex-direction:column; gap:18px;">
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Entregables</div>
+                    <div style="display:flex; flex-direction:column; gap:4px; font-size:14px;">
+                      <sc-for list="{{ w.p.deliverables }}" as="dl"><div>{{ dl }}</div></sc-for>
+                    </div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Herramientas</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                      <sc-for list="{{ w.p.tools }}" as="tl"><div style="font-size:12px; padding:4px 10px; border-radius:20px; background:rgba(28,27,25,0.07);">{{ tl }}</div></sc-for>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:22px;">
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">El reto</div>
+                    <div style="font-size:15px; line-height:1.55; text-wrap:pretty;">{{ w.p.context }}</div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Qué hice</div>
+                    <sc-for list="{{ w.p.didList }}" as="dd">
+                      <div style="display:grid; grid-template-columns:26px minmax(0,1fr); gap:6px; font-size:15px; line-height:1.5;">
+                        <div style="font-size:12px; color:#6b6862; padding-top:2px;">{{ dd.n }}</div>
+                        <div style="text-wrap:pretty;">{{ dd.t }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Resultado</div>
+                    <div style="font-size:15px; line-height:1.55; text-wrap:pretty;">{{ w.p.result }}</div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:20px 22px; border-radius:12px; background:rgba(28,27,25,0.05); display:flex; flex-direction:column; gap:8px;">
+                <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Lo que desarrollé</div>
+                <div style="font-size:19px; line-height:1.4; font-style:italic; text-wrap:pretty;">{{ w.p.insight }}</div>
+              </div>
+              <sc-if value="{{ w.p.hasRelated }}">
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Piezas relacionadas</div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:12px;">
+                    <sc-for list="{{ w.p.relatedList }}" as="rv">
+                      <div sc-camel-on-click="{{ rv.open }}" style="display:flex; flex-direction:column; gap:6px; cursor:pointer; transition:transform .3s cubic-bezier(.3,1.6,.5,1);" style-hover="transform:translateY(-3px);">
+                        <img src="{{ rv.thumb }}" alt="" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; display:block;">
+                        <div style="font-size:12px; font-weight:500;">{{ rv.t }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="display:flex; justify-content:space-between; gap:12px; padding-top:16px; border-top:1px solid rgba(28,27,25,0.1); font-size:13px; font-weight:500;">
+                <div sc-camel-on-click="{{ w.prev }}" style="cursor:pointer;" style-hover="opacity:.6;">← {{ w.prevName }}</div>
+                <div sc-camel-on-click="{{ w.next }}" style="cursor:pointer;" style-hover="opacity:.6;">{{ w.nextName }} →</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isVideo }}">
+          <div style="display:flex; flex-direction:column; justify-content:center; height:{{ w.vidBoxH }}; background:{{ w.vidBg }}; color:{{ w.fg }};">
+            <iframe src="{{ w.v.embed }}" title="video" sc-camel-referrer-policy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sc-camel-allow-full-screen="true" style="width:100%; aspect-ratio:16/9; border:0; display:block; background:#000;"></iframe>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px;">
+              <div style="font-size:14px; font-weight:700;">{{ w.v.t }}</div>
+              <a href="{{ w.v.url }}" target="_blank" rel="noopener" style="font-size:12px; color:{{ w.fg }};">YouTube ↗</a>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isStack }}">
+          <div style="padding:20px 22px 24px; display:flex; flex-direction:column; gap:20px;">
+            <sc-for list="{{ w.items }}" as="g">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">{{ g.group }}</div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                  <sc-for list="{{ g.tools }}" as="t">
+                    <div style="display:flex; align-items:center; gap:7px; padding:6px 11px 6px 7px; border-radius:20px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.08); font-size:13px; transition:transform .25s cubic-bezier(.3,1.6,.5,1);" style-hover="transform:translateY(-2px);">
+                      <sc-if value="{{ t.logo }}"><img src="{{ t.logo }}" alt="" style="width:18px; height:18px; object-fit:contain;"></sc-if>
+                      <sc-if value="{{ t.dot }}"><div style="width:8px; height:8px; margin:0 5px; border-radius:50%; background:#1c1b19;"></div></sc-if>
+                      <div>{{ t.n }}</div>
+                      <sc-if value="{{ t.hasLvl }}"><div title="{{ t.lvlLabel }}" style="width:22px; height:3px; margin-left:2px; border-radius:2px; background:rgba(28,27,25,0.08); overflow:hidden;"><div style="height:100%; width:{{ t.pct }}; border-radius:2px; background:{{ t.ac }};"></div></div></sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isAbout }}">
+          <div style="padding:22px 24px 26px; display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <img src="assets/alvaro.png" alt="Alvaro Quintanar" style="width:64px; height:64px; border-radius:50%; object-fit:cover; object-position:center 30%;">
+              <div style="display:flex; flex-direction:column; gap:3px;">
+                <div style="font-size:19px; font-weight:700;">Alvaro Quintanar Salinas</div>
+                <div style="font-size:12px; color:#6b6862;">Estratega creativo · Madrid</div>
+              </div>
+            </div>
+            <div style="font-size:15px; line-height:1.55; text-wrap:pretty;">Estrategia, contenido, video y web. Mexicano, en España desde 2023.</div>
+            <div style="display:flex; flex-direction:column; border-top:1px solid rgba(28,27,25,0.1);">
+              <sc-for list="{{ education }}" as="ed">
+                <div style="display:grid; grid-template-columns:92px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid rgba(28,27,25,0.08); font-size:13px;">
+                  <div style="font-size:12px; color:#6b6862; padding-top:1px;">{{ ed.y }}</div>
+                  <div style="display:flex; flex-direction:column; gap:2px;"><div style="font-weight:700;">{{ ed.t }}</div><div style="color:#6b6862;">{{ ed.s }}</div></div>
+                </div>
+              </sc-for>
+            </div>
+            </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isThesis }}">
+          <div style="padding:28px 30px 32px; display:flex; flex-direction:column; gap:22px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Tesis doctoral · En curso</div>
+              <div style="font-size:28px; font-weight:700; letter-spacing:-0.02em; line-height:1.1; text-wrap:pretty;">Sobrecarga cognitiva inducida por IA y su efecto en la intención de compra</div>
+              <div style="font-size:13px; color:#6b6862;">Doctorado en Comportamiento del Consumidor · Universidad de Granada · 2026 →</div>
+            </div>
+            <div style="font-size:15px; line-height:1.55; text-wrap:pretty;">Estudio cómo el uso habitual de asistentes de IA conversacional cambia la forma en que las personas evalúan información y toman decisiones de compra.</div>
+            <div style="font-size:14px; line-height:1.55; color:#4a4843; text-wrap:pretty;">Cuando delegamos la búsqueda y la comparación en un asistente (descarga cognitiva), nuestro propio criterio puede transformarse. La tesis mide ese efecto sin asumir si es positivo o negativo.</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Modelo</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <div style="flex:1 1 140px; min-width:0; padding:12px 14px; border-radius:10px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:4px;"><div style="font-size:10px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Independiente</div><div style="font-size:13px; font-weight:700; line-height:1.3; text-wrap:pretty;">Uso habitual de IA conversacional</div></div><div style="align-self:center; color:#6b6862; font-size:14px;">→</div><div style="flex:1 1 140px; min-width:0; padding:12px 14px; border-radius:10px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:4px;"><div style="font-size:10px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Mediadora</div><div style="font-size:13px; font-weight:700; line-height:1.3; text-wrap:pretty;">Criterio evaluativo propio</div></div><div style="align-self:center; color:#6b6862; font-size:14px;">→</div><div style="flex:1 1 140px; min-width:0; padding:12px 14px; border-radius:10px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:4px;"><div style="font-size:10px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Dependiente</div><div style="font-size:13px; font-weight:700; line-height:1.3; text-wrap:pretty;">Confianza en recomendaciones comerciales del asistente</div></div>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; border-top:1px solid rgba(28,27,25,0.1);">
+              <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid rgba(28,27,25,0.08); font-size:13px; line-height:1.45;"><div style="color:#6b6862;">Proceso</div><div style="text-wrap:pretty;">Búsqueda · Evaluación de alternativas · Decisión · Poscompra</div></div>
+              <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid rgba(28,27,25,0.08); font-size:13px; line-height:1.45;"><div style="color:#6b6862;">Marco teórico</div><div style="text-wrap:pretty;">Antropomorfismo · Persuasión y credibilidad de la fuente · Publicidad nativa y transparencia</div></div>
+              <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid rgba(28,27,25,0.08); font-size:13px; line-height:1.45;"><div style="color:#6b6862;">Método</div><div style="text-wrap:pretty;">Revisión sistemática en Web of Science (JCR y SSCI) y estudios experimentales.</div></div>
+              <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid rgba(28,27,25,0.08); font-size:13px; line-height:1.45;"><div style="color:#6b6862;">Estructura</div><div style="text-wrap:pretty;">Tres artículos: una revisión bibliográfica y dos experimentos.</div></div>
+              
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isContact }}">
+          <div style="padding:24px; display:flex; flex-direction:column; gap:18px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="font-size:11px; font-weight:700; color:#6b6862; text-transform:uppercase; letter-spacing:.06em;">Escríbeme</div>
+              <a href="mailto:alvaroqs9999@gmail.com" style="font-size:22px; font-weight:700; letter-spacing:-0.01em;">alvaroqs9999@gmail.com</a>
+              <div style="font-size:13px; color:#6b6862;">Respondo en menos de 48h.</div>
+            </div>
+            <div style="display:flex; flex-direction:column;">
+              <sc-for list="{{ links }}" as="l">
+                <a href="{{ l.url }}" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid rgba(28,27,25,0.08); font-size:14px;"><div>{{ l.n }}</div><div style="font-size:12px; color:#6b6862;">{{ l.h }} ↗</div></a>
+              </sc-for>
+            </div>
+            <div style="font-size:13px; color:#6b6862;">Madrid · remoto o híbrido · Español nativo, inglés C1</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;dockMagnify&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const RID = {
+ "https://www.alvaroquintanar.com/images/Boceto%20Artistico.jpeg": "assets/boceto-artistico.jpg",
+ "https://www.alvaroquintanar.com/images/closca.jpg": "assets/closca.jpg",
+ "https://www.alvaroquintanar.com/images/allupay-logo.png": "assets/allupay-logo.png",
+ "https://www.alvaroquintanar.com/images/persona.jpg": "assets/persona.jpg",
+ "https://www.alvaroquintanar.com/images/logos/Premiere%20Pro.svg.png": "assets/premiere-pro.png",
+ "https://www.alvaroquintanar.com/images/logos/Final%20cut%20pro.png": "assets/final-cut-pro.png",
+ "https://www.alvaroquintanar.com/images/logos/Capcut.webp": "assets/capcut.webp",
+ "https://www.alvaroquintanar.com/images/logos/Illustrator.svg.png": "assets/illustrator.png",
+ "https://www.alvaroquintanar.com/images/logos/Canva.webp": "assets/canva.webp",
+ "https://www.alvaroquintanar.com/images/logos/WordPress.svg": "assets/wordpress.svg",
+ "https://www.alvaroquintanar.com/images/logos/Elementor.svg": "assets/elementor.svg",
+ "https://www.alvaroquintanar.com/images/logos/Shopify.svg": "assets/shopify.svg",
+ "https://www.alvaroquintanar.com/images/logos/Google%20Analytics.svg": "assets/google-analytics.svg",
+ "https://www.alvaroquintanar.com/images/logos/Mixpanel.svg": "assets/mixpanel.svg",
+ "https://www.alvaroquintanar.com/images/logos/HubSpot.svg": "assets/hubspot.svg",
+ "assets/medialog-logo.jpeg": "assets/medialog-logo.jpg",
+ "assets/british-logo-circle.png": "assets/british-logo-circle.png",
+ "assets/idecolor-logo.jpeg": "assets/idecolor-logo.jpg",
+ "assets/british-logo.png": "assets/british-logo.png",
+ "assets/claude.webp": "assets/claude.webp",
+ "assets/chatgpt.webp": "assets/chatgpt.webp",
+ "assets/gemini.jpeg": "assets/gemini.jpg",
+ "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg": "assets/microsoft.svg",
+ "assets/whatsapp.webp": "assets/whatsapp.webp",
+ "assets/alvaro.png": "assets/alvaro-avatar.jpg",
+ "https://cdn.simpleicons.org/meta": "assets/meta.svg",
+ "https://cdn.simpleicons.org/tiktok/white": "assets/tiktok.svg",
+ "https://img.youtube.com/vi/1DN1yYAsK58/maxresdefault.jpg": "assets/yt-1DN1yYAsK58.jpg",
+ "https://img.youtube.com/vi/86LyZDVtPp4/maxresdefault.jpg": "assets/yt-86LyZDVtPp4.jpg",
+ "https://img.youtube.com/vi/luL2D0qT5V8/maxresdefault.jpg": "assets/yt-luL2D0qT5V8.jpg",
+ "https://img.youtube.com/vi/PWRLZMo0IeA/maxresdefault.jpg": "assets/yt-PWRLZMo0IeA.jpg",
+ "https://img.youtube.com/vi/IsKu2n3RfCk/maxresdefault.jpg": "assets/yt-IsKu2n3RfCk.jpg",
+ "https://img.youtube.com/vi/uvo-r1jjeOA/maxresdefault.jpg": "assets/yt-uvo-r1jjeOA.jpg",
+ "https://img.youtube.com/vi/BGdmz1yDk4A/maxresdefault.jpg": "assets/yt-BGdmz1yDk4A.jpg",
+ "https://img.youtube.com/vi/76RkJh05_hc/maxresdefault.jpg": "assets/yt-76RkJh05_hc.jpg",
+ "https://img.youtube.com/vi/JiU2iiO8-S0/maxresdefault.jpg": "assets/yt-JiU2iiO8-S0.jpg",
+ "https://img.youtube.com/vi/eCIrhpUecMc/maxresdefault.jpg": "assets/yt-eCIrhpUecMc.jpg",
+ "https://img.youtube.com/vi/jWV-Rp6v2ZM/hqdefault.jpg": "assets/yt-jWV-Rp6v2ZM.jpg",
+ "https://img.youtube.com/vi/3DC6MuOCf3c/hqdefault.jpg": "assets/yt-3DC6MuOCf3c.jpg",
+ "https://img.youtube.com/vi/nOXCcxSm0kM/hqdefault.jpg": "assets/yt-nOXCcxSm0kM.jpg",
+ "https://img.youtube.com/vi/iDhYtHuzxKM/hqdefault.jpg": "assets/yt-iDhYtHuzxKM.jpg",
+ "https://www.idecolor.com/wp-content/uploads/2023/10/logo-idecolor.png": "assets/idecolor-web-logo.png",
+ "https://www.google.com/s2/favicons?domain=ugr.es&sz=128": "assets/ugr.jpg"
+};
+const R = u => RID[u] || u;
+const IMG = 'https://www.alvaroquintanar.com/images/';
+const L = n => R(IMG + 'logos/' + encodeURI(n));
+const VIDEOS = [
+  ['1DN1yYAsK58','Introspección'],['86LyZDVtPp4','British College'],['luL2D0qT5V8','No sé qué hacer'],['PWRLZMo0IeA','París'],
+  ['IsKu2n3RfCk','Sticker'],['uvo-r1jjeOA','Dron'],['BGdmz1yDk4A','Closca'],['76RkJh05_hc','Santander'],
+  ['JiU2iiO8-S0','Recap 2025'],['eCIrhpUecMc','El Plan'],['jWV-Rp6v2ZM','Camino de Santiago','hqdefault'],
+  ['3DC6MuOCf3c','Dron y playa','hqdefault'],['nOXCcxSm0kM','Autoestima','hqdefault'],['iDhYtHuzxKM','PRD','hqdefault']
+].map(([id, t, q]) => ({ id, t, thumb: R(`https://img.youtube.com/vi/${id}/${q || 'maxresdefault'}.jpg`),
+  embed: `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&rel=0&playsinline=1&origin=${encodeURIComponent(location.origin)}`, url: `https://youtu.be/${id}` }));
+
+const PROJECTS = {
+  medialog: { name: 'Medialog', year: '2021 — 2022', role: 'Producción creativa & comunicación', short: 'Video · dron · diseño · web', img: R('assets/medialog-logo.jpeg'), fit: 'contain',
+    summary: 'Producción de video, dron, diseño y webs para clientes de Medialog.',
+    context: 'Restaurantes, viñedos, campañas políticas y negocios locales sin equipo de contenido propio.',
+    did: ['Grabación y edición de video, incluidas tomas con dron.', 'Diseño de piezas para redes y materiales de marca.', 'Desarrollo de webs en WordPress y Elementor.', 'Comunicación adaptada a cada cliente.'],
+    result: 'Varios clientes en paralelo, cada uno con su estilo y entregas a tiempo.',
+    deliverables: ['Videos de marca', 'Tomas aéreas', 'Piezas para redes', 'Webs'],
+    tools: ['Premiere Pro', 'Final Cut Pro', 'Dron', 'Photoshop', 'WordPress', 'Elementor'],
+    insight: 'Adaptar el formato a cada cliente.', related: [2] },
+  british: { name: 'British College La Cañada', year: '2024 — 2025', role: 'Estrategia de contenido & marca', short: 'Narrativa · sistema visual', img: R('assets/british-logo-circle.png'), fit: 'contain',
+    summary: 'Marca y contenido para British College La Cañada.',
+    context: 'Mensajes distintos en cada canal y sin un proceso claro hasta la matrícula.',
+    did: ['Creación del mensaje de marca Happy & Well Prepared.', 'Plan de contenido para redes, web y email.', 'Diseño del estilo visual del colegio, que sigue en uso.', 'Conexión de contenido, web y CRM.'],
+    result: 'Un solo mensaje en todos los canales y un proceso claro hasta la matrícula.',
+    deliverables: ['Narrativa de marca', 'Sistema de contenido', 'Lenguaje visual', 'Piezas para redes y email'],
+    tools: ['Photoshop', 'Illustrator', 'Canva', 'Premiere Pro', 'CRM'],
+    insight: 'Coherencia entre canales.', related: [] },
+  closca: { name: 'Closca', year: '2025', role: 'Contenido creativo & testing', short: '+70 piezas · hooks en video', img: R(IMG + 'closca.jpg'), fit: 'cover',
+    summary: 'Creación de más de 70 piezas para Closca en TikTok Ads.',
+    context: 'Anuncios que explicaban el producto pero no generaban ventas.',
+    did: ['Imágenes, carruseles y videos cortos para TikTok Ads.', 'Tres piezas nuevas por semana.', 'Test de una variable por pieza: gancho, ángulo o formato.', 'Ajuste de cada ronda según resultados.'],
+    result: 'Identificación de los mensajes que más vendían. Base para abrir la venta en Estados Unidos.',
+    deliverables: ['+70 creatividades', 'Hooks en video', 'Carruseles', 'Copy'],
+    tools: ['Premiere Pro', 'CapCut', 'Photoshop', 'Canva'],
+    insight: 'Cada pieza con un objetivo de test.', related: [] },
+  allupay: { name: 'AllUpay', year: '2025 →', role: 'Web, estrategia & contenido', short: 'Marketing desde cero · B2B', img: R(IMG + 'allupay-logo.png'), fit: 'contain',
+    summary: 'Creación del área de marketing de AllUpay, fintech B2B.',
+    context: 'Sin web, sin CRM y sin plan. Tres productos: Sign, Sign&Pay y Custodia.',
+    did: ['Web corporativa y textos.', 'Posicionamiento y lanzamiento de cada producto.', 'Contenido sobre regulación (eIDAS, PSD2, KYC/AML, EU AI Act).', 'HubSpot como CRM y medición con GA4 y Mixpanel.'],
+    result: 'Web publicada, CRM activo y ventas medibles.',
+    deliverables: ['Web corporativa', 'Estrategia por producto', 'Contenido regulatorio', 'CRM y automatizaciones'],
+    tools: ['HubSpot', 'GA4', 'Mixpanel', 'Claude', 'ChatGPT'],
+    insight: 'Web, contenido y CRM conectados.', related: [] },
+  idecolor: { name: 'Idecolor', year: '2024', role: 'Operación digital en Amazon', short: 'Seller Central · Amazon Ads', img: R('assets/idecolor-logo.jpeg'), fit: 'contain', fit: 'contain',
+    summary: 'Operación digital de Idecolor en Amazon: catálogo, campañas y datos.',
+    context: 'Publicidad y catálogo funcionaban por separado. Sin visión centralizada del ciclo de venta.',
+    did: ['Gestión integral de Seller Central, con el catálogo como parte de la estrategia.', 'Amazon Ads usado para tomar decisiones, no solo como gasto.', 'Lectura continua de datos para ajustar catálogo y oferta.', 'Publicidad y catálogo conectados bajo un mismo criterio.'],
+    result: 'Procesos más limpios, ciclos de ajuste más cortos y una estructura lista para escalar.',
+    deliverables: ['Gestión de Seller Central', 'Campañas de Amazon Ads', 'Optimización de catálogo', 'Informes de datos'],
+    tools: ['Seller Central', 'Amazon Ads', 'Excel'],
+    insight: 'Un sistema operativo sólido detrás del contenido y la creatividad.', related: [] },
+  lab: { name: 'Marca personal', year: 'En curso', role: 'Autor & estratega creativo', short: 'YouTube · TikTok · escritura', img: R(IMG + 'persona.jpg'), fit: 'cover',
+    summary: 'Videos, piezas cortas y textos propios.',
+    context: 'Espacio para probar formatos fuera de proyectos de clientes.',
+    did: ['Videos largos en YouTube.', 'Piezas cortas en TikTok.', 'Textos propios.', 'Guion, grabación, edición y diseño.'],
+    result: 'Estilo propio aplicado después en proyectos de marca.',
+    deliverables: ['Vlogs', 'Ensayos visuales', 'Piezas cortas', 'Textos'],
+    tools: ['Premiere Pro', 'Final Cut Pro', 'CapCut'],
+    insight: 'Probar antes de aplicar.', related: [0, 3, 1, 4] }
+};
+const PKEYS = Object.keys(PROJECTS);
+
+const WEBS = [
+  { slot: 'web-british', logo: R('assets/british-logo.png'), name: 'British College La Cañada', year: '2024 — 2025', desc: 'Estructura, textos y diseño de la web del colegio.', tags: ['Web', 'Contenido', 'Diseño'], url: 'https://www.britishcollegelacanyada.es/es/', project: 'british' },
+  { slot: 'web-medialog', logo: R('assets/medialog-logo.jpeg'), name: 'Medialog México', year: '2021 — 2022', desc: 'Web del estudio Medialog.', tags: ['WordPress', 'Elementor'], url: 'https://medialogmexico.com/', project: 'medialog' },
+  { slot: 'web-idecolor', logo: R('https://www.idecolor.com/wp-content/uploads/2023/10/logo-idecolor.png'), project: 'idecolor', name: 'Idecolor', year: '', desc: 'Web y ecommerce para Idecolor.', tags: ['Web', 'Ecommerce'], url: 'https://www.idecolor.com/' }
+];
+
+const LEVELS = { 'Premiere Pro': 5, 'CapCut': 5, 'Final Cut Pro': 4, 'Dron': 4, 'Photoshop': 4, 'Illustrator': 3, 'Canva': 5, 'WordPress': 4, 'Elementor': 4, 'Shopify': 3, 'HubSpot': 4, 'Meta': 4, 'TikTok': 4, 'GA4': 4, 'Mixpanel': 3, 'Excel': 3, 'Microsoft 365': 4, 'Claude': 5, 'ChatGPT': 5, 'Gemini': 4, 'Hugging Face': 2 };
+const ACCENT = { 'Premiere Pro': '#6b5cff', 'Final Cut Pro': '#8e5cf0', 'Illustrator': '#ff9a00', 'Canva': '#7d2ae8', 'Photoshop': '#31a8ff', 'WordPress': '#21759b', 'Elementor': '#d6336c', 'Shopify': '#5e8e3e', 'HubSpot': '#ff7a59', 'Meta': '#0866ff', 'TikTok': '#fe2c55', 'GA4': '#e37400', 'Mixpanel': '#7856ff', 'Excel': '#1d6f42', 'Microsoft 365': '#0078d4', 'Claude': '#d97757', 'ChatGPT': '#10a37f', 'Gemini': '#4f7ff0', 'Hugging Face': '#ffb000' };
+const LVL_NAMES = ['', 'Principiante', 'Principiante', 'Intermedio', 'Avanzado', 'Avanzado'];
+const lvl = n => { const v = LEVELS[n]; return v ? { hasLvl: true, lvlName: LVL_NAMES[v], lvlLabel: LVL_NAMES[v], pct: (v * 20) + '%', ac: ACCENT[n] || '#1c1b19' } : { hasLvl: false, lvlName: '', lvlLabel: '', pct: '0%', ac: 'transparent' }; };
+const STACK = [
+  { group: 'Estrategia & contenido', tools: [{ n: 'Content strategy', dot: true }, { n: 'Narrativa de marca', dot: true }, { n: 'Copywriting', dot: true }, { n: 'Creative testing', dot: true }, { n: 'Behavioral economics', dot: true }] },
+  { group: 'Video', tools: [{ n: 'Premiere Pro', logo: L('Premiere Pro.svg.png') }, { n: 'Final Cut Pro', logo: L('Final cut pro.png') }, { n: 'CapCut', logo: L('Capcut.webp') }, { n: 'Dron', dot: true }] },
+  { group: 'Diseño', tools: [{ n: 'Photoshop', dot: true }, { n: 'Illustrator', logo: L('Illustrator.svg.png') }, { n: 'Canva', logo: L('Canva.webp') }] },
+  { group: 'Web', tools: [{ n: 'WordPress', logo: L('WordPress.svg') }, { n: 'Elementor', logo: L('Elementor.svg') }, { n: 'Shopify', logo: L('Shopify.svg') }] },
+  { group: 'Inteligencia artificial', tools: [{ n: 'Claude', logo: R('assets/claude.webp') }, { n: 'ChatGPT', logo: R('assets/chatgpt.webp') }, { n: 'Gemini', logo: R('assets/gemini.jpeg') }, { n: 'Hugging Face', dot: true }] },
+  { group: 'Datos que respaldan lo creativo', tools: [{ n: 'GA4', logo: L('Google Analytics.svg') }, { n: 'Mixpanel', logo: L('Mixpanel.svg') }, { n: 'HubSpot', logo: L('HubSpot.svg') }, { n: 'Excel', dot: true }, { n: 'Microsoft 365', logo: R('https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg') }] }
+];
+
+const EDUCATION = [
+  { y: '2026 →', t: 'Doctorado en Comportamiento del Consumidor', s: 'Universidad de Granada' },
+  { y: '2023 — 24', t: 'Máster en Marketing Digital', s: 'ESIC Business & Marketing School · Valencia' },
+  { y: '2019 — 23', t: 'Grado en Mercadotecnia', s: 'EBC · Aguascalientes, México' }
+];
+
+const LINKS = [
+  { n: 'LinkedIn', h: 'alvaro-quintanar', url: 'https://www.linkedin.com/in/alvaro-quintanar-39921822b/' },
+  { n: 'Instagram', h: '@alvaroquintanar', url: 'https://www.instagram.com/alvaroquintanar/' },
+  { n: 'YouTube', h: '@alvaroquintanars', url: 'https://www.youtube.com/@alvaroquintanars' },
+  { n: 'TikTok', h: '@alvaroquintanar', url: 'https://www.tiktok.com/@alvaroquintanar' },
+  { n: 'WhatsApp', h: '+34 673 374 641', url: 'https://wa.me/34673374641' }
+];
+
+const DESK_VIDEOS = [0, 2, 3, 1, 7, 6];
+const ICONS = [
+  ...PKEYS.map(k => ({ id: 'p-' + k, group: 'proj', kind: 'project', ref: k, type: 'project', label: k === 'british' ? 'British College' : k === 'lab' ? 'Marca personal' : PROJECTS[k].name })),
+  { id: 'f-videos', group: 'vid', kind: 'videos', type: 'folder', label: 'Videos', peek: VIDEOS[0].thumb },
+  { id: 'f-web', group: 'vid', kind: 'web', type: 'folder', label: 'Webs', peek: R(IMG + encodeURI('Boceto Artistico.jpeg')) },
+  { id: 'f-stack', group: 'vid', kind: 'stack', type: 'folder', label: 'Herramientas', peek: L('Premiere Pro.svg.png') },
+  { id: 'thesis', group: 'vid', kind: 'thesis', type: 'file', glyph: 'PDF', label: 'Tesis doctoral.pdf' },
+  { id: 'about', group: 'bot', kind: 'about', type: 'file', glyph: 'TXT', label: 'Sobre mí.txt' },
+  { id: 'contact', group: 'bot', kind: 'contact', type: 'file', glyph: '@', label: 'Contacto.vcf' }
+];
+
+const DOCK = [
+  { k: 'pr', name: 'Premiere Pro', logo: L('Premiere Pro.svg.png'), letters: 'Pr', bg: '#00005b', fg: '#9999ff' },
+  { k: 'cc', name: 'CapCut', logo: L('Capcut.webp'), li: -6, letters: 'Cc', bg: '#fff', fg: '#1c1b19' },
+  { k: 'ai', name: 'Illustrator', logo: L('Illustrator.svg.png'), letters: 'Ai', bg: '#330000', fg: '#ff9a00' },
+  { k: 'ca', name: 'Canva', logo: L('Canva.webp'), li: -12, letters: 'Ca', bg: '#fff', fg: '#1c1b19' },
+  { sep: true },
+  { k: 'hs', name: 'HubSpot', logo: L('HubSpot.svg'), li: 8, letters: 'Hs', bg: '#fff', fg: '#ff7a59' },
+  { k: 'meta', name: 'Meta', logo: R('https://cdn.simpleicons.org/meta'), li: 8, letters: 'M', bg: '#fff', fg: '#0866ff' },
+  { k: 'tt', name: 'TikTok', logo: R('https://cdn.simpleicons.org/tiktok/white'), li: 10, letters: 'Tk', bg: '#000', fg: '#fff' },
+  { k: 'ga', name: 'GA4', logo: L('Google Analytics.svg'), li: 8, letters: 'GA', bg: '#fff', fg: '#e37400' },
+  { k: 'sh', name: 'Shopify', logo: L('Shopify.svg'), li: 8, letters: 'S', bg: '#fff', fg: '#5e8e3e' },
+  { sep: true },
+  { k: 'cl', name: 'Claude', logo: R('assets/claude.webp'), li: 9, letters: 'Cl', bg: '#fff', fg: '#d97757' },
+  { k: 'gpt', name: 'ChatGPT', logo: R('assets/chatgpt.webp'), li: 9, letters: 'G', bg: '#fff', fg: '#1c1b19' },
+  { k: 'gem', name: 'Gemini', logo: R('assets/gemini.jpeg'), li: 8, letters: 'Ge', bg: '#fff', fg: '#4f7ff0' },
+  { sep: true },
+  { k: 'mail', name: 'Escríbeme', fs: '26px', letters: '@', bg: '#fff', fg: '#1c1b19' },
+  { k: 'in', name: 'LinkedIn', fs: '24px', letters: 'in', bg: '#fff', fg: '#0a66c2' },
+  { k: 'wa', name: 'WhatsApp', logo: R('assets/whatsapp.webp'), li: 0, letters: 'WA', bg: '#25d366', fg: '#fff' }
+];
+
+const WIDTH = { projects: 660, videos: 720, web: 920, stack: 600, about: 500, thesis: 640, contact: 440, project: 780, video: 860 };
+const TITLES = { projects: 'Proyectos — ' + PKEYS.length + ' elementos', videos: 'Videos — ' + VIDEOS.length + ' elementos', web: 'Webs', stack: 'Herramientas', about: 'Sobre mí.txt', thesis: 'Tesis doctoral.pdf', contact: 'Contacto.vcf' };
+
+const LANGS = ['es', 'en'];
+const LANG_NAMES = { es: 'Español', en: 'English' };
+const initialLang = () => {
+  let q = null, saved = null;
+  try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (LANGS.includes(q)) { try { localStorage.setItem('lang', q); } catch (e) {} return q; }
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  if (LANGS.includes(saved)) return saved;
+  const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'es').toLowerCase();
+  return nav.startsWith('en') ? 'en' : 'es';
+};
+const DOC = {"es": {"title": "Alvaro Quintanar Salinas · Estrategia creativa · Contenido · Video · Web", "desc": "Portafolio de Alvaro Quintanar Salinas, estratega creativo en Madrid: estrategia, contenido, video y web. Proyectos con AllUpay, Closca, British College La Cañada, Idecolor y Medialog."}, "en": {"title": "Alvaro Quintanar Salinas · Creative strategy · Content · Video · Web", "desc": "Portfolio of Alvaro Quintanar Salinas, creative strategist based in Madrid: strategy, content, video and web. Projects with AllUpay, Closca, British College La Cañada, Idecolor and Medialog."}};
+const applyDoc = lang => { document.documentElement.lang = lang; document.title = DOC[lang].title; const d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', DOC[lang].desc); };
+const I18N_EN = {"Estrategia":"Strategy","Contenido":"Content","Web":"Web","Doble nacionalidad":"Dual nationality","Madrid · remoto o híbrido":"Madrid · remote or hybrid","Español nativo · Inglés C1":"Native Spanish · English C1","Abierto a incorporación · 2026":"Open to new roles · 2026","Doctorado en comportamiento del consumidor · UGR · cargando":"PhD in consumer behaviour · UGR · loading","Estrategia creativa · Contenido · Video · Web":"Creative strategy · Content · Video · Web","clic para abrir · arrastra para mover":"click to open · drag to move","Disponible":"Available","Último video":"Latest video","Webs":"Websites","Algunos sitios que he diseñado y construido: estructura, contenido, diseño y montaje.":"Some sites I have designed and built: structure, content, design and build.","Visitar ↗":"Visit ↗","Ver proyecto →":"View project →","Entregables":"Deliverables","Herramientas":"Tools","El reto":"The challenge","Qué hice":"What I did","Resultado":"Outcome","Lo que desarrollé":"What I built","Piezas relacionadas":"Related pieces","Estratega creativo · Madrid":"Creative strategist · Madrid","Estrategia, contenido, video y web. Mexicano, en España desde 2023.":"Strategy, content, video and web. Mexican, based in Spain since 2023.","Tesis doctoral · En curso":"PhD thesis · In progress","Sobrecarga cognitiva inducida por IA y su efecto en la intención de compra":"AI-induced cognitive overload and its effect on purchase intention","Doctorado en Comportamiento del Consumidor · Universidad de Granada · 2026 →":"PhD in Consumer Behaviour · University of Granada · 2026 →","Estudio cómo el uso habitual de asistentes de IA conversacional cambia la forma en que las personas evalúan información y toman decisiones de compra.":"I study how regular use of conversational AI assistants changes the way people evaluate information and make purchase decisions.","Cuando delegamos la búsqueda y la comparación en un asistente (descarga cognitiva), nuestro propio criterio puede transformarse. La tesis mide ese efecto sin asumir si es positivo o negativo.":"When we hand search and comparison over to an assistant (cognitive offloading), our own judgement can change. The thesis measures that effect without assuming whether it is positive or negative.","Modelo":"Model","Independiente":"Independent","Uso habitual de IA conversacional":"Regular use of conversational AI","Mediadora":"Mediator","Criterio evaluativo propio":"Own evaluative judgement","Dependiente":"Dependent","Confianza en recomendaciones comerciales del asistente":"Trust in the assistant's commercial recommendations","Proceso":"Process","Búsqueda · Evaluación de alternativas · Decisión · Poscompra":"Search · Evaluation of alternatives · Decision · Post-purchase","Marco teórico":"Theoretical framework","Antropomorfismo · Persuasión y credibilidad de la fuente · Publicidad nativa y transparencia":"Anthropomorphism · Persuasion and source credibility · Native advertising and transparency","Método":"Method","Revisión sistemática en Web of Science (JCR y SSCI) y estudios experimentales.":"Systematic review in Web of Science (JCR and SSCI) and experimental studies.","Estructura":"Structure","Tres artículos: una revisión bibliográfica y dos experimentos.":"Three papers: a literature review and two experiments.","Escríbeme":"Write to me","Respondo en menos de 48h.":"I reply within 48h.","Madrid · remoto o híbrido · Español nativo, inglés C1":"Madrid · remote or hybrid · Native Spanish, English C1","Introspección":"Introspection","No sé qué hacer":"I don't know what to do","París":"Paris","El Plan":"The Plan","Dron y playa":"Drone & beach","Dron":"Drone","Autoestima":"Self-esteem","Producción creativa & comunicación":"Creative production & communication","Video · dron · diseño · web":"Video · drone · design · web","Producción de video, dron, diseño y webs para clientes de Medialog.":"Video, drone, design and web production for Medialog clients.","Restaurantes, viñedos, campañas políticas y negocios locales sin equipo de contenido propio.":"Restaurants, vineyards, political campaigns and local businesses with no in-house content team.","Grabación y edición de video, incluidas tomas con dron.":"Video shooting and editing, including drone footage.","Diseño de piezas para redes y materiales de marca.":"Design of social media pieces and brand materials.","Desarrollo de webs en WordPress y Elementor.":"Website development in WordPress and Elementor.","Comunicación adaptada a cada cliente.":"Communication tailored to each client.","Varios clientes en paralelo, cada uno con su estilo y entregas a tiempo.":"Several clients in parallel, each with its own style, delivered on time.","Videos de marca":"Brand videos","Tomas aéreas":"Aerial footage","Piezas para redes":"Social media pieces","Adaptar el formato a cada cliente.":"Fit the format to each client.","Estrategia de contenido & marca":"Content & brand strategy","Narrativa · sistema visual":"Narrative · visual system","Marca y contenido para British College La Cañada.":"Brand and content for British College La Cañada.","Mensajes distintos en cada canal y sin un proceso claro hasta la matrícula.":"Different messages on each channel and no clear path to enrolment.","Creación del mensaje de marca Happy & Well Prepared.":"Created the brand message Happy & Well Prepared.","Plan de contenido para redes, web y email.":"Content plan for social, web and email.","Diseño del estilo visual del colegio, que sigue en uso.":"Designed the school's visual style, still in use.","Conexión de contenido, web y CRM.":"Connected content, web and CRM.","Un solo mensaje en todos los canales y un proceso claro hasta la matrícula.":"One message across all channels and a clear path to enrolment.","Narrativa de marca":"Brand narrative","Sistema de contenido":"Content system","Lenguaje visual":"Visual language","Piezas para redes y email":"Social and email pieces","Coherencia entre canales.":"Consistency across channels.","Contenido creativo & testing":"Creative content & testing","+70 piezas · hooks en video":"70+ pieces · video hooks","Creación de más de 70 piezas para Closca en TikTok Ads.":"Created 70+ pieces for Closca on TikTok Ads.","Anuncios que explicaban el producto pero no generaban ventas.":"Ads that explained the product but did not drive sales.","Imágenes, carruseles y videos cortos para TikTok Ads.":"Images, carousels and short videos for TikTok Ads.","Tres piezas nuevas por semana.":"Three new pieces a week.","Test de una variable por pieza: gancho, ángulo o formato.":"One variable tested per piece: hook, angle or format.","Ajuste de cada ronda según resultados.":"Each round adjusted to results.","Identificación de los mensajes que más vendían. Base para abrir la venta en Estados Unidos.":"Identified the best-selling messages. Groundwork for launching sales in the United States.","+70 creatividades":"70+ creatives","Hooks en video":"Video hooks","Cada pieza con un objetivo de test.":"Every piece with a test goal.","Web, estrategia & contenido":"Web, strategy & content","Marketing desde cero · B2B":"Marketing from scratch · B2B","Creación del área de marketing de AllUpay, fintech B2B.":"Built the marketing function at AllUpay, a B2B fintech.","Sin web, sin CRM y sin plan. Tres productos: Sign, Sign&Pay y Custodia.":"No website, no CRM and no plan. Three products: Sign, Sign&Pay and Custodia.","Web corporativa y textos.":"Corporate website and copy.","Posicionamiento y lanzamiento de cada producto.":"Positioning and launch of each product.","Contenido sobre regulación (eIDAS, PSD2, KYC/AML, EU AI Act).":"Regulatory content (eIDAS, PSD2, KYC/AML, EU AI Act).","HubSpot como CRM y medición con GA4 y Mixpanel.":"HubSpot as CRM, measurement with GA4 and Mixpanel.","Web publicada, CRM activo y ventas medibles.":"Website live, CRM running and measurable sales.","Web corporativa":"Corporate website","Estrategia por producto":"Product strategy","Contenido regulatorio":"Regulatory content","CRM y automatizaciones":"CRM and automations","Web, contenido y CRM conectados.":"Web, content and CRM connected.","Operación digital en Amazon":"Amazon digital operations","Operación digital de Idecolor en Amazon: catálogo, campañas y datos.":"Idecolor's digital operations on Amazon: catalogue, campaigns and data.","Publicidad y catálogo funcionaban por separado. Sin visión centralizada del ciclo de venta.":"Advertising and catalogue ran separately, with no central view of the sales cycle.","Gestión integral de Seller Central, con el catálogo como parte de la estrategia.":"End-to-end Seller Central management, with the catalogue as part of the strategy.","Amazon Ads usado para tomar decisiones, no solo como gasto.":"Amazon Ads used to make decisions, not just as spend.","Lectura continua de datos para ajustar catálogo y oferta.":"Ongoing data review to adjust catalogue and offer.","Publicidad y catálogo conectados bajo un mismo criterio.":"Advertising and catalogue run under one approach.","Procesos más limpios, ciclos de ajuste más cortos y una estructura lista para escalar.":"Cleaner processes, shorter adjustment cycles and a structure ready to scale.","Gestión de Seller Central":"Seller Central management","Campañas de Amazon Ads":"Amazon Ads campaigns","Optimización de catálogo":"Catalogue optimisation","Informes de datos":"Data reports","Un sistema operativo sólido detrás del contenido y la creatividad.":"A solid operating system behind content and creativity.","Marca personal":"Personal brand","En curso":"Ongoing","Autor & estratega creativo":"Author & creative strategist","YouTube · TikTok · escritura":"YouTube · TikTok · writing","Videos, piezas cortas y textos propios.":"Videos, short pieces and my own writing.","Espacio para probar formatos fuera de proyectos de clientes.":"A space to try formats outside client projects.","Videos largos en YouTube.":"Long-form videos on YouTube.","Piezas cortas en TikTok.":"Short pieces on TikTok.","Textos propios.":"My own writing.","Guion, grabación, edición y diseño.":"Script, shooting, editing and design.","Estilo propio aplicado después en proyectos de marca.":"A personal style later applied to brand projects.","Ensayos visuales":"Visual essays","Piezas cortas":"Short pieces","Probar antes de aplicar.":"Test before applying.","Estructura, textos y diseño de la web del colegio.":"Structure, copy and design of the school website.","Diseño":"Design","Web del estudio Medialog.":"Website for the Medialog studio.","Web y ecommerce para Idecolor.":"Website and ecommerce for Idecolor.","Estrategia & contenido":"Strategy & content","Inteligencia artificial":"Artificial intelligence","Datos que respaldan lo creativo":"Data behind the creative","Doctorado en Comportamiento del Consumidor":"PhD in Consumer Behaviour","Universidad de Granada":"University of Granada","Máster en Marketing Digital":"Master's in Digital Marketing","Grado en Mercadotecnia":"Bachelor's in Marketing","EBC · Aguascalientes, México":"EBC · Aguascalientes, Mexico","Tesis doctoral.pdf":"PhD thesis.pdf","Sobre mí.txt":"About me.txt","Contacto.vcf":"Contact.vcf","Tesis doctoral":"PhD thesis","Carruseles":"Carousels","Textos":"Writing","Principiante":"Beginner","Intermedio":"Intermediate","Avanzado":"Advanced","Proyectos":"Projects","Carpetas":"Folders","Sobre mí":"About me","Contacto":"Contact","Idioma":"Language"};
+const I18N_PAT = [[/^Proyectos — (\d+) elementos$/, 'Projects — $1 items'], [/^Videos — (\d+) elementos$/, 'Videos — $1 items'], [/^(\d+) · ver todo$/, '$1 · see all'], [/^(.+)\.mp4$/, m => (I18N_EN[m[1]] || m[1]) + '.mp4']];
+const trText = t => { const k = t.trim(); if (!k) return null; let r = I18N_EN[k]; if (!r) for (const [re, rep] of I18N_PAT) { const m = k.match(re); if (m) { r = typeof rep === 'function' ? rep(m) : k.replace(re, rep); break; } } return r ? t.replace(k, r) : null; };
+
+const DEFAULT_POS = {
+  'p-medialog': { x: 12.06, y: 18.79 }, 'p-british': { x: 6.04, y: 32.73 }, 'p-closca': { x: 25.05, y: 19.42 },
+  'p-allupay': { x: 7.37, y: 51.65 }, 'p-idecolor': { x: 16.68, y: 34.72 }, 'p-lab': { x: 27.19, y: 37.5 },
+  'f-videos': { x: 78.66, y: 20.11 }, 'f-web': { x: 76.85, y: 37.36 }, 'f-stack': { x: 93.0, y: 16.83 },
+  'thesis': { x: 88.71, y: 32.95 }, 'about': { x: 39.33, y: 73.11 }, 'contact': { x: 54.83, y: 71.84 }
+};
+
+class Component extends DCLogic {
+  state = { lang: initialLang(), pos: {}, loaded: false, introDone: false, hover: null, dragging: null, windows: [], dock: null, tip: null, now: new Date() };
+  wid = 0; z = 100;
+
+  componentDidMount() {
+    applyDoc(this.state.lang);
+    const intro = this.props.intro ?? true;
+    if (intro) {
+      this.t1 = setTimeout(() => this.setState({ loaded: true }), 150);
+      this.t2 = setTimeout(() => this.setState({ introDone: true }), 150 + ICONS.length * 45 + 1000);
+    } else this.setState({ loaded: true, introDone: true });
+    this.clock = setInterval(() => this.setState({ now: new Date() }), 15000);
+    this.applyLang = () => {
+      const en = this.state.lang === 'en';
+      const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let n; while ((n = w.nextNode())) {
+        if (n.parentNode && /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
+        if (n.__tr === undefined || n.nodeValue !== n.__tr) { n.__orig = n.nodeValue; n.__tr = null; }
+        if (en) { const t = trText(n.__orig); if (t && n.nodeValue !== t) { n.__tr = t; n.nodeValue = t; } }
+        else if (n.__tr && n.nodeValue === n.__tr) { n.nodeValue = n.__orig; n.__tr = null; }
+      }
+    };
+    this.mo = new MutationObserver(() => { if (this.lock) return; this.lock = true; this.applyLang(); Promise.resolve().then(() => { this.mo.takeRecords(); this.lock = false; }); });
+    this.mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+    setTimeout(this.applyLang, 0);
+    this.onResize = () => this.forceUpdate();
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.t1); clearTimeout(this.t2); clearInterval(this.clock); this.mo && this.mo.disconnect();
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  setLang(l) { try { localStorage.setItem('lang', l); } catch (e) {} applyDoc(l); this.setState({ lang: l }, () => this.applyLang()); }
+  componentDidUpdate() { this.applyLang && this.applyLang(); }
+
+  layout() {
+    const W = window.innerWidth, H = window.innerHeight;
+    const pos = {};
+    if (true) {
+      const cols = 4, cw = (W - 16) / cols, top = 112, rh = 100;
+      const ids = g => ICONS.filter(i => i.group === g).map(i => i.id);
+      const place = (list, y0) => list.forEach((id, k) => { pos[id] = { x: 8 + cw / 2 + (k % cols) * cw, y: y0 + Math.floor(k / cols) * rh }; });
+      const proj = ids('proj'), vid = ids('vid'), bot = ids('bot');
+      place(proj, top);
+      const top2 = top + (Math.ceil(proj.length / cols) - 1) * rh + 168;
+      place(vid, top2);
+      bot.forEach((id, k) => { pos[id] = { x: W / 2 + (k - (bot.length - 1) / 2) * cw, y: Math.max(top2 + 150, H - 150) }; });
+      const pct = {};
+      Object.keys(pos).forEach(id => { pct[id] = { x: pos[id].x / W * 100, y: pos[id].y / H * 100 }; });
+      return { pct, cols, top, top2, W, mobile: true };
+    }
+    const cols = W < 900 ? 2 : 3, cw = 100, rh = 104, top = 128;
+    const side = (ids, right) => ids.forEach((id, k) => {
+      const c = k % cols, r = Math.floor(k / cols);
+      const x = right ? W - 24 - cw / 2 - (cols - 1 - c) * cw : 24 + cw / 2 + c * cw;
+      pos[id] = { x, y: top + r * rh };
+    });
+    const proj = ICONS.filter(i => i.group === 'proj').map(i => i.id);
+    const vid = ICONS.filter(i => i.group === 'vid').map(i => i.id);
+    const bot = ICONS.filter(i => i.group === 'bot').map(i => i.id);
+    side(proj, false); side(vid, true);
+    const rows = Math.max(Math.ceil(proj.length / cols), Math.ceil(vid.length / cols));
+    const by = Math.max(top + (rows - 1) * rh + 150, H - 170);
+    bot.forEach((id, k) => { pos[id] = { x: W / 2 + (k - (bot.length - 1) / 2) * 112, y: by }; });
+    const pct = {};
+    Object.keys(pos).forEach(id => { pct[id] = { x: pos[id].x / W * 100, y: pos[id].y / H * 100 }; });
+    return { pct, cols, top, W };
+  }
+
+  iconDown(e, it, p) {
+    if (e.button !== undefined && e.button !== 0) return;
+    e.preventDefault();
+    this.drag = { id: it.id, sx: e.clientX, sy: e.clientY, ox: p.x, oy: p.y, moved: false };
+    this.setState({ dragging: it.id });
+    const move = ev => {
+      const d = this.drag; if (!d) return;
+      const dx = ev.clientX - d.sx, dy = ev.clientY - d.sy;
+      if (!d.moved && Math.hypot(dx, dy) < 5) return;
+      d.moved = true;
+      const x = Math.min(97, Math.max(3, d.ox + dx / window.innerWidth * 100));
+      const y = Math.min(88, Math.max(8, d.oy + dy / window.innerHeight * 100));
+      this.setState(s => ({ pos: { ...s.pos, [d.id]: { x, y } } }));
+    };
+    const up = ev => {
+      window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up);
+      const d = this.drag; this.drag = null;
+      this.setState({ dragging: null });
+      if (d && !d.moved) this.open(it.kind, it.ref, ev.clientX, ev.clientY);
+    };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+  }
+
+  open(kind, ref, ox, oy) {
+    const existing = this.state.windows.find(w => w.kind === kind && w.ref === ref);
+    if (existing) return this.focus(existing.wid);
+    const W = window.innerWidth;
+    const mob = true;
+    const w = mob ? W : Math.min(WIDTH[kind], W - 16);
+    const n = this.state.windows.length % 5;
+    const left = mob ? 0 : Math.max(8, (W - w) / 2 + n * 28 - 40);
+    const top = mob ? 0 : Math.max(40, 50 + n * 28);
+    const wid = ++this.wid;
+    const win = { wid, kind, ref, left, top, w, z: ++this.z, shown: false, origin: `${(ox ?? W / 2) - left}px ${(oy ?? 300) - top}px` };
+    this.setState(s => ({ windows: [...s.windows, win] }));
+    setTimeout(() => this.setState(s => ({ windows: s.windows.map(x => x.wid === wid ? { ...x, shown: true } : x) })), 30);
+  }
+  setRef(wid, ref) { this.setState(s => ({ windows: s.windows.map(x => x.wid === wid ? { ...x, ref } : x) })); }
+  focus(wid) {
+    const z = ++this.z;
+    this.setState(s => ({ windows: s.windows.map(x => x.wid === wid ? { ...x, z } : x) }));
+  }
+  close(wid) {
+    this.setState(s => ({ windows: s.windows.map(x => x.wid === wid ? { ...x, shown: false } : x) }));
+    setTimeout(() => this.setState(s => ({ windows: s.windows.filter(x => x.wid !== wid) })), 160);
+  }
+  winDown(e, win) {
+    if (e.button !== undefined && e.button !== 0) return;
+    const d = { sx: e.clientX, sy: e.clientY, ol: win.left, ot: win.top };
+    const move = ev => {
+      const left = d.ol + ev.clientX - d.sx, top = Math.max(32, d.ot + ev.clientY - d.sy);
+      this.setState(s => ({ windows: s.windows.map(x => x.wid === win.wid ? { ...x, left, top } : x) }));
+    };
+    const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const W = window.innerWidth, H = window.innerHeight;
+    const lay = this.layout();
+    const icons = ICONS.map((it, i) => {
+      const p = lay.mobile ? lay.pct[it.id] : (s.pos[it.id] || DEFAULT_POS[it.id] || lay.pct[it.id]);
+      const hov = s.hover === it.id, drag = s.dragging === it.id;
+      const tilt = i % 2 ? 3 : -3;
+      const delay = s.introDone ? 0 : i * 45;
+      const isImg = it.type === 'video' || it.type === 'project';
+      return {
+        ...it, isFolder: it.type === 'folder', isFile: it.type === 'file', isImg, isVideo: it.type === 'video',
+        img: it.type === 'video' ? VIDEOS[it.ref].thumb : it.type === 'project' ? PROJECTS[it.ref].img : null,
+        ...(it.ref === 'british' ? { ifit: 'contain', ibg: 'transparent', iborder: 'none', iradius: '50%' } : { ifit: 'cover', ibg: '#fff', iborder: '2px solid #fff', iradius: '3px' }),
+        w: it.type === 'video' ? '72px' : '58px', h: it.type === 'video' ? '46px' : '58px',
+        left: (s.loaded ? p.x : 50) + '%', top: (s.loaded ? p.y : 48) + '%',
+        opacity: s.loaded ? 1 : 0,
+        z: drag ? 60 : hov ? 50 : 1,
+        transition: drag ? 'opacity .5s' : `left .9s cubic-bezier(.2,1,.3,1) ${delay}ms, top .9s cubic-bezier(.2,1,.3,1) ${delay}ms, opacity .5s ${delay}ms`,
+        lift: drag ? `scale(1.12) rotate(${tilt}deg)` : hov ? `translateY(-7px) scale(1.12) rotate(${tilt}deg)` : (s.loaded ? 'none' : 'scale(.3)'),
+        filter: drag ? 'drop-shadow(0 18px 18px rgba(0,0,0,.35))' : hov ? 'drop-shadow(0 12px 14px rgba(0,0,0,.28))' : 'none',
+        flap: hov ? 'perspective(160px) rotateX(-32deg)' : 'none',
+        paperTop: hov ? '-8px' : '8px',
+        playOpacity: hov ? 1 : 0,
+        labelColor: hov ? '#1c1b19' : '#fff',
+        labelBg: hov ? 'rgba(255,255,255,0.92)' : 'transparent',
+        labelShadow: hov ? 'none' : '0 1px 3px rgba(0,0,0,0.65)',
+        down: e => this.iconDown(e, it, p),
+        enter: () => this.setState({ hover: it.id }),
+        leave: () => this.setState(st => st.hover === it.id ? { hover: null } : null)
+      };
+    });
+
+    const gw = lay.cols * 100;
+    const groups = lay.mobile ? [
+      { title: 'Proyectos', meta: String(PKEYS.length).padStart(2, '0') + ' · ver todo', left: '16px', top: (lay.top - 70) + 'px', width: (W - 32) + 'px', opacity: s.loaded ? 1 : 0, open: e => this.open('projects', undefined, e.clientX, e.clientY) },
+      { title: 'Carpetas', meta: '', left: '16px', top: (lay.top2 - 70) + 'px', width: (W - 32) + 'px', opacity: s.loaded ? 1 : 0, open: () => {} }
+    ] : [
+      { title: 'Proyectos', meta: String(PKEYS.length).padStart(2, '0') + ' · ver todo', left: '24px', top: (lay.top - 72) + 'px', width: gw + 'px', opacity: s.loaded ? 1 : 0, open: e => this.open('projects', undefined, e.clientX, e.clientY) },
+      { title: 'Carpetas', meta: '', left: (W - 24 - gw) + 'px', top: (lay.top - 72) + 'px', width: gw + 'px', opacity: s.loaded ? 1 : 0, open: () => {} }
+    ];
+
+    const windows = s.windows.map(win => {
+      const o = {
+        left: (lay.mobile ? 0 : win.left) + 'px', top: (lay.mobile ? 0 : win.top) + 'px', width: (lay.mobile ? W : win.w) + 'px', z: lay.mobile ? 1000 + win.z : win.z, origin: win.origin,
+        full: !!lay.mobile, windowed: !lay.mobile, height: lay.mobile ? H + 'px' : 'auto',
+        bg: lay.mobile ? (win.kind === 'video' ? '#000' : '#faf9f7') : 'rgba(250,249,247,0.9)',
+        border: lay.mobile ? 'none' : '1px solid rgba(255,255,255,0.7)', radius: lay.mobile ? '0' : '14px',
+        fg: lay.mobile && win.kind === 'video' ? '#fff' : '#1c1b19', xBg: lay.mobile && win.kind === 'video' ? 'rgba(255,255,255,0.18)' : 'rgba(28,27,25,0.08)',
+        line: lay.mobile && win.kind === 'video' ? 'rgba(255,255,255,0.1)' : 'rgba(28,27,25,0.08)',
+        bodyH: lay.mobile ? (H - 60) + 'px' : 'auto', vidBoxH: lay.mobile ? (H - 60) + 'px' : 'auto', vidBg: lay.mobile ? '#000' : 'transparent',
+        opacity: win.shown ? 1 : 0, transform: win.shown ? 'scale(1)' : 'scale(.5)',
+        close: e => { e.stopPropagation(); e.preventDefault(); this.close(win.wid); }, focus: () => this.focus(win.wid), dragStart: e => this.winDown(e, win),
+        projCols: lay.mobile ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,2fr)', title: TITLES[win.kind], maxH: lay.mobile ? 'none' : Math.max(200, H - win.top - 40 - 96) + 'px',
+        isProjects: win.kind === 'projects', isVideos: win.kind === 'videos', isWeb: win.kind === 'web', isStack: win.kind === 'stack',
+        isAbout: win.kind === 'about', isThesis: win.kind === 'thesis', isContact: win.kind === 'contact', isProject: win.kind === 'project', isVideo: win.kind === 'video'
+      };
+      if (o.isProjects) o.items = PKEYS.map(k => ({ ...PROJECTS[k], open: e => this.open('project', k, e.clientX, e.clientY) }));
+      if (o.isVideos) o.items = VIDEOS.map((vv, i) => ({ ...vv, open: e => this.open('video', i, e.clientX, e.clientY) }));
+      if (o.isWeb) o.items = WEBS.map(w => ({ ...w, shot: w.logo, url: w.url || null, project: w.project || null, openProject: e => this.open('project', w.project, e.clientX, e.clientY) }));
+      if (o.isStack) o.items = STACK.map(g => ({ ...g, tools: g.tools.map(t => ({ ...t, ...lvl(t.n) })) }));
+      if (o.isProject) {
+        const p = PROJECTS[win.ref], idx = PKEYS.indexOf(win.ref);
+        const prevK = PKEYS[(idx - 1 + PKEYS.length) % PKEYS.length], nextK = PKEYS[(idx + 1) % PKEYS.length];
+        o.p = { ...p, didList: p.did.map((t, i) => ({ n: String(i + 1).padStart(2, '0'), t })), hasRelated: p.related.length > 0,
+          relatedList: p.related.map(i => ({ ...VIDEOS[i], open: e => this.open('video', i, e.clientX, e.clientY) })) };
+        o.title = p.name; o.prevName = PROJECTS[prevK].name; o.nextName = PROJECTS[nextK].name;
+        o.prev = () => this.setRef(win.wid, prevK); o.next = () => this.setRef(win.wid, nextK);
+      }
+      if (o.isVideo) { o.v = VIDEOS[win.ref]; o.title = o.v.t + '.mp4'; }
+      return o;
+    });
+
+    const magnify = (this.props.dockMagnify ?? true) && !lay.mobile;
+    const dock = DOCK.map((d, i) => {
+      if (d.sep) return { sep: true, item: false };
+      const dist = s.dock === null ? 9 : Math.abs(i - s.dock);
+      const sc = !magnify ? (dist === 0 ? 1.08 : 1) : dist === 0 ? 1.45 : dist === 1 ? 1.2 : dist === 2 ? 1.06 : 1;
+      return {
+        ...d, ...lvl(d.name), sep: false, item: true, hovered: dist === 0, logo: d.logo || null, fs: d.fs || '15px', letters: d.logo ? '' : d.letters, li: (d.li ?? 7) + 'px', ls: (46 - 2 * (d.li ?? 7)) + 'px',
+        transform: `scale(${sc}) translateY(${dist === 0 ? -4 : 0}px)`,
+        enter: () => this.setState({ dock: i }),
+        click: e => {
+          if (d.k === 'mail') return this.open('contact', undefined, e.clientX, e.clientY);
+          if (d.k === 'in') return window.open(LINKS[0].url, '_blank');
+          if (d.k === 'wa') return window.open('https://wa.me/34673374641', '_blank');
+          if (d.k === 'trash') return;
+          this.open('stack', undefined, e.clientX, e.clientY);
+        }
+      };
+    });
+
+    const tipKeys = ['origin', 'loc', 'signal', 'avail', 'phd'];
+    const tip = {}, tipOn = {};
+    tipKeys.forEach(k => { tip[k] = s.tip === k; tipOn[k] = () => this.setState({ tip: k }); });
+
+    const mApps = [], mDock = [];
+    if (lay.mobile) {
+      const app = (o, open) => ({ letters: '', fg: '#1c1b19', fs: '15px', bg: '#fff', blur: 'none', img: null, fit: 'cover', pad: '0px', isz: '60px', irad: '0', isFolder: false, minis: [], ...o, open: e => open(e.clientX, e.clientY) });
+      const sized = li => { const p = Math.round((li ?? 7) * 60 / 46); return { pad: p + 'px', isz: (60 - 2 * p) + 'px' }; };
+      const tool = d => ({ label: d.name, bg: d.bg, fg: d.fg, fs: d.fs || '18px', letters: d.logo ? '' : d.letters, img: d.logo || null, fit: 'contain', ...sized(d.li) });
+      const folder = (label, minis) => ({ label, isFolder: true, bg: 'rgba(255,255,255,0.3)', blur: 'blur(20px) saturate(1.5)', minis: minis.slice(0, 9) });
+      PKEYS.forEach(k => { const p = PROJECTS[k], c = p.fit === 'contain' || k === 'british';
+        mApps.push(app({ label: ICONS.find(i => i.id === 'p-' + k).label, img: p.img, fit: c ? 'contain' : 'cover', ...(c ? { pad: '6px', isz: '48px', irad: k === 'british' ? '50%' : '0' } : {}) }, (x, y) => this.open('project', k, x, y))); });
+      const tools = DOCK.filter(d => !d.sep && !['mail', 'in', 'wa'].includes(d.k));
+      mApps.push(app(folder('Videos', VIDEOS.map(v => ({ img: v.thumb, bg: '#000', fit: 'cover' }))), (x, y) => this.open('videos', undefined, x, y)));
+      mApps.push(app(folder('Webs', WEBS.map(w => ({ img: w.logo, bg: '#fff', fit: 'contain' }))), (x, y) => this.open('web', undefined, x, y)));
+      mApps.push(app(folder('Herramientas', tools.filter(d => d.logo).map(d => ({ img: d.logo, bg: d.bg, fit: 'contain' }))), (x, y) => this.open('stack', undefined, x, y)));
+      mApps.push(app({ label: 'Idioma', letters: s.lang === 'en' ? 'EN' : 'ES', fs: '22px', fg: '#fff', bg: 'linear-gradient(160deg, #3a7bd5, #1d4f9c)' }, () => this.setLang(s.lang === 'en' ? 'es' : 'en')));
+      mApps.push(app({ label: 'Tesis doctoral', letters: '', img: R('https://www.google.com/s2/favicons?domain=ugr.es&sz=128'), fit: 'contain', pad: '8px', isz: '44px' }, (x, y) => this.open('thesis', undefined, x, y)));
+      mApps.forEach((a, i) => { a.op = s.loaded ? 1 : 0; a.anim = s.loaded ? 'none' : 'scale(.4)'; a.tr = `transform .6s cubic-bezier(.2,1.3,.4,1) ${i * 25}ms, opacity .4s ${i * 25}ms`; });
+      const dk = k => DOCK.find(d => d.k === k);
+      mDock.push(app({ img: R('assets/alvaro.png'), fit: 'cover' }, (x, y) => this.open('about', undefined, x, y)));
+      mDock.push(app({ ...tool(dk('mail')), fs: '30px' }, (x, y) => this.open('contact', undefined, x, y)));
+      mDock.push(app(tool(dk('wa')), () => window.open('https://wa.me/34673374641', '_blank')));
+      mDock.push(app({ ...tool(dk('in')), fs: '28px' }, () => window.open(LINKS[0].url, '_blank')));
+    }
+    const cx = W / 2;
+    return {
+      mApps, mDock, mobile: !!lay.mobile,
+      langEs: { op: s.lang === 'es' ? 1 : 0.45, fw: s.lang === 'es' ? 700 : 400 }, langEn: { op: s.lang === 'en' ? 1 : 0.45, fw: s.lang === 'en' ? 700 : 400 },
+      setEs: () => this.setLang('es'), setEn: () => this.setLang('en'),
+      mRecap: (() => { const i = Math.max(0, VIDEOS.findIndex(v => v.t === 'Recap 2025')); return { ...VIDEOS[i], open: e => this.open('video', i, e.clientX, e.clientY) }; })(),
+      icons, groups, windows, dock, tip, tipOn, education: EDUCATION, links: LINKS,
+      dockScale: lay.mobile ? 1 : Math.min(1, (W - 140) / 880),
+      dockMax: lay.mobile ? 'calc(100vw - 16px)' : 'none', dockOverflow: lay.mobile ? 'auto' : 'visible', desktop: !lay.mobile,
+      showCaption: W >= 1280,
+      tipOff: () => this.setState({ tip: null }),
+      dockLeave: () => this.setState({ dock: null }),
+      timeStr: s.now.toLocaleTimeString(s.lang === 'en' ? 'en-GB' : 'es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' }),
+      dateStr: s.now.toLocaleDateString(s.lang === 'en' ? 'en-GB' : 'es-ES', { timeZone: 'Europe/Madrid', weekday: 'short', day: 'numeric', month: 'short' }),
+      resetLayout: () => this.setState({ pos: {}, introDone: true }),
+      fullscreen: () => { const d = document; if (d.fullscreenElement) d.exitFullscreen?.(); else d.documentElement.requestFullscreen?.(); },
+      menu: {
+        projects: () => this.open('projects', undefined, cx, 30),
+        lab: () => this.open('project', 'lab', cx, 30),
+        videos: () => this.open('videos', undefined, cx, 30),
+        web: () => this.open('web', undefined, cx, 30)
+      }
+    };
+  }
+}
+</script>
+</template>
+
+<script>
+// Escritorio o móvil: se monta una sola de las dos versiones antes de que arranque el runtime.
+(function () {
+  var mq = window.matchMedia('(max-width: 820px), (max-height: 500px) and (pointer: coarse)');
+  var t = document.getElementById(mq.matches ? 'v-mobile' : 'v-desktop');
+  document.body.appendChild(t.content.cloneNode(true));
+  document.querySelectorAll('template').forEach(function (x) { x.remove(); });
+  var reload = function () { location.reload(); };
+  if (mq.addEventListener) mq.addEventListener('change', reload); else if (mq.addListener) mq.addListener(reload);
+})();
 </script>
 
 </body></html>
