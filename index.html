@@ -346,6 +346,16 @@ a{color:#1c1b19;text-decoration:none;} a:hover{color:#6b6862;}
             </div>
         </sc-if>
 
+        <sc-if value="{{ w.isCv }}">
+          <div style="padding:16px 18px 20px; display:flex; flex-direction:column; gap:14px; background:#ebe8e3;">
+            <img src="{{ w.cvImg }}" alt="CV Alvaro Quintanar Salinas" style="width:100%; height:auto; display:block; background:#fff; border-radius:3px; box-shadow:0 4px 18px rgba(0,0,0,0.14);">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="{{ w.cvPdf }}" download="{{ w.cvFile }}" style="flex:1 1 160px; text-align:center; padding:11px 16px; border-radius:10px; background:#1c1b19; color:#fff; font-size:14px; font-weight:700; text-decoration:none;">{{ w.cvDl }}</a>
+              <a href="{{ w.cvPdf }}" target="_blank" rel="noopener" style="flex:1 1 160px; text-align:center; padding:11px 16px; border-radius:10px; background:#fff; color:#1c1b19; font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 1px 3px rgba(0,0,0,0.08);">{{ w.cvOpen }}</a>
+            </div>
+          </div>
+        </sc-if>
+
         <sc-if value="{{ w.isThesis }}">
           <div style="padding:28px 30px 32px; display:flex; flex-direction:column; gap:22px;">
             <div style="display:flex; flex-direction:column; gap:8px;">
@@ -616,6 +626,7 @@ const ICONS_SRC = [
   { id: 'f-web', group: 'vid', kind: 'web', type: 'folder', label: B('Webs', 'Websites'), peek: R(IMG + encodeURI('Boceto Artistico.jpeg')) },
   { id: 'f-stack', group: 'vid', kind: 'stack', type: 'folder', label: B('Herramientas', 'Tools'), peek: L('Premiere Pro.svg.png') },
   { id: 'thesis', group: 'vid', kind: 'thesis', type: 'file', glyph: 'PDF', label: B('Tesis doctoral.pdf', 'PhD thesis.pdf') },
+  { id: 'cv', group: 'vid', kind: 'cv', type: 'file', glyph: 'CV', label: 'CV.pdf' },
   { id: 'about', group: 'bot', kind: 'about', type: 'file', glyph: 'TXT', label: B('Sobre mí.txt', 'About me.txt') },
   { id: 'contact', group: 'bot', kind: 'contact', type: 'file', glyph: '@', label: B('Contacto.vcf', 'Contact.vcf') }
 ];
@@ -641,7 +652,7 @@ const DOCK_SRC = [
   { k: 'wa', name: 'WhatsApp', logo: R('assets/whatsapp.webp'), li: 0, letters: 'WA', bg: '#25d366', fg: '#fff' }
 ];
 
-const WIDTH = { projects: 660, videos: 720, web: 920, stack: 600, about: 500, thesis: 640, contact: 440, project: 780, video: 860 };
+const WIDTH = { projects: 660, videos: 720, web: 920, stack: 600, about: 500, thesis: 640, cv: 640, contact: 440, project: 780, video: 860 };
 const ITEMS = B('elementos', 'items');
 const TITLES_SRC = { projects: [B('Proyectos', 'Projects'), ' — ' + PKEYS.length + ' ', ITEMS], videos: ['Videos — ' + VIDEOS_SRC.length + ' ', ITEMS], web: B('Webs', 'Websites'), stack: B('Herramientas', 'Tools'), about: B('Sobre mí.txt', 'About me.txt'), thesis: B('Tesis doctoral.pdf', 'PhD thesis.pdf'), contact: B('Contacto.vcf', 'Contact.vcf') };
 
@@ -662,7 +673,7 @@ const DEFAULT_POS = {
   'p-medialog': { x: 12.06, y: 18.79 }, 'p-british': { x: 6.04, y: 32.73 }, 'p-closca': { x: 25.05, y: 19.42 },
   'p-allupay': { x: 7.37, y: 51.65 }, 'p-idecolor': { x: 16.68, y: 34.72 }, 'p-lab': { x: 27.19, y: 37.5 },
   'f-videos': { x: 78.66, y: 20.11 }, 'f-web': { x: 76.85, y: 37.36 }, 'f-stack': { x: 93.0, y: 16.83 },
-  'thesis': { x: 88.71, y: 32.95 }, 'about': { x: 39.33, y: 73.11 }, 'contact': { x: 54.83, y: 71.84 }
+  'thesis': { x: 88.71, y: 32.95 }, 'cv': { x: 93.0, y: 47.5 }, 'about': { x: 39.33, y: 73.11 }, 'contact': { x: 54.83, y: 71.84 }
 };
 
 
@@ -817,8 +828,14 @@ class Component extends DCLogic {
         close: e => { e.stopPropagation(); e.preventDefault(); this.close(win.wid); }, focus: () => this.focus(win.wid), dragStart: e => this.winDown(e, win),
         title: TITLES[win.kind], maxH: Math.max(200, H - win.top - 40 - 96) + 'px',
         isProjects: win.kind === 'projects', isVideos: win.kind === 'videos', isWeb: win.kind === 'web', isStack: win.kind === 'stack',
-        isAbout: win.kind === 'about', isThesis: win.kind === 'thesis', isContact: win.kind === 'contact', isProject: win.kind === 'project', isVideo: win.kind === 'video'
+        isAbout: win.kind === 'about', isThesis: win.kind === 'thesis', isCv: win.kind === 'cv', isContact: win.kind === 'contact', isProject: win.kind === 'project', isVideo: win.kind === 'video'
       };
+      if (o.isCv) {
+        const L = s.lang === 'en' ? 'en' : 'es';
+        Object.assign(o, { title: 'CV_Alvaro_Quintanar_' + L.toUpperCase() + '.pdf', cvFile: 'CV_Alvaro_Quintanar_' + L.toUpperCase() + '.pdf',
+          cvImg: 'assets/cv-' + L + '-1.jpg', cvPdf: 'assets/cv-alvaro-quintanar-' + L + '.pdf',
+          cvDl: L === 'en' ? 'Download PDF' : 'Descargar PDF', cvOpen: L === 'en' ? 'Open in new tab ↗' : 'Abrir en pestaña nueva ↗' });
+      }
       if (o.isProjects) o.items = PKEYS.map(k => ({ ...PROJECTS[k], open: e => this.open('project', k, e.clientX, e.clientY) }));
       if (o.isVideos) o.items = VIDEOS.map((vv, i) => ({ ...vv, open: e => this.open('video', i, e.clientX, e.clientY) }));
       if (o.isWeb) o.items = WEBS.map(w => ({ ...w, shot: w.logo, url: w.url || null, project: w.project || null, openProject: e => this.open('project', w.project, e.clientX, e.clientY) }));
@@ -1281,6 +1298,16 @@ a{color:#1c1b19;text-decoration:none;} a:hover{color:#6b6862;}
             </div>
         </sc-if>
 
+        <sc-if value="{{ w.isCv }}">
+          <div style="padding:16px 18px 20px; display:flex; flex-direction:column; gap:14px;">
+            <img src="{{ w.cvImg }}" alt="CV Alvaro Quintanar Salinas" style="width:100%; height:auto; display:block; background:#fff; border-radius:3px; box-shadow:0 4px 18px rgba(0,0,0,0.14);">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="{{ w.cvPdf }}" download="{{ w.cvFile }}" style="flex:1 1 160px; text-align:center; padding:11px 16px; border-radius:10px; background:#1c1b19; color:#fff; font-size:14px; font-weight:700; text-decoration:none;">{{ w.cvDl }}</a>
+              <a href="{{ w.cvPdf }}" target="_blank" rel="noopener" style="flex:1 1 160px; text-align:center; padding:11px 16px; border-radius:10px; background:#fff; color:#1c1b19; font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 1px 3px rgba(0,0,0,0.08);">{{ w.cvOpen }}</a>
+            </div>
+          </div>
+        </sc-if>
+
         <sc-if value="{{ w.isThesis }}">
           <div style="padding:28px 30px 32px; display:flex; flex-direction:column; gap:22px;">
             <div style="display:flex; flex-direction:column; gap:8px;">
@@ -1476,6 +1503,7 @@ const ICONS = [
   { id: 'f-web', group: 'vid', kind: 'web', type: 'folder', label: 'Webs', peek: R(IMG + encodeURI('Boceto Artistico.jpeg')) },
   { id: 'f-stack', group: 'vid', kind: 'stack', type: 'folder', label: 'Herramientas', peek: L('Premiere Pro.svg.png') },
   { id: 'thesis', group: 'vid', kind: 'thesis', type: 'file', glyph: 'PDF', label: 'Tesis doctoral.pdf' },
+  { id: 'cv', group: 'vid', kind: 'cv', type: 'file', glyph: 'CV', label: 'CV.pdf' },
   { id: 'about', group: 'bot', kind: 'about', type: 'file', glyph: 'TXT', label: 'Sobre mí.txt' },
   { id: 'contact', group: 'bot', kind: 'contact', type: 'file', glyph: '@', label: 'Contacto.vcf' }
 ];
@@ -1501,7 +1529,7 @@ const DOCK = [
   { k: 'wa', name: 'WhatsApp', logo: R('assets/whatsapp.webp'), li: 0, letters: 'WA', bg: '#25d366', fg: '#fff' }
 ];
 
-const WIDTH = { projects: 660, videos: 720, web: 920, stack: 600, about: 500, thesis: 640, contact: 440, project: 780, video: 860 };
+const WIDTH = { projects: 660, videos: 720, web: 920, stack: 600, about: 500, thesis: 640, cv: 640, contact: 440, project: 780, video: 860 };
 const TITLES = { projects: 'Proyectos — ' + PKEYS.length + ' elementos', videos: 'Videos — ' + VIDEOS.length + ' elementos', web: 'Webs', stack: 'Herramientas', about: 'Sobre mí.txt', thesis: 'Tesis doctoral.pdf', contact: 'Contacto.vcf' };
 
 const LANGS = ['es', 'en'];
@@ -1525,7 +1553,7 @@ const DEFAULT_POS = {
   'p-medialog': { x: 12.06, y: 18.79 }, 'p-british': { x: 6.04, y: 32.73 }, 'p-closca': { x: 25.05, y: 19.42 },
   'p-allupay': { x: 7.37, y: 51.65 }, 'p-idecolor': { x: 16.68, y: 34.72 }, 'p-lab': { x: 27.19, y: 37.5 },
   'f-videos': { x: 78.66, y: 20.11 }, 'f-web': { x: 76.85, y: 37.36 }, 'f-stack': { x: 93.0, y: 16.83 },
-  'thesis': { x: 88.71, y: 32.95 }, 'about': { x: 39.33, y: 73.11 }, 'contact': { x: 54.83, y: 71.84 }
+  'thesis': { x: 88.71, y: 32.95 }, 'cv': { x: 93.0, y: 47.5 }, 'about': { x: 39.33, y: 73.11 }, 'contact': { x: 54.83, y: 71.84 }
 };
 
 class Component extends DCLogic {
@@ -1710,8 +1738,14 @@ class Component extends DCLogic {
         close: e => { e.stopPropagation(); e.preventDefault(); this.close(win.wid); }, focus: () => this.focus(win.wid), dragStart: e => this.winDown(e, win),
         projCols: lay.mobile ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,2fr)', title: TITLES[win.kind], maxH: lay.mobile ? 'none' : Math.max(200, H - win.top - 40 - 96) + 'px',
         isProjects: win.kind === 'projects', isVideos: win.kind === 'videos', isWeb: win.kind === 'web', isStack: win.kind === 'stack',
-        isAbout: win.kind === 'about', isThesis: win.kind === 'thesis', isContact: win.kind === 'contact', isProject: win.kind === 'project', isVideo: win.kind === 'video'
+        isAbout: win.kind === 'about', isThesis: win.kind === 'thesis', isCv: win.kind === 'cv', isContact: win.kind === 'contact', isProject: win.kind === 'project', isVideo: win.kind === 'video'
       };
+      if (o.isCv) {
+        const L = s.lang === 'en' ? 'en' : 'es';
+        Object.assign(o, { title: 'CV_Alvaro_Quintanar_' + L.toUpperCase() + '.pdf', cvFile: 'CV_Alvaro_Quintanar_' + L.toUpperCase() + '.pdf',
+          cvImg: 'assets/cv-' + L + '-1.jpg', cvPdf: 'assets/cv-alvaro-quintanar-' + L + '.pdf',
+          cvDl: L === 'en' ? 'Download PDF' : 'Descargar PDF', cvOpen: L === 'en' ? 'Open in new tab ↗' : 'Abrir en pestaña nueva ↗' });
+      }
       if (o.isProjects) o.items = PKEYS.map(k => ({ ...PROJECTS[k], open: e => this.open('project', k, e.clientX, e.clientY) }));
       if (o.isVideos) o.items = VIDEOS.map((vv, i) => ({ ...vv, open: e => this.open('video', i, e.clientX, e.clientY) }));
       if (o.isWeb) o.items = WEBS.map(w => ({ ...w, shot: w.logo, url: w.url || null, project: w.project || null, openProject: e => this.open('project', w.project, e.clientX, e.clientY) }));
@@ -1765,6 +1799,7 @@ class Component extends DCLogic {
       mApps.push(app(folder('Herramientas', tools.filter(d => d.logo).map(d => ({ img: d.logo, bg: d.bg, fit: 'contain' }))), (x, y) => this.open('stack', undefined, x, y)));
       mApps.push(app({ label: 'Idioma', letters: s.lang === 'en' ? 'EN' : 'ES', fs: '22px', fg: '#fff', bg: 'linear-gradient(160deg, #3a7bd5, #1d4f9c)' }, () => this.setLang(s.lang === 'en' ? 'es' : 'en')));
       mApps.push(app({ label: 'Tesis doctoral', letters: '', img: R('https://www.google.com/s2/favicons?domain=ugr.es&sz=128'), fit: 'contain', pad: '8px', isz: '44px' }, (x, y) => this.open('thesis', undefined, x, y)));
+      mApps.push(app({ label: 'CV', img: 'assets/cv-icon.svg', fit: 'cover', bg: '#f2efe9' }, (x, y) => this.open('cv', undefined, x, y)));
       mApps.forEach((a, i) => { a.op = s.loaded ? 1 : 0; a.anim = s.loaded ? 'none' : 'scale(.4)'; a.tr = `transform .6s cubic-bezier(.2,1.3,.4,1) ${i * 25}ms, opacity .4s ${i * 25}ms`; });
       const dk = k => DOCK.find(d => d.k === k);
       mDock.push(app({ img: R('assets/alvaro.png'), fit: 'cover' }, (x, y) => this.open('about', undefined, x, y)));
