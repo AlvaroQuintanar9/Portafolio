@@ -20,11 +20,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' rx='80' fill='%23c9925f'/%3E%3Ctext x='200' y='250' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='160' font-weight='700' fill='%231c1b19'%3E%C3%81Q%3C/text%3E%3C/svg%3E">
 <style>html,body{margin:0;height:100%;background:#e9e6e1;}</style>
-<!-- Intro cinematográfica: se carga antes del runtime para decidir si la web se salta su mini-intro.
-     Al cambiar algún archivo de la intro, sube el número ?v= para que los navegadores no usen la versión en caché. -->
-<link rel="stylesheet" href="assets/intro/intro.css?v=21">
-<script src="assets/intro/introAudio.js?v=21"></script>
-<script src="assets/intro/intro.js?v=21"></script>
 <script src="assets/vendor/react.production.min.js"></script>
 <script src="assets/vendor/react-dom.production.min.js"></script>
 <script>window.__resources = {}; /* la plantilla ya va en esta página: evita que el runtime la vuelva a descargar */</script>
@@ -691,7 +686,7 @@ class Component extends DCLogic {
     const intro = (this.props.intro ?? true) && !window.__cineIntro;
     if (intro) {
       this.t1 = setTimeout(() => this.setState({ loaded: true }), 150);
-      this.t2 = setTimeout(() => this.setState({ introDone: true }), 150 + ICONS.length * 45 + 1000);
+      this.t2 = setTimeout(() => this.setState({ introDone: true }), 150 + ICONS.length * 20 + 700);
     } else this.setState({ loaded: true, introDone: true });
     this.clock = setInterval(() => this.setState({ now: new Date() }), 15000);
     this.onResize = () => this.forceUpdate();
@@ -795,18 +790,18 @@ class Component extends DCLogic {
       const p = s.pos[it.id] || DEFAULT_POS[it.id] || lay.pct[it.id];
       const hov = s.hover === it.id, drag = s.dragging === it.id;
       const tilt = i % 2 ? 3 : -3;
-      const delay = s.introDone ? 0 : i * 45;
+      const delay = s.introDone ? 0 : i * 20;
       const isImg = it.type === 'video' || it.type === 'project';
       return {
         ...it, isFolder: it.type === 'folder', isFile: it.type === 'file', isImg, isVideo: it.type === 'video',
         img: it.type === 'video' ? VIDEOS[it.ref].thumb : it.type === 'project' ? PROJECTS[it.ref].img : null,
         ...(it.ref === 'british' ? { ifit: 'contain', ibg: 'transparent', iborder: 'none', iradius: '50%' } : { ifit: 'cover', ibg: '#fff', iborder: '2px solid #fff', iradius: '3px' }),
         w: it.type === 'video' ? '72px' : '58px', h: it.type === 'video' ? '46px' : '58px',
-        left: (s.loaded ? p.x : 50) + '%', top: (s.loaded ? p.y : 48) + '%',
+        left: p.x + '%', top: (s.loaded ? p.y : p.y + 1.2) + '%',
         opacity: s.loaded ? 1 : 0,
         z: drag ? 60 : hov ? 50 : 1,
-        transition: drag ? 'opacity .5s' : `left .9s cubic-bezier(.2,1,.3,1) ${delay}ms, top .9s cubic-bezier(.2,1,.3,1) ${delay}ms, opacity .5s ${delay}ms`,
-        lift: drag ? `scale(1.12) rotate(${tilt}deg)` : hov ? `translateY(-7px) scale(1.12) rotate(${tilt}deg)` : (s.loaded ? 'none' : 'scale(.3)'),
+        transition: drag ? 'opacity .5s' : `top .6s cubic-bezier(.2,1,.3,1) ${delay}ms, opacity .5s ${delay}ms`,
+        lift: drag ? `scale(1.12) rotate(${tilt}deg)` : hov ? `translateY(-7px) scale(1.12) rotate(${tilt}deg)` : (s.loaded ? 'none' : 'scale(.96)'),
         filter: drag ? 'drop-shadow(0 18px 18px rgba(0,0,0,.35))' : hov ? 'drop-shadow(0 12px 14px rgba(0,0,0,.28))' : 'none',
         flap: hov ? 'perspective(160px) rotateX(-32deg)' : 'none',
         paperTop: hov ? '-8px' : '8px',
@@ -1570,7 +1565,7 @@ class Component extends DCLogic {
     const intro = (this.props.intro ?? true) && !window.__cineIntro;
     if (intro) {
       this.t1 = setTimeout(() => this.setState({ loaded: true }), 150);
-      this.t2 = setTimeout(() => this.setState({ introDone: true }), 150 + ICONS.length * 45 + 1000);
+      this.t2 = setTimeout(() => this.setState({ introDone: true }), 150 + ICONS.length * 20 + 700);
     } else this.setState({ loaded: true, introDone: true });
     this.clock = setInterval(() => this.setState({ now: new Date() }), 15000);
     this.applyLang = () => {
@@ -1696,18 +1691,18 @@ class Component extends DCLogic {
       const p = lay.mobile ? lay.pct[it.id] : (s.pos[it.id] || DEFAULT_POS[it.id] || lay.pct[it.id]);
       const hov = s.hover === it.id, drag = s.dragging === it.id;
       const tilt = i % 2 ? 3 : -3;
-      const delay = s.introDone ? 0 : i * 45;
+      const delay = s.introDone ? 0 : i * 20;
       const isImg = it.type === 'video' || it.type === 'project';
       return {
         ...it, isFolder: it.type === 'folder', isFile: it.type === 'file', isImg, isVideo: it.type === 'video',
         img: it.type === 'video' ? VIDEOS[it.ref].thumb : it.type === 'project' ? PROJECTS[it.ref].img : null,
         ...(it.ref === 'british' ? { ifit: 'contain', ibg: 'transparent', iborder: 'none', iradius: '50%' } : { ifit: 'cover', ibg: '#fff', iborder: '2px solid #fff', iradius: '3px' }),
         w: it.type === 'video' ? '72px' : '58px', h: it.type === 'video' ? '46px' : '58px',
-        left: (s.loaded ? p.x : 50) + '%', top: (s.loaded ? p.y : 48) + '%',
+        left: p.x + '%', top: (s.loaded ? p.y : p.y + 1.2) + '%',
         opacity: s.loaded ? 1 : 0,
         z: drag ? 60 : hov ? 50 : 1,
-        transition: drag ? 'opacity .5s' : `left .9s cubic-bezier(.2,1,.3,1) ${delay}ms, top .9s cubic-bezier(.2,1,.3,1) ${delay}ms, opacity .5s ${delay}ms`,
-        lift: drag ? `scale(1.12) rotate(${tilt}deg)` : hov ? `translateY(-7px) scale(1.12) rotate(${tilt}deg)` : (s.loaded ? 'none' : 'scale(.3)'),
+        transition: drag ? 'opacity .5s' : `top .6s cubic-bezier(.2,1,.3,1) ${delay}ms, opacity .5s ${delay}ms`,
+        lift: drag ? `scale(1.12) rotate(${tilt}deg)` : hov ? `translateY(-7px) scale(1.12) rotate(${tilt}deg)` : (s.loaded ? 'none' : 'scale(.96)'),
         filter: drag ? 'drop-shadow(0 18px 18px rgba(0,0,0,.35))' : hov ? 'drop-shadow(0 12px 14px rgba(0,0,0,.28))' : 'none',
         flap: hov ? 'perspective(160px) rotateX(-32deg)' : 'none',
         paperTop: hov ? '-8px' : '8px',
@@ -1805,7 +1800,7 @@ class Component extends DCLogic {
       mApps.push(app({ label: 'Idioma', letters: s.lang === 'en' ? 'EN' : 'ES', fs: '22px', fg: '#fff', bg: 'linear-gradient(160deg, #3a7bd5, #1d4f9c)' }, () => this.setLang(s.lang === 'en' ? 'es' : 'en')));
       mApps.push(app({ label: 'Tesis doctoral', letters: '', img: R('https://www.google.com/s2/favicons?domain=ugr.es&sz=128'), fit: 'contain', pad: '8px', isz: '44px' }, (x, y) => this.open('thesis', undefined, x, y)));
       mApps.push(app({ label: 'CV', img: 'assets/cv-icon.svg', fit: 'cover', bg: '#f2efe9' }, (x, y) => this.open('cv', undefined, x, y)));
-      mApps.forEach((a, i) => { a.op = s.loaded ? 1 : 0; a.anim = s.loaded ? 'none' : 'scale(.4)'; a.tr = `transform .6s cubic-bezier(.2,1.3,.4,1) ${i * 25}ms, opacity .4s ${i * 25}ms`; });
+      mApps.forEach((a, i) => { a.op = s.loaded ? 1 : 0; a.anim = s.loaded ? 'none' : 'translateY(6px)'; a.tr = `transform .5s cubic-bezier(.2,1,.3,1) ${i * 15}ms, opacity .4s ${i * 15}ms`; });
       const dk = k => DOCK.find(d => d.k === k);
       mDock.push(app({ img: R('assets/alvaro.png'), fit: 'cover' }, (x, y) => this.open('about', undefined, x, y)));
       mDock.push(app({ ...tool(dk('mail')), fs: '30px' }, (x, y) => this.open('contact', undefined, x, y)));
